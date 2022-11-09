@@ -1,70 +1,384 @@
 :root {
-  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
-  font-size: 16px;
-  line-height: 24px;
-  font-weight: 400;
+  /*****************
+    COLOR VARIABLES 
+   *****************/
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  --violet-500: hsl(27, 22%, 51%);
+  /* #9e7f66*/
+  --violet-300: hsl(235, 82%, 77%);
+  /* #939BF4 */
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
+  --neutral-white: hsl(0, 0%, 100%);
+  /* #FFFFFF */
+
+  --gray-300: hsl(210, 22%, 96%);
+  /* #F4F6F8 */
+  --gray-500: hsl(212, 23%, 69%);
+  /* #9DAEC2 */
+  --gray-700: hsl(214, 17%, 51%);
+  /* #6E8098 */
+
+  --blue-700: hsl(219, 29%, 14%);
+  /* #19202D */
+  --midnight: hsl(220, 29%, 10%);
+  /* #121721 */
+
+  /*******
+    FONTS
+   *******/
+  font-family: 'Kumbh Sans', sans-serif;
+  color: var(--blue-700);
+  font-weight: 700;
+  font-style: normal;
+
+  scroll-behavior: smooth;
+  background-color: var(--neutral-white-700);
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+/************
+  ANIMATIONS
+ ************/
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
-body {
+/********
+  RESETS
+ ********/
+* {
   margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+nav ul {
+  list-style: none;
+}
+
+/* 
+ * Resets from 
+ * https://www.joshwcomeau.com/css/ custom-css-reset/ 
+ */
+html,
+body,
+#__next {
+  height: 100%;
+}
+
+html,
+body {
+  width: 100%;
+}
+
+/* Use a more-intuitive box-sizing model.*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Add accessible line-height */
+body {
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Improve media defaults */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* Remove built-in form typography styles */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Avoid text overflows */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+/* Create a root stacking context */
+#root,
+#__next {
+  isolation: isolate;
+}
+
+.flex-container {
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
 }
 
+/************
+  TYPOGRAPHY 
+ ************/
 h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+  font-size: 1.75rem;
+  line-height: 2.188px;
 }
 
+h2 {
+  font-size: 1.5rem;
+  line-height: 1.813rem;
+}
+
+h3 {
+  font-size: 1.25rem;
+  line-height: 1.5rem;
+}
+
+h4 {
+  font-size: 1rem;
+  line-height: 1.25rem;
+  color: var(--gray-700);
+}
+
+h5 {
+  font-size: 0.875rem;
+  line-height: 1.125rem;
+  color: var(--violet-500);
+}
+
+p {
+  font-size: 1rem;
+  line-height: 1.625rem;
+  color: var(--gray-500);
+}
+
+.dark-font {
+  color: var(--neutral-white);
+}
+
+/****************
+  BUTTON PRESETS 
+ ****************/
 button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+  font-family: 'Public Sans', sans-serif;
+  font-size: 0.938rem;
+  line-height: 1.125rem;
+  font-weight: 700;
+  padding: 0.875rem 1.5rem;
+  border-radius: 24px;
+  transition: all 0.25s ease-in-out;
   cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+button:disabled {
+  cursor: auto;
+}
+
+.prim-btn {
+  color: var(--neutral-white);
+  background-color: var(--prim-pink-500);
+  box-shadow: 10px 10px 25px -10px rgba(54, 83, 107, 0.25);
+}
+
+.prim-btn:active {
+  background-color: var(--sec-pink);
+}
+
+.prim-btn:disabled {
+  background-color: var(--prim-pink-300);
+}
+
+.sec-btn-light {
+  color: var(--sec-blue-500);
+  background-color: var(--neutral-white);
+  border: 1px solid var(--sec-blue-500);
+}
+
+.sec-btn-light:active:enabled {
+  color: var(--neutral-white);
+  background-color: var(--sec-blue-500);
+  border: 1px solid var(--neutral-white);
+}
+
+.sec-btn-light:disabled {
+  color: var(--neutral-gray);
+  background-color: var(--neutral-white);
+  border: 1px solid var(--neutral-gray);
+}
+
+.sec-btn-dark {
+  color: var(--neutral-white);
+  background-color: var(--sec-blue-700);
+  border: 1px solid var(--neutral-white);
+}
+
+.sec-btn-dark:active:enabled {
+  color: var(--sec-blue-500);
+  background-color: var(--neutral-white);
+  border: 1px solid var(--sec-blue-700);
+}
+
+.sec-btn-dark:disabled {
+  color: var(--neutral-gray);
+  background-color: var(--sec-blue-700);
+  border: 1px solid var(--neutral-gray);
+}
+
+@media (min-width: 769px) {
+  .prim-btn:hover:enabled {
+    background-color: var(--sec-pink);
   }
-  a:hover {
-    color: #747bff;
+
+  .sec-btn-light:hover:enabled {
+    color: var(--neutral-white);
+    background-color: var(--sec-blue-500);
+    border: 1px solid var(--neutral-white);
   }
-  button {
-    background-color: #f9f9f9;
+
+  .sec-btn-dark:hover:enabled {
+    color: var(--sec-blue-500);
+    background-color: var(--neutral-white);
+    border: 1px solid var(--sec-blue-700);
   }
+}
+
+/****************
+  INPUT PRESETS 
+ ****************/
+
+.input-wrapper {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.input-error {
+  padding-block-start: 0.5rem;
+  font-family: 'Public Sans', sans-serif;
+  font-size: 0.688rem;
+  line-height: 0.813rem;
+  opacity: 1;
+  color: var(--error-red);
+  border-color: var(--error-red);
+}
+
+label {
+  font-family: 'Public Sans', sans-serif;
+  font-weight: 400;
+  font-size: 0.938rem;
+  line-height: 1.563rem;
+  color: var(--sec-blue-500);
+  mix-blend-mode: normal;
+  opacity: 0.5;
+  display: block;
+}
+
+input:focus + label,
+textarea:focus + label {
+  opacity: 1;
+}
+
+input,
+textarea {
+  border-bottom: 1px solid var(--sec-blue-500);
+  opacity: 0.5;
+}
+
+input:active,
+input:focus,
+textarea:active,
+textarea:focus {
+  opacity: 1;
+}
+
+/*****************
+  CUSTOM CHECKBOX 
+ *****************/
+
+/* 
+  Code altered from 
+  https://www.w3schools.com/howto/howto_css_custom_checkbox.asp
+*/
+
+/* Customize the label (the container) */
+.checkbox-wrapper {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+  opacity: 1;
+}
+
+/* Hide the browser's default checkbox */
+.checkbox-wrapper input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 24px;
+  width: 24px;
+  background-color: var(--sec-blue-500);
+  opacity: 0.25;
+  transition: all 0.2s ease-in-out;
+}
+
+/* On mouse-over, add opacity */
+.checkbox-wrapper:hover input ~ .checkmark {
+  opacity: 0.4;
+}
+
+/* When the checkbox is checked*/
+.checkbox-wrapper input:checked ~ .checkmark {
+  background-color: var(--prim-pink-500);
+  opacity: 1;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: '';
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.checkbox-wrapper input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.checkbox-wrapper .checkmark:after {
+  left: 8px;
+  top: 4px;
+  width: 7px;
+  height: 13px;
+  border: solid var(--neutral-white);
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+}
+
+/* style when input is disabled */
+.checkbox-wrapper input:disabled ~ .checkmark {
+  opacity: 0.05;
 }
