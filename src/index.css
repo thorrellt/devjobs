@@ -16,6 +16,8 @@
   /* #FFFFFF */
   --neutral-white-200: rgba(255, 255, 255, 0.35);
   /* #FFFFFF */
+  --neutral-white-300: rgba(255, 255, 255, 0.5);
+  /* #FFFFFF */
   --neutral-white: hsl(0, 0%, 100%);
   /* #FFFFFF */
 
@@ -135,8 +137,20 @@ h6 {
   isolation: isolate;
 }
 
+/********************
+  SHARED CLASS TYPES
+ ********************/
+
 .flex-container {
   display: flex;
+}
+
+.dark-container {
+  background-color: var(--blue-700) !important;
+}
+
+.dark-font {
+  color: var(--neutral-white) !important;
 }
 
 /************
@@ -175,10 +189,6 @@ p {
   line-height: 1.625rem;
   color: var(--gray-500);
   font-weight: 400;
-}
-
-.dark-font {
-  color: var(--neutral-white);
 }
 
 /****************
@@ -260,48 +270,33 @@ button:disabled {
   INPUT PRESETS 
  ****************/
 
+input {
+  font-weight: 400;
+}
+
 .input-wrapper {
   display: flex;
   flex-direction: column-reverse;
 }
 
-.input-error {
-  padding-block-start: 0.5rem;
-  font-family: 'Public Sans', sans-serif;
-  font-size: 0.688rem;
-  line-height: 0.813rem;
-  opacity: 1;
-  color: var(--error-red);
-  border-color: var(--error-red);
-}
-
-label {
-  font-family: 'Public Sans', sans-serif;
+.input-container input::placeholder {
   font-weight: 400;
-  font-size: 0.938rem;
-  line-height: 1.563rem;
-  color: var(--sec-blue-500);
-  mix-blend-mode: normal;
-  opacity: 0.5;
-  display: block;
-}
-
-input:focus + label,
-textarea:focus + label {
-  opacity: 1;
-}
-
-input,
-textarea {
-  border-bottom: 1px solid var(--sec-blue-500);
   opacity: 0.5;
 }
 
-input:active,
-input:focus,
-textarea:active,
-textarea:focus {
-  opacity: 1;
+.dark-container input::placeholder {
+  color: var(--neutral-white);
+}
+
+.input-container {
+  border-radius: 6px;
+  background-color: var(--neutral-white);
+  padding-block: 1.75rem;
+  padding-inline-start: 2rem;
+}
+
+.input-container input {
+  margin-inline-start: 1rem;
 }
 
 /*****************

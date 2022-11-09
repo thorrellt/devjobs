@@ -4,5 +4,15 @@
 
 .dark {
   height: 50vh;
+}
+
+.test-form {
+  background-image: url('./assets/desktop/bg-pattern-header.svg');
+  height: 15vh;
+  align-items: center;
+  padding-inline-start: 2rem;
+}
+
+.dark-container {
   background-color: var(--blue-700);
 }
