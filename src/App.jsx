@@ -29,6 +29,14 @@ function App() {
               placeholder="Enter desired job..."
             />
           </div>
+          <div className="input-container checkbox-container flex-container">
+            <label className="checkbox-wrapper flex-container">
+              <input type="checkbox" />
+              <span className="checkmark" />
+              <p>Full Time Only</p>
+            </label>
+            <button className="prim-btn">Button 1</button>
+          </div>
         </form>
       </div>
       <div className="dark dark-container">
@@ -50,6 +58,14 @@ function App() {
               placeholder="Enter desired job..."
               className="dark-font"
             />
+          </div>
+          <div className="input-container checkbox-container dark-container flex-container">
+            <label className="checkbox-wrapper flex-container">
+              <input type="checkbox" />
+              <span className="checkmark" />
+              <p>Full Time Only</p>
+            </label>
+            <button className="prim-btn">Button 1</button>
           </div>
         </form>
       </div>
