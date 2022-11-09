@@ -1,2 +1,8 @@
-#root {
+.light {
+  height: 50vh;
+}
+
+.dark {
+  height: 50vh;
+  background-color: var(--blue-700);
 }
