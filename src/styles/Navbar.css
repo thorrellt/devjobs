@@ -1,0 +1,55 @@
+nav {
+  background-color: var(--violet-500);
+  background-image: url('../assets/mobile/bg-pattern-header.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 136px;
+  max-height: 136px;
+  overflow: hidden;
+  position: relative;
+}
+
+.nav-content {
+  margin-block-start: 1.75rem;
+  margin-inline: 1.5rem;
+  justify-content: space-between;
+}
+
+.mode-toggle {
+  max-height: 24px;
+  align-items: center;
+}
+
+.sun {
+  width: 20px;
+  height: 18.6px;
+}
+
+.moon {
+  max-width: 12px;
+  max-height: 12px;
+}
+
+.toggle-switch {
+  width: 48px;
+  height: 24px;
+  margin-inline: 1rem;
+  align-items: center;
+  justify-content: flex-start;
+
+  background: var(--neutral-white);
+  border-radius: 12px;
+}
+
+.mode-toggle .dark {
+  justify-content: flex-end;
+}
+
+.toggle-switch .selector {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  margin-inline: 5px;
+
+  background: var(--violet-500);
+}
