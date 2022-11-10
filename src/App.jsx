@@ -1,18 +1,29 @@
-import { useState } from 'react'
+import { useState, createContext } from 'react'
 import './App.css'
 import Home from './pages/Home'
 
+const DisplayContext = createContext()
+
 function App() {
-  const [count, setCount] = useState(0)
-  const onFormChange = () => {
-    console.log('hello world')
+  const [darkMode, setDarkMode] = useState(true)
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth)
+
+  const switchMode = () => {
+    setDarkMode((prevMode) => !prevMode)
+    console.log(`mode flipped to ${darkMode}`)
   }
 
   return (
-    <div className="App">
+    <DisplayContext.Provider
+      value={{
+        darkMode: darkMode,
+        switchMode: switchMode,
+        windowWidth: windowWidth,
+      }}
+    >
       <Home />
-    </div>
+    </DisplayContext.Provider>
   )
 }
 
-export default App
+export { App, DisplayContext }

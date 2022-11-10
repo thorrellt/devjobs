@@ -3,15 +3,11 @@ import bg from '../assets/mobile/bg-pattern-header.svg'
 import icon from '../assets/desktop/logo.svg'
 import sun from '../assets/desktop/icon-sun.svg'
 import moon from '../assets/desktop/icon-moon.svg'
-import { useState } from 'react'
+import { useState, useContext } from 'react'
+import { DisplayContext } from '../App'
 
 const Navbar = (props) => {
-  const [darkMode, setDarkMode] = useState(false)
-
-  const switchMode = () => {
-    setDarkMode((prevMode) => !prevMode)
-    console.log(`mode flipped to ${darkMode}`)
-  }
+  const { darkMode, switchMode } = useContext(DisplayContext)
 
   return (
     <nav>
