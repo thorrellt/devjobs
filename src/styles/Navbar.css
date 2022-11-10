@@ -58,3 +58,26 @@ nav {
   transform: translate(175%, -50%);
   animation: slideRight 0.5s ease-in-out;
 }
+
+/********
+  TABLET
+ ********/
+@media (min-width: 680px) {
+  nav {
+    background-image: url('../assets/tablet/bg-pattern-header.svg');
+    background-color: transparent;
+    height: 168px;
+    max-height: 168px;
+  }
+}
+
+/********
+  DESKTOP
+ ********/
+@media (min-width: 992px) {
+  nav {
+    background-image: url('../assets/desktop/bg-pattern-header.svg');
+    height: 162px;
+    max-height: 162px;
+  }
+}
