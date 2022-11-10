@@ -47,17 +47,23 @@
   background-color: var(--neutral-white-700);
 }
 
-/************
-  ANIMATIONS
- ************/
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
+/***************
+  COLOR CLASSES
+ ***************/
+.bg-white {
+  background-color: var(--neutral-white) !important;
+}
 
-  to {
-    opacity: 1;
-  }
+.bg-midnight {
+  background-color: var(--midnight) !important;
+}
+
+.bg-blue-700 {
+  background-color: var(--blue-700) !important;
+}
+
+.bg-gray-300 {
+  background-color: var(--gray-300) !important;
 }
 
 /********

@@ -1,9 +1,12 @@
+import { useState, useContext } from 'react'
+import { DisplayContext } from '../App'
+import '../styles/Home.css'
 import Navbar from '../components/Navbar'
-import { useContext } from 'react'
 
 const Home = (props) => {
+  const { darkMode } = useContext(DisplayContext)
   return (
-    <main>
+    <main id="Home" className={darkMode ? 'bg-midnight' : 'bg-gray-300'}>
       <Navbar />
     </main>
   )
