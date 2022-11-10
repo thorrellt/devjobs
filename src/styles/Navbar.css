@@ -4,9 +4,11 @@ nav {
   background-repeat: no-repeat;
   background-size: cover;
   height: 136px;
+  width: 100%;
   max-height: 136px;
   overflow: hidden;
-  position: relative;
+  position: fixed;
+  top: 0;
 }
 
 .nav-content {

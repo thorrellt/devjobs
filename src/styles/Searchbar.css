@@ -1,0 +1,24 @@
+.searchbar {
+  min-width: 100%;
+  min-height: 80px;
+  background-color: transparent;
+  top: 97px;
+  z-index: 1;
+  position: fixed;
+}
+
+.searchbar .flex-container {
+  padding-inline: 1.5rem;
+}
+
+.searchbar form {
+  align-items: center;
+}
+
+.searchbar button {
+  height: 48px;
+  width: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
