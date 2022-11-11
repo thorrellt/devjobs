@@ -1,0 +1,41 @@
+.jobcard {
+  height: 228px;
+  flex: 1 1 327px;
+  padding-block-start: 3rem;
+  padding-inline: 2rem 1rem;
+  flex-wrap: wrap;
+  border-radius: 6px;
+}
+.jobcard > * {
+  height: min-content;
+}
+.jobcard .header {
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.jobcard .posted-at {
+}
+
+.jobcard .divider {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: var(--gray-700);
+  flex: 0 0 4px;
+}
+
+.jobcard .contract {
+}
+
+.jobcard .position {
+  flex: 1 0 100%;
+}
+
+.jobcard .company {
+  flex: 1 0 100%;
+}
+
+.jobcard .location {
+  flex: 1 0 100%;
+}

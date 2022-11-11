@@ -4,6 +4,7 @@ import '../styles/Home.css'
 import Navbar from '../components/Navbar'
 import Searchbar from '../components/Searchbar'
 import SearchbarMobile from '../components/SearchbarMobile'
+import JobCard from '../components/JobCard'
 
 const Home = (props) => {
   const { darkMode, windowWidth } = useContext(DisplayContext)
@@ -11,7 +12,12 @@ const Home = (props) => {
   return (
     <main id="Home" className={darkMode ? 'bg-midnight' : 'bg-gray-300'}>
       <Navbar />
+
       {windowIsMobile ? <SearchbarMobile /> : <Searchbar />}
+
+      <div className="job-cards flex-container">
+        <JobCard />
+      </div>
     </main>
   )
 }
