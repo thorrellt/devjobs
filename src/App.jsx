@@ -1,4 +1,4 @@
-import { useState, createContext } from 'react'
+import { useState, createContext, useEffect } from 'react'
 import './App.css'
 import Home from './pages/Home'
 
@@ -8,9 +8,25 @@ function App() {
   const [darkMode, setDarkMode] = useState(true)
   const [windowWidth, setWindowWidth] = useState(window.innerWidth)
 
+  /***********************
+    FUNCTIONS & LISTENERS
+   ***********************/
+  //Update windowWidth State on width Change
+  useEffect(() => {
+    function watchWidth() {
+      setWindowWidth(window.innerWidth)
+    }
+
+    window.addEventListener('resize', watchWidth)
+
+    return function () {
+      window.removeEventListener('resize', watchWidth)
+    }
+  }, [])
+
+  //switch mode from light to dark
   const switchMode = () => {
     setDarkMode((prevMode) => !prevMode)
-    console.log(`mode flipped to ${darkMode}`)
   }
 
   return (

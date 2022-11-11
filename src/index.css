@@ -330,6 +330,7 @@ input {
 
 .input-container:not(:first-child) {
   border-left: 1px solid var(--gray-600);
+  padding-inline-start: 1.5rem;
 }
 
 .input-container input {
@@ -347,7 +348,7 @@ input {
 
 /* Customize the label (the container) */
 .checkbox-wrapper {
-  padding-inline: 2rem;
+  padding-inline-start: 2rem;
   display: block;
   position: relative;
   cursor: pointer;
@@ -373,6 +374,7 @@ input {
   width: 24px;
   background-color: var(--violet-500);
   opacity: 0.1;
+  border-radius: 3px;
   transition: all 0.2s ease-in-out;
 }
 

@@ -16,10 +16,3 @@
 .dark-container {
   background-color: var(--blue-700);
 }
-
-.checkbox-container {
-  padding-inline-start: 4rem;
-  padding-inline-end: 1rem;
-  justify-content: space-between;
-  align-items: center;
-}

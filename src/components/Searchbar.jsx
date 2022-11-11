@@ -13,14 +13,14 @@ const Searchbar = () => {
   return (
     <div className="searchbar flex-container">
       <form
-        className={`flex-container ${darkMode ? 'bg-blue-700' : 'bg-white'}`}
+        className={`flex-container 
+        ${darkMode ? 'bg-blue-700' : 'bg-white'}`}
       >
         <div
-          className={`input-container flex-container ${
-            darkMode ? 'bg-blue-700' : 'bg-white'
-          }`}
+          className={`input-container title flex-container 
+          ${darkMode ? 'bg-blue-700' : 'bg-white'}`}
         >
-          <i className="bi bi-search icon dark-font" />
+          <i className="bi bi-search icon font-violet-500" />
           <input
             onChange={onFormChange}
             type="text"
@@ -30,14 +30,31 @@ const Searchbar = () => {
             className="font-gray-700"
           />
         </div>
-        <i
-          className={`bi bi-funnel-fill ${
-            darkMode ? 'font-white' : 'font-violet-500'
-          }`}
-        />
-        <button className="prim-btn">
-          <i className="bi bi-search" />
-        </button>
+        <div
+          className={`input-container location flex-container 
+          ${darkMode ? 'bg-blue-700' : 'bg-white'}`}
+        >
+          <i className="bi bi-geo-alt-fill icon font-violet-500" />
+          <input
+            onChange={onFormChange}
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Filter by location..."
+            className="font-gray-700"
+          />
+        </div>
+        <div
+          className={`input-container checkbox-container flex-container 
+          ${darkMode ? 'bg-blue-700' : 'bg-white'}`}
+        >
+          <label className="checkbox-wrapper flex-container">
+            <input type="checkbox" />
+            <span className="checkmark" />
+            <p>Full Time</p>
+          </label>
+        </div>
+        <button className="prim-btn">Search</button>
       </form>
     </div>
   )

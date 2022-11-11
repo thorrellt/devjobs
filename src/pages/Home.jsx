@@ -3,13 +3,15 @@ import { DisplayContext } from '../App'
 import '../styles/Home.css'
 import Navbar from '../components/Navbar'
 import Searchbar from '../components/Searchbar'
+import SearchbarMobile from '../components/SearchbarMobile'
 
 const Home = (props) => {
-  const { darkMode } = useContext(DisplayContext)
+  const { darkMode, windowWidth } = useContext(DisplayContext)
+  const windowIsMobile = windowWidth < 680
   return (
     <main id="Home" className={darkMode ? 'bg-midnight' : 'bg-gray-300'}>
       <Navbar />
-      <Searchbar />
+      {windowIsMobile ? <SearchbarMobile /> : <Searchbar />}
     </main>
   )
 }

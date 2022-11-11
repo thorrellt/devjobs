@@ -1,4 +1,4 @@
-.searchbar {
+.searchbar-mobile {
   width: 100%;
   min-height: 80px;
   background-color: transparent;
@@ -8,7 +8,7 @@
   padding-inline: 1.5rem;
 }
 
-.searchbar form {
+.searchbar-mobile form {
   flex-wrap: nowrap;
   align-items: center;
   padding-inline: 1.5rem;
@@ -17,51 +17,27 @@
   overflow: hidden;
 }
 
-.searchbar form .input-container {
+.searchbar-mobile form .input-container {
   flex-wrap: nowrap;
   flex-grow: 1;
   flex-shrink: 1;
 }
 
-.searchbar form input {
+.searchbar-mobile form input {
   flex-grow: 1;
   flex-shrink: 1;
   width: 5rem;
 }
 
-.searchbar form .bi-funnel-fill {
+.searchbar-mobile form .bi-funnel-fill {
   margin-inline-end: 1.5rem;
   margin-inline-start: 0.5rem;
 }
 
-.searchbar form button {
+.searchbar-mobile form button {
   height: 48px;
   width: 48px;
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-/********
-  TABLET
- ********/
-@media (min-width: 680px) {
-  .searchbar {
-    top: 120px;
-  }
-  .searchbar form button {
-    width: 80px;
-  }
-
-  .title {
-    flex-basis: 35%;
-  }
-  .location {
-    flex-basis: 35%;
-  }
-  .checkbox-container {
-    flex: 1 1 25%;
-    justify-content: space-between;
-    align-items: center;
-  }
 }
