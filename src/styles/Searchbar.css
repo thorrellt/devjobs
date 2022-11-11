@@ -1,21 +1,38 @@
 .searchbar {
-  min-width: 100%;
+  width: 100%;
   min-height: 80px;
   background-color: transparent;
   top: 97px;
   z-index: 1;
   position: fixed;
-}
-
-.searchbar .flex-container {
   padding-inline: 1.5rem;
 }
 
 .searchbar form {
+  flex-wrap: nowrap;
   align-items: center;
+  padding-inline: 1.5rem;
+  width: 100%;
 }
 
-.searchbar button {
+.searchbar form .input-container {
+  flex-wrap: nowrap;
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+
+.searchbar form input {
+  flex-grow: 1;
+  flex-shrink: 1;
+  width: 5rem;
+}
+
+.searchbar form .bi-funnel-fill {
+  margin-inline-end: 1.5rem;
+  margin-inline-start: 0.5rem;
+}
+
+.searchbar form button {
   height: 48px;
   width: 48px;
   display: flex;

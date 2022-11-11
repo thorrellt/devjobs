@@ -11,8 +11,10 @@ const Searchbar = () => {
   }
 
   return (
-    <div className="searchbar">
-      <form className="flex-container bg-white">
+    <div className="searchbar flex-container">
+      <form
+        className={`flex-container ${darkMode ? 'bg-blue-700' : 'bg-white'}`}
+      >
         <div
           className={`input-container flex-container ${
             darkMode ? 'bg-blue-700' : 'bg-white'

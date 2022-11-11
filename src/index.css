@@ -323,17 +323,17 @@ input {
   overflow: hidden;
 }
 .input-container {
+  flex-wrap: nowrap;
   height: 80px;
-  background-color: var(--neutral-white);
   padding-block: 1.75rem;
-  padding-inline-start: 2rem;
 }
+
 .input-container:not(:first-child) {
   border-left: 1px solid var(--gray-600);
 }
 
 .input-container input {
-  margin-inline-start: 1rem;
+  padding-inline-start: 1rem;
 }
 
 /*****************
