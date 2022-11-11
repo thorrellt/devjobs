@@ -9,11 +9,18 @@ nav {
   overflow: hidden;
   position: fixed;
   top: 0;
+  justify-content: center;
 }
 
+nav .logo {
+  flex-grow: 0;
+  flex-basis: 115px;
+  height: 32px;
+}
 .nav-content {
   margin-block-start: 1.75rem;
   margin-inline: 1.5rem;
+  width: 100%;
   justify-content: space-between;
 }
 
@@ -81,5 +88,9 @@ nav {
     background-image: url('../assets/desktop/bg-pattern-header.svg');
     height: 162px;
     max-height: 162px;
+  }
+
+  .nav-content {
+    width: max(900px, 78vw);
   }
 }

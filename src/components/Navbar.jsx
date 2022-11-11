@@ -10,9 +10,9 @@ const Navbar = (props) => {
   const { darkMode, switchMode } = useContext(DisplayContext)
 
   return (
-    <nav>
+    <nav className="flex-container">
       <div className="nav-content flex-container">
-        <img src={icon} alt="dev jobs icon" />
+        <img className="logo" src={icon} alt="dev jobs icon" />
 
         <div className="mode-toggle flex-container">
           <img src={sun} className="icon sun" alt="" />

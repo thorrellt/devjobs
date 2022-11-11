@@ -4,7 +4,8 @@ import '../styles/Searchbar.css'
 import funnel from '../assets/mobile/icon-filter.svg'
 
 const Searchbar = () => {
-  const { darkMode } = useContext(DisplayContext)
+  const { darkMode, windowWidth } = useContext(DisplayContext)
+  const isDesktop = windowWidth >= 992
 
   const onFormChange = () => {
     console.log('form changed')
@@ -51,7 +52,7 @@ const Searchbar = () => {
           <label className="checkbox-wrapper flex-container">
             <input type="checkbox" />
             <span className="checkmark" />
-            <p>Full Time</p>
+            <p>Full Time{`${isDesktop ? ' Only' : ''}`}</p>
           </label>
         </div>
         <button className="prim-btn">Search</button>

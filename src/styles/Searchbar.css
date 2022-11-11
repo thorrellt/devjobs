@@ -6,6 +6,7 @@
   z-index: 1;
   position: fixed;
   padding-inline: 1.5rem;
+  justify-content: center;
 }
 
 .searchbar form {
@@ -63,5 +64,20 @@
     flex: 1 1 25%;
     justify-content: space-between;
     align-items: center;
+  }
+}
+
+/*********
+  DESKTOP
+ *********/
+@media (min-width: 992px) {
+  .searchbar .checkbox-container {
+    flex: 1 1 11rem;
+  }
+  .searchbar {
+    /* padding-inline: 10rem; */
+  }
+  .searchbar form {
+    width: max(900px, 78vw);
   }
 }
