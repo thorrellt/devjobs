@@ -1,6 +1,19 @@
+function imageExist(url) {
+  var img = new Image()
+  img.src = url
+  return img.height != 0
+}
+
+function getImg(imgName) {
+  const devPath = `/logos/${imgName}`
+  const livePath = `./logos/${imgName}`
+  return imageExist(livePath) ? livePath : devPath
+}
+
 const CompanyLogo = (props) => {
   const { logo, logoBackground } = props
-  const logoPath = `../public/logos/${logo}`
+  const logoPath = getImg(logo)
+  console.log(logoPath)
 
   return (
     <div
