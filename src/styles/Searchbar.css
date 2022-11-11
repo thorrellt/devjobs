@@ -13,6 +13,8 @@
   align-items: center;
   padding-inline: 1.5rem;
   width: 100%;
+  border-radius: 6px;
+  overflow: hidden;
 }
 
 .searchbar form .input-container {
