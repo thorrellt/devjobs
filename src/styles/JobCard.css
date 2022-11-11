@@ -1,4 +1,5 @@
 .jobcard {
+  position: relative;
   height: 228px;
   flex: 1 1 327px;
   padding-block-start: 3rem;
@@ -38,4 +39,15 @@
 
 .jobcard .location {
   flex: 1 0 100%;
+}
+
+.company-logo {
+  position: absolute;
+  height: 50px;
+  width: 50px;
+  left: 2rem;
+  top: -25px;
+  border-radius: 15px;
+  justify-content: center;
+  align-items: center;
 }
