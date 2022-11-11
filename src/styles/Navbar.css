@@ -7,9 +7,10 @@ nav {
   width: 100%;
   max-height: 136px;
   overflow: hidden;
-  position: fixed;
+  position: absolute;
   top: 0;
   justify-content: center;
+  z-index: 1;
 }
 
 nav .logo {

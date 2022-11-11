@@ -10,12 +10,20 @@ const Home = (props) => {
   const { darkMode, windowWidth } = useContext(DisplayContext)
   const windowIsMobile = windowWidth < 680
   return (
-    <main id="Home" className={darkMode ? 'bg-midnight' : 'bg-gray-300'}>
+    <main
+      id="Home"
+      className={`flex-container ${darkMode ? 'bg-midnight' : 'bg-gray-300'}`}
+    >
       <Navbar />
 
       {windowIsMobile ? <SearchbarMobile /> : <Searchbar />}
 
       <div className="job-cards flex-container">
+        <JobCard />
+        <JobCard />
+        <JobCard />
+        <JobCard />
+        <JobCard />
         <JobCard />
       </div>
     </main>

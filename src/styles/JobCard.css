@@ -6,6 +6,7 @@
   padding-inline: 2rem 1rem;
   flex-wrap: wrap;
   border-radius: 6px;
+  margin-block-end: 3rem;
 }
 .jobcard > * {
   height: min-content;
@@ -50,4 +51,22 @@
   border-radius: 15px;
   justify-content: center;
   align-items: center;
+}
+
+/********
+  TABLET
+ ********/
+@media (min-width: 680px) {
+  .jobcard {
+    flex-basis: 40%;
+  }
+}
+
+/********
+    DESKTOP
+   ********/
+@media (min-width: 992px) {
+  .jobcard {
+    flex-basis: 30%;
+  }
 }
