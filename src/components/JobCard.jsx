@@ -14,16 +14,7 @@ const JobCard = (props) => {
     postedAt,
     contract,
     location,
-  } = {
-    id: 1,
-    company: 'Scoot',
-    logo: 'scoot.svg',
-    logoBackground: 'hsl(36, 87%, 49%)',
-    position: 'Senior Software Engineer',
-    postedAt: '5h ago',
-    contract: 'Full Time',
-    location: 'United Kingdom',
-  }
+  } = props.jobData
   return (
     <div
       className={`jobcard flex-container
