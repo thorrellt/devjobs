@@ -1,6 +1,7 @@
 import { useState, useContext } from 'react'
 import { DisplayContext } from '../App'
 import CompanyLogo from './CompanyLogo'
+import { NavLink, useLocation } from 'react-router-dom'
 import '../styles/JobCard.css'
 
 const JobCard = (props) => {
@@ -38,7 +39,9 @@ const JobCard = (props) => {
         className={`position 
       ${darkMode ? 'font-white' : 'font-blue-700'}`}
       >
-        <h3>{position}</h3>
+        <NavLink to={`/job/${id}`} className="">
+          <h3>{position}</h3>
+        </NavLink>
       </div>
 
       <div className="conpmany">

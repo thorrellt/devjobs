@@ -1,5 +1,6 @@
 import { useState, useContext } from 'react'
 import { DisplayContext } from '../App'
+import { NavLink, useLocation } from 'react-router-dom'
 import '../styles/Navbar.css'
 import bg from '../assets/mobile/bg-pattern-header.svg'
 import icon from '../assets/desktop/logo.svg'
@@ -12,7 +13,9 @@ const Navbar = (props) => {
   return (
     <nav className="flex-container">
       <div className="nav-content flex-container">
-        <img className="logo" src={icon} alt="dev jobs icon" />
+        <NavLink to={`/`} className="">
+          <img className="logo" src={icon} alt="dev jobs icon" />
+        </NavLink>
 
         <div className="mode-toggle flex-container">
           <img src={sun} className="icon sun" alt="" />

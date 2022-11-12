@@ -4,6 +4,7 @@ import Navbar from './components/Navbar'
 import Searchbar from './components/Searchbar'
 import SearchbarMobile from './components/SearchbarMobile'
 import { Outlet, useLocation } from 'react-router-dom'
+import data from './data.json'
 
 const DisplayContext = createContext()
 
@@ -38,6 +39,7 @@ function App() {
         darkMode: darkMode,
         switchMode: switchMode,
         windowWidth: windowWidth,
+        data: data,
       }}
     >
       <div
