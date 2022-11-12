@@ -21,7 +21,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/devjobs/job/:id',
-        element: <Job /s>,
+        element: <Job />,
       },
     ],
   },
