@@ -51,15 +51,17 @@ const Job = () => {
       >
         <CompanyLogo logo={props.logo} logoBackground={props.logoBackground} />
 
-        <div
-          className={`company 
+        <div className="company-name flex-container">
+          <div
+            className={`company 
       ${darkMode ? 'font-white' : 'font-blue-700'}`}
-        >
-          <h2>{props.company}</h2>
-        </div>
+          >
+            <h2>{props.company}</h2>
+          </div>
 
-        <div className="url">
-          <h4>{`${props.company}.com`}</h4>
+          <div className="url">
+            <h4>{`${props.company}.com`}</h4>
+          </div>
         </div>
 
         <form action="http://thorrellt.com/" method="get" target="_blank">
