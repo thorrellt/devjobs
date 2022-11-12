@@ -40,6 +40,7 @@
     height: 140px;
     padding-block: 0;
     align-items: center;
+    top: -40px;
   }
   .job-header .company-name {
     flex-direction: column;
@@ -71,4 +72,7 @@
     DESKTOP
    ********/
 @media (min-width: 992px) {
+  .job-header {
+    width: 45.625rem;
+  }
 }
