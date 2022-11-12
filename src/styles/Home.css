@@ -1,12 +1,11 @@
 #Home {
-  background-color: var(--gray-300);
+  background-color: transparent;
   min-height: 100vh;
   width: 100vw;
   justify-content: center;
 }
 
 .job-cards {
-  padding-block-start: 14.5rem;
   margin-inline: 1.5rem;
   flex-wrap: wrap;
   background-color: transparent;
@@ -18,7 +17,6 @@
 @media (min-width: 680px) {
   .job-cards {
     column-gap: 0.688rem;
-    padding-block-start: 16.875rem;
     margin-inline: 2.5rem;
   }
 }
@@ -29,7 +27,6 @@
 @media (min-width: 992px) {
   .job-cards {
     column-gap: 1.875rem;
-    padding-block-start: 19.063rem;
     margin-inline: 0;
     width: max(900px, 78vw);
   }

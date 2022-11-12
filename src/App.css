@@ -1,18 +1,21 @@
-.light {
-  height: 50vh;
+.App {
+  padding-block-start: 14.5rem;
 }
 
-.dark {
-  height: 50vh;
+/********
+  TABLET
+ ********/
+@media (min-width: 680px) {
+  .App {
+    padding-block-start: 16.875rem;
+  }
 }
 
-.test-form {
-  background-image: url('./assets/desktop/bg-pattern-header.svg');
-  height: 15vh;
-  align-items: center;
-  padding-inline-start: 2rem;
-}
-
-.dark-container {
-  background-color: var(--blue-700);
+/********
+  DESKTOP
+ ********/
+@media (min-width: 992px) {
+  .App {
+    padding-block-start: 19.063rem;
+  }
 }

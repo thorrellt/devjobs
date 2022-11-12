@@ -6,7 +6,7 @@ function imageExist(url) {
 
 function getImg(imgName) {
   const devPath = `/logos/${imgName}`
-  const livePath = `./logos/${imgName}`
+  const livePath = `/devjobs/logos/${imgName}`
   return imageExist(livePath) ? livePath : devPath
 }
 

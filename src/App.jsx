@@ -1,6 +1,9 @@
 import { useState, createContext, useEffect } from 'react'
 import './App.css'
-import Home from './pages/Home'
+import Navbar from './components/Navbar'
+import Searchbar from './components/Searchbar'
+import SearchbarMobile from './components/SearchbarMobile'
+import { Outlet, useLocation } from 'react-router-dom'
 
 const DisplayContext = createContext()
 
@@ -29,6 +32,8 @@ function App() {
     setDarkMode((prevMode) => !prevMode)
   }
 
+  const windowIsMobile = windowWidth < 680
+
   return (
     <DisplayContext.Provider
       value={{
@@ -37,7 +42,15 @@ function App() {
         windowWidth: windowWidth,
       }}
     >
-      <Home />
+      <div
+        className={`App flex-container ${
+          darkMode ? 'bg-midnight' : 'bg-gray-300'
+        }`}
+      >
+        <Navbar />
+        {windowIsMobile ? <SearchbarMobile /> : <Searchbar />}
+        <Outlet />
+      </div>
     </DisplayContext.Provider>
   )
 }
