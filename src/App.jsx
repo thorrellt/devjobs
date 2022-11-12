@@ -32,8 +32,6 @@ function App() {
     setDarkMode((prevMode) => !prevMode)
   }
 
-  const windowIsMobile = windowWidth < 680
-
   return (
     <DisplayContext.Provider
       value={{
@@ -48,7 +46,6 @@ function App() {
         }`}
       >
         <Navbar />
-        {windowIsMobile ? <SearchbarMobile /> : <Searchbar />}
         <Outlet />
       </div>
     </DisplayContext.Provider>

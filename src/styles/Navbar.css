@@ -4,13 +4,10 @@ nav {
   background-repeat: no-repeat;
   background-size: cover;
   height: 136px;
-  width: 100%;
   max-height: 136px;
   overflow: hidden;
-  position: absolute;
-  top: 0;
   justify-content: center;
-  z-index: 1;
+  flex-basis: 100%;
 }
 
 nav .logo {

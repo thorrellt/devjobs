@@ -2,10 +2,10 @@
   width: 100%;
   min-height: 80px;
   background-color: transparent;
-  top: 97px;
   z-index: 2;
-  position: absolute;
+  top: -40px;
   padding-inline: 1.5rem;
+  position: absolute;
   justify-content: center;
 }
 
@@ -47,9 +47,6 @@
   TABLET
  ********/
 @media (min-width: 680px) {
-  .searchbar {
-    top: 120px;
-  }
   .searchbar form button {
     width: 80px;
   }
@@ -73,9 +70,6 @@
 @media (min-width: 992px) {
   .searchbar .checkbox-container {
     flex: 1 1 11rem;
-  }
-  .searchbar {
-    /* padding-inline: 10rem; */
   }
   .searchbar form {
     width: max(900px, 78vw);

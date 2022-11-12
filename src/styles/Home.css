@@ -3,12 +3,16 @@
   min-height: 100vh;
   width: 100vw;
   justify-content: center;
+  flex-wrap: wrap;
+  position: relative;
 }
 
 .job-cards {
+  flex-basis: 100%;
   margin-inline: 1.5rem;
   flex-wrap: wrap;
   background-color: transparent;
+  margin-block-start: 6.125rem;
 }
 
 /********
@@ -18,6 +22,7 @@
   .job-cards {
     column-gap: 0.688rem;
     margin-inline: 2.5rem;
+    margin-block-start: 6.875rem;
   }
 }
 
@@ -29,5 +34,6 @@
     column-gap: 1.875rem;
     margin-inline: 0;
     width: max(900px, 78vw);
+    margin-block-start: 9rem;
   }
 }
