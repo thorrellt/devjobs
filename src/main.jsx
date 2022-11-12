@@ -12,16 +12,16 @@ import { createBrowserRouter, RouterProvider, Route } from 'react-router-dom'
  ********/
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: '/devjobs',
     element: <App />,
     children: [
       {
-        path: '/',
+        path: '/devjobs/',
         element: <Home />,
       },
       {
-        path: 'job/:id',
-        element: <Job />,
+        path: '/devjobs/job/:id',
+        element: <Job /s>,
       },
     ],
   },

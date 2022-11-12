@@ -13,7 +13,7 @@ const Navbar = (props) => {
   return (
     <nav className="flex-container">
       <div className="nav-content flex-container">
-        <NavLink to={`/`} className="">
+        <NavLink to={`/devjobs/`} className="">
           <img className="logo" src={icon} alt="dev jobs icon" />
         </NavLink>
 

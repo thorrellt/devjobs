@@ -39,7 +39,7 @@ const JobCard = (props) => {
         className={`position 
       ${darkMode ? 'font-white' : 'font-blue-700'}`}
       >
-        <NavLink to={`/job/${id}`} className="">
+        <NavLink to={`/devjobs/job/${id}`} className="">
           <h3>{position}</h3>
         </NavLink>
       </div>
