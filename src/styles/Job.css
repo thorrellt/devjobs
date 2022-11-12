@@ -1,0 +1,32 @@
+.job {
+  padding-inline: 1.5rem;
+  flex-wrap: nowrap;
+  justify-content: center;
+  width: 100%;
+  position: relative;
+  min-height: 100vh;
+}
+
+.job-header {
+  padding-block: 3rem 2rem;
+  align-items: center;
+  flex-direction: column;
+  width: calc(100vw - 3rem);
+  top: -10px;
+  position: absolute;
+  border-radius: 6px;
+}
+
+.job-header .company-logo {
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.job-header .url {
+  margin-block-start: 0.75rem;
+}
+
+.job-header button {
+  margin-block-start: 1.5rem;
+  width: 9.25rem;
+}

@@ -1,3 +1,4 @@
 .App {
   flex-wrap: wrap;
+  position: relative;
 }
