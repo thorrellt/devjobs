@@ -111,9 +111,32 @@
   background-color: var(--gray-500);
 }
 
-.job-details li span {
+.job-details ul li span,
+.job-details ol li .item {
   margin-inline-start: 2rem;
 }
+
+.job-details ol {
+  list-style-type: none;
+}
+
+.job-footer {
+  margin-block-start: 1.5rem;
+  padding: 1.5rem;
+  align-items: center;
+  flex-direction: column;
+  flex-basis: 100%;
+  width: 100%;
+}
+
+.job-footer form {
+  width: 100%;
+}
+
+.job-footer button {
+  width: 100%;
+}
+
 /********
   TABLET
  ********/
