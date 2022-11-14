@@ -6,15 +6,22 @@
   position: relative;
   min-height: 100vh;
 }
+.job-body {
+  width: calc(100vw - 3rem);
+  flex-wrap: wrap;
+  width: calc(100vw - 3rem);
+  top: -10px;
+  position: absolute;
+}
 
 .job-header {
   padding-block: 3rem 2rem;
   align-items: center;
   flex-direction: column;
-  width: calc(100vw - 3rem);
-  top: -10px;
-  position: absolute;
+  flex-basis: 100%;
+  width: 100%;
   border-radius: 6px;
+  height: auto;
 }
 .job-header .company-name {
   flex-direction: column;
@@ -35,6 +42,54 @@
   min-width: 9.25rem;
 }
 
+.job-details {
+  margin-block-start: 1.5rem;
+  padding-block: 2.5rem;
+  padding-inline: 1.5rem;
+  align-items: center;
+  flex-direction: column;
+  flex-basis: 100%;
+  width: 100%;
+  border-radius: 6px;
+  gap: 0.75rem;
+}
+
+.summary > * {
+  height: min-content;
+}
+.job-details .summary {
+  align-items: center;
+  flex-direction: column;
+  height: min-content;
+}
+
+.job-details .summary .header {
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.job-details .summary .divider {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: var(--gray-700);
+  flex: 0 0 4px;
+}
+
+.job-details .summary .position {
+  margin-block-start: 0.5rem;
+}
+
+.job-details .summary .location {
+  margin-block-start: 0.5rem;
+}
+.job-details .summary form {
+  min-width: 100%;
+}
+.job-details .summary button {
+  margin-block-start: 3.125rem;
+  min-width: 100%;
+}
 /********
   TABLET
  ********/
