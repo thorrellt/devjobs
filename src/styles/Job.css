@@ -195,7 +195,9 @@
   DESKTOP
  *********/
 @media (min-width: 992px) {
-  .job-header {
-    width: 45.625rem;
+  .job {
+    padding-inline: 0;
+    margin-inline: auto;
+    width: calc(max(50%, 48rem));
   }
 }
