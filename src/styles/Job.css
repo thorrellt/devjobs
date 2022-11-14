@@ -3,15 +3,12 @@
   flex-wrap: nowrap;
   justify-content: center;
   width: 100%;
-  position: relative;
-  min-height: 100vh;
+  height: fit-content;
+  flex-wrap: wrap;
+  transform: translate(0, -10px);
 }
 .job-body {
   width: calc(100vw - 3rem);
-  flex-wrap: wrap;
-  width: calc(100vw - 3rem);
-  top: -10px;
-  position: absolute;
 }
 
 .job-header {
@@ -52,15 +49,17 @@
   width: 100%;
   border-radius: 6px;
   gap: 0.75rem;
+  height: 100%;
 }
 
 .summary > * {
   height: min-content;
 }
 .job-details .summary {
-  align-items: center;
+  /* align-items: center; */
   flex-direction: column;
   height: min-content;
+  margin-block-end: 0.25rem;
 }
 
 .job-details .summary .header {
@@ -68,9 +67,12 @@
   gap: 0.75rem;
 }
 
-.job-details .summary .divider {
+.job-details .summary .divider,
+.job-details .marker {
   width: 4px;
   height: 4px;
+  max-width: 4px;
+  max-height: 4px;
   border-radius: 50%;
   background-color: var(--gray-700);
   flex: 0 0 4px;
@@ -89,6 +91,28 @@
 .job-details .summary button {
   margin-block-start: 3.125rem;
   min-width: 100%;
+}
+
+.job-details p {
+  margin-block-start: 1.75rem;
+}
+
+.job-details .title {
+  margin-block-start: 2.5rem;
+  align-self: flex-start;
+}
+
+.job-details ul {
+  list-style-type: none;
+}
+
+.job-details li .marker {
+  margin-block-start: 0.5rem;
+  background-color: var(--gray-500);
+}
+
+.job-details li span {
+  margin-inline-start: 2rem;
 }
 /********
   TABLET

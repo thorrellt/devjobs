@@ -213,7 +213,8 @@ h5 {
   color: var(--violet-500);
 }
 
-p {
+p,
+li {
   font-size: 1rem;
   line-height: 1.625rem;
   color: var(--gray-500);
