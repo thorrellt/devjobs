@@ -8,6 +8,7 @@ import '../styles/Job.css'
 const Job = () => {
   const { id } = useParams()
   const { darkMode, windowWidth, data } = useContext(DisplayContext)
+  const windowIsMobile = windowWidth < 680
 
   const job = data[id - 1]
 
@@ -91,19 +92,23 @@ ${darkMode ? 'bg-blue-700' : 'bg-white'}`}
               className={`position 
 ${darkMode ? 'font-white' : 'font-blue-700'}`}
             >
-              <h3>{job.position}</h3>
+              {windowIsMobile ? (
+                <h3>{job.position}</h3>
+              ) : (
+                <h1>{job.position}</h1>
+              )}
             </div>
 
             <div className="location">
               <h5>{job.location}</h5>
             </div>
-
-            <form action="http://thorrellt.com/" method="get" target="_blank">
-              <button className="prim-btn" type="submit">
-                Apply Now
-              </button>
-            </form>
           </div>
+
+          <form action="http://thorrellt.com/" method="get" target="_blank">
+            <button className="prim-btn" type="submit">
+              Apply Now
+            </button>
+          </form>
 
           <p className="description">{job.description}</p>
 
