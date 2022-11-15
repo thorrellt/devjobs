@@ -226,4 +226,10 @@
     margin-inline: auto;
     width: calc(max(50%, 48rem));
   }
+
+  .job-footer {
+    margin-block-start: 1.5rem;
+    padding-inline: 0;
+    width: calc(max(50%, 48rem));
+  }
 }

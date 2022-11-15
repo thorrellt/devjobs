@@ -11,28 +11,30 @@ const JobFooter = (props) => {
       className={`job-footer flex-container
         ${darkMode ? 'bg-blue-700' : 'bg-white'}`}
     >
-      <div
-        className={`company-info flex-container ${
-          windowIsMobile ? 'hidden' : ''
-        }`}
-      >
+      <div className="footer-container flex-container">
         <div
-          className={`position
-      ${darkMode ? 'font-white' : 'font-blue-700'}`}
+          className={`company-info flex-container ${
+            windowIsMobile ? 'hidden' : ''
+          }`}
         >
-          <h2>{position}</h2>
+          <div
+            className={`position
+      ${darkMode ? 'font-white' : 'font-blue-700'}`}
+          >
+            <h2>{position}</h2>
+          </div>
+
+          <div className="company">
+            <h4>{`${company}`}</h4>
+          </div>
         </div>
 
-        <div className="company">
-          <h4>{`${company}`}</h4>
-        </div>
+        <form action="http://thorrellt.com/" method="get" target="_blank">
+          <button className="prim-btn" type="submit">
+            Apply Now
+          </button>
+        </form>
       </div>
-
-      <form action="http://thorrellt.com/" method="get" target="_blank">
-        <button className="prim-btn" type="submit">
-          Apply Now
-        </button>
-      </form>
     </footer>
   )
 }
