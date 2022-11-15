@@ -1,10 +1,10 @@
 const getAllJobs = (req, res) => {
-  res.send('get all jobs')
+  res.send('<h1>get all jobs</h1>')
 }
 
 const getJob = (req, res) => {
   const { id } = req.params
-  res.send(`get job id:${id}`)
+  res.send(`<h1>get job id:${id}</h1>`)
 }
 
 module.exports = {
