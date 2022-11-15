@@ -71,6 +71,7 @@ const Job = () => {
           </form>
         </div>
 
+        {/* JOB DETAILS */}
         <div
           className={`job-details flex-container
 ${darkMode ? 'bg-blue-700' : 'bg-white'}`}
@@ -129,7 +130,7 @@ ${darkMode ? 'font-white' : 'font-blue-700'}`}
           <ol className="role-items">{roleItems}</ol>
         </div>
       </main>
-      <JobFooter />
+      <JobFooter position={job.position} company={job.company} />
     </>
   )
 }

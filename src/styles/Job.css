@@ -124,9 +124,13 @@
   margin-block-start: 1.5rem;
   padding: 1.5rem;
   align-items: center;
-  flex-direction: column;
+  justify-content: center;
   flex-basis: 100%;
   width: 100%;
+}
+
+.job-footer .hidden {
+  display: none;
 }
 
 .job-footer form {
@@ -141,6 +145,11 @@
   TABLET
  ********/
 @media (min-width: 680px) {
+  .job-details {
+    margin-block-start: 2rem;
+    padding-block: 3rem;
+    padding-inline: 3rem;
+  }
   .job-header {
     flex-direction: row;
     height: 140px;
@@ -188,6 +197,23 @@
   .job-details ul,
   .job-details ol {
     margin-block-start: 1.5rem;
+  }
+
+  .job-footer {
+    margin-block-start: 1.5rem;
+    padding-inline: 2.5rem;
+    justify-content: space-between;
+  }
+
+  .job-footer .company-info {
+    flex: 1 1 19rem;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .job-footer form {
+    flex: 0 0 8.75rem;
+    max-width: 8.75rem;
   }
 }
 
