@@ -129,6 +129,11 @@
   width: 100%;
 }
 
+.job-footer .container {
+  width: 100%;
+  justify-content: center;
+}
+
 .job-footer .hidden {
   display: none;
 }
@@ -202,7 +207,6 @@
   .job-footer {
     margin-block-start: 1.5rem;
     padding-inline: 2.5rem;
-    justify-content: space-between;
   }
 
   .job-footer .company-info {
@@ -228,8 +232,10 @@
   }
 
   .job-footer {
-    margin-block-start: 1.5rem;
     padding-inline: 0;
+  }
+
+  .job-footer .container {
     width: calc(max(50%, 48rem));
   }
 }

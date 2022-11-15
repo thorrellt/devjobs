@@ -11,7 +11,7 @@ const JobFooter = (props) => {
       className={`job-footer flex-container
         ${darkMode ? 'bg-blue-700' : 'bg-white'}`}
     >
-      <div className="footer-container flex-container">
+      <div className="container flex-container">
         <div
           className={`company-info flex-container ${
             windowIsMobile ? 'hidden' : ''
