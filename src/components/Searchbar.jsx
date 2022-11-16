@@ -27,7 +27,6 @@ const Searchbar = (props) => {
       fulltime: !prevFilters.fulltime,
     }))
   }
-  console.log(filters)
 
   return (
     <div className="searchbar flex-container">

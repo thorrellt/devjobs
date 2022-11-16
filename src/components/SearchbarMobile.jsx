@@ -3,11 +3,28 @@ import { DisplayContext } from '../App'
 import '../styles/SearchbarMobile.css'
 import funnel from '../assets/mobile/icon-filter.svg'
 
-const SearchbarMobile = () => {
-  const { darkMode } = useContext(DisplayContext)
+const SearchbarMobile = (props) => {
+  const { darkMode, windowWidth } = useContext(DisplayContext)
 
-  const onFormChange = () => {
-    console.log('form changed')
+  const { filters, setFilters } = props
+
+  const onFormChange = (event) => {
+    const name = event.target.id
+    const newValue = event.target.value
+    const type = event.target.type
+
+    if (type != 'checkbox')
+      setFilters((prevFormState) => ({
+        ...prevFormState,
+        [name]: newValue,
+      }))
+  }
+
+  const onCheckClick = () => {
+    setFilters((prevFilters) => ({
+      ...prevFilters,
+      fulltime: !prevFilters.fulltime,
+    }))
   }
 
   return (
@@ -23,9 +40,10 @@ const SearchbarMobile = () => {
           <input
             onChange={onFormChange}
             type="text"
-            id="name"
-            name="name"
+            id="position"
+            name="position"
             placeholder="Filter by title..."
+            value={filters.position}
             className="font-gray-700"
           />
         </div>
