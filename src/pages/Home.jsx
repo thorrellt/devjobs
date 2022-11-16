@@ -11,13 +11,23 @@ const Home = (props) => {
   const { darkMode, windowWidth } = useContext(DisplayContext)
   const windowIsMobile = windowWidth < 680
 
+  const [filters, setFilters] = useState({
+    title: '',
+    location: '',
+    fulltime: true,
+  })
+
   const jobCards = data.map((jobData) => {
     return <JobCard jobData={jobData} key={jobData.id} />
   })
   fetchJob(1)
   return (
     <main id="Home" className="flex-container">
-      {windowIsMobile ? <SearchbarMobile /> : <Searchbar />}
+      {windowIsMobile ? (
+        <SearchbarMobile filters={filters} setFilters={setFilters} />
+      ) : (
+        <Searchbar filters={filters} setFilters={setFilters} />
+      )}
       <div className="job-cards flex-container">{jobCards}</div>
     </main>
   )

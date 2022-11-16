@@ -3,13 +3,31 @@ import { DisplayContext } from '../App'
 import '../styles/Searchbar.css'
 import funnel from '../assets/mobile/icon-filter.svg'
 
-const Searchbar = () => {
+const Searchbar = (props) => {
   const { darkMode, windowWidth } = useContext(DisplayContext)
   const isDesktop = windowWidth >= 992
 
-  const onFormChange = () => {
-    console.log('form changed')
+  const { filters, setFilters } = props
+
+  const onFormChange = (event) => {
+    const name = event.target.id
+    const newValue = event.target.value
+    const type = event.target.type
+
+    if (type != 'checkbox')
+      setFilters((prevFormState) => ({
+        ...prevFormState,
+        [name]: newValue,
+      }))
   }
+
+  const onCheckClick = () => {
+    setFilters((prevFilters) => ({
+      ...prevFilters,
+      fulltime: !prevFilters.fulltime,
+    }))
+  }
+  console.log(filters)
 
   return (
     <div className="searchbar flex-container">
@@ -25,9 +43,10 @@ const Searchbar = () => {
           <input
             onChange={onFormChange}
             type="text"
-            id="name"
-            name="name"
+            id="title"
+            name="title"
             placeholder="Filter by title..."
+            value={filters.title}
             className="font-gray-700"
           />
         </div>
@@ -39,9 +58,10 @@ const Searchbar = () => {
           <input
             onChange={onFormChange}
             type="text"
-            id="name"
-            name="name"
+            id="location"
+            name="location"
             placeholder="Filter by location..."
+            value={filters.location}
             className="font-gray-700"
           />
         </div>
@@ -50,7 +70,12 @@ const Searchbar = () => {
           ${darkMode ? 'bg-blue-700' : 'bg-white'}`}
         >
           <label className="checkbox-wrapper flex-container">
-            <input type="checkbox" />
+            <input
+              type="checkbox"
+              checked={filters.fulltime}
+              onClick={onCheckClick}
+              onChange={onFormChange}
+            />
             <span className="checkmark" />
             <p>Full Time{`${isDesktop ? ' Only' : ''}`}</p>
           </label>
