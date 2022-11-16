@@ -43,10 +43,10 @@ const Searchbar = (props) => {
           <input
             onChange={onFormChange}
             type="text"
-            id="title"
-            name="title"
+            id="position"
+            name="position"
             placeholder="Filter by title..."
-            value={filters.title}
+            value={filters.position}
             className="font-gray-700"
           />
         </div>

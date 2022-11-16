@@ -4,7 +4,7 @@ import { Routes, Route, useParams } from 'react-router-dom'
 import CompanyLogo from '../components/CompanyLogo'
 import JobFooter from '../components/jobFooter'
 import '../styles/Job.css'
-import { fetchJob as fetchJob } from '../controllers/controller'
+import { fetchJob } from '../controllers/controller'
 
 const Job = () => {
   const { id } = useParams()
