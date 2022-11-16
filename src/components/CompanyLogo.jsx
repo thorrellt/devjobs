@@ -1,3 +1,5 @@
+import AsyncImage from './AsyncImage'
+
 function imageExist(url) {
   var img = new Image()
   img.src = url
@@ -20,7 +22,7 @@ const CompanyLogo = (props) => {
       className="company-logo flex-container"
       style={{ backgroundColor: logoBackground }}
     >
-      <img src={logoPath} alt="" />
+      <AsyncImage src={logoPath} alt="" />
     </div>
   )
 }
