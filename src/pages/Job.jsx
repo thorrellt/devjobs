@@ -1,16 +1,40 @@
-import { useContext } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { DisplayContext } from '../App'
 import { Routes, Route, useParams } from 'react-router-dom'
 import CompanyLogo from '../components/CompanyLogo'
 import JobFooter from '../components/jobFooter'
 import '../styles/Job.css'
+import { fetchJob as fetchJob } from '../controllers/controller'
 
 const Job = () => {
   const { id } = useParams()
   const { darkMode, windowWidth, data } = useContext(DisplayContext)
   const windowIsMobile = windowWidth < 680
 
-  const job = data[id - 1]
+  const [job, setJob] = useState({
+    id: 1,
+    company: '',
+    logo: '',
+    logoBackground: '',
+    position: '',
+    postedAt: '',
+    contract: '',
+    location: '',
+    website: '',
+    apply: '',
+    description: '',
+    requirements: '',
+    role: '',
+  })
+  const [reqItems, setReqItems] = useState(`<></>`)
+  const [roleItems, setRoleItems] = useState(`<></>`)
+
+  useEffect(() => {
+    const jobData = fetchJob(id)
+    setJob(jobData)
+    setReqItems(generateBulletList(jobData.requirements.items))
+    setRoleItems(generateNumberList(jobData.role.items))
+  }, [])
 
   const generateBulletList = (items) => {
     const listItems = items.map((item, i) => {
@@ -39,8 +63,6 @@ const Job = () => {
     })
     return listItems
   }
-  const reqItems = generateBulletList(job.requirements.items)
-  const roleItems = generateNumberList(job.role.items)
 
   return (
     <>

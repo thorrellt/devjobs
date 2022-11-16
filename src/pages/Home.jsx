@@ -5,6 +5,7 @@ import JobCard from '../components/JobCard'
 import Searchbar from '../components/Searchbar'
 import SearchbarMobile from '../components/SearchbarMobile'
 import data from '../data.json'
+import { fetchJob as fetchJob } from '../controllers/controller'
 
 const Home = (props) => {
   const { darkMode, windowWidth } = useContext(DisplayContext)
@@ -13,6 +14,7 @@ const Home = (props) => {
   const jobCards = data.map((jobData) => {
     return <JobCard jobData={jobData} key={jobData.id} />
   })
+  fetchJob(1)
   return (
     <main id="Home" className="flex-container">
       {windowIsMobile ? <SearchbarMobile /> : <Searchbar />}
