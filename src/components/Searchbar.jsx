@@ -5,9 +5,11 @@ import funnel from '../assets/mobile/icon-filter.svg'
 
 const Searchbar = (props) => {
   const { darkMode, screenSize } = useContext(DisplayContext)
-
   const { filters, setFilters } = props
 
+  /****************
+    FORM LISTENERS
+   ****************/
   const onFormChange = (event) => {
     const name = event.target.id
     const newValue = event.target.value
@@ -28,7 +30,11 @@ const Searchbar = (props) => {
   }
 
   return (
-    <div className="searchbar flex-container">
+    <div
+      className={`searchbar flex-container ${
+        screenSize === 'mobile' && 'mobile'
+      }`}
+    >
       <form
         className={`flex-container 
         ${darkMode ? 'bg-blue-700' : 'bg-white'}`}
@@ -50,38 +56,58 @@ const Searchbar = (props) => {
           />
         </div>
 
-        {/* FILTER BY LOCATION */}
-        <div
-          className={`input-container location flex-container 
+        {/* TABLET/DESKTOP */}
+        {screenSize !== 'mobile' && (
+          <>
+            {/* FILTER BY LOCATION */}
+            <div
+              className={`input-container location flex-container 
           ${darkMode ? 'bg-blue-700' : 'bg-white'}`}
-        >
-          <i className="bi bi-geo-alt-fill icon font-violet-500" />
-          <input
-            onChange={onFormChange}
-            type="text"
-            id="location"
-            name="location"
-            placeholder="Filter by location..."
-            value={filters.location}
-            className="font-gray-700"
-          />
-        </div>
-        <div
-          className={`input-container checkbox-container flex-container 
+            >
+              <i className="bi bi-geo-alt-fill icon font-violet-500" />
+              <input
+                onChange={onFormChange}
+                type="text"
+                id="location"
+                name="location"
+                placeholder="Filter by location..."
+                value={filters.location}
+                className="font-gray-700"
+              />
+            </div>
+
+            {/* FULL TIME CHECKBOX */}
+            <div
+              className={`input-container checkbox-container flex-container 
           ${darkMode ? 'bg-blue-700' : 'bg-white'}`}
-        >
-          <label className="checkbox-wrapper flex-container">
-            <input
-              type="checkbox"
-              checked={filters.fulltime}
-              onClick={onCheckClick}
-              onChange={onFormChange}
+            >
+              <label className="checkbox-wrapper flex-container">
+                <input
+                  type="checkbox"
+                  checked={filters.fulltime}
+                  onClick={onCheckClick}
+                  onChange={onFormChange}
+                />
+                <span className="checkmark" />
+                <p>Full Time{`${screenSize === 'desktop' ? ' Only' : ''}`}</p>
+              </label>
+            </div>
+            <button className="prim-btn">Search</button>
+          </>
+        )}
+
+        {/* TABLET/DESKTOP */}
+        {screenSize === 'mobile' && (
+          <>
+            <i
+              className={`bi bi-funnel-fill 
+          ${darkMode ? 'font-white' : 'font-violet-500'}`}
             />
-            <span className="checkmark" />
-            <p>Full Time{`${screenSize === 'desktop' ? ' Only' : ''}`}</p>
-          </label>
-        </div>
-        <button className="prim-btn">Search</button>
+            <button className="prim-btn">
+              <i className="bi bi-search" />
+            </button>
+          </>
+        )}
       </form>
     </div>
   )

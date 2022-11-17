@@ -3,7 +3,6 @@ import { DisplayContext } from '../App'
 import '../styles/Home.css'
 import JobCard from '../components/JobCard'
 import Searchbar from '../components/Searchbar'
-import SearchbarMobile from '../components/SearchbarMobile'
 import data from '../data.json'
 import { fetchJob as fetchJob } from '../controllers/controller'
 import { getAllJobs } from '../controllers/controller'
@@ -32,11 +31,7 @@ const Home = (props) => {
 
   return (
     <main id="Home" className="flex-container">
-      {screenSize === 'mobile' ? (
-        <SearchbarMobile filters={filters} setFilters={setFilters} />
-      ) : (
-        <Searchbar filters={filters} setFilters={setFilters} />
-      )}
+      <Searchbar filters={filters} setFilters={setFilters} />
       <div className="job-cards flex-container">{jobCards}</div>
     </main>
   )
