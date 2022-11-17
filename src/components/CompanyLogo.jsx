@@ -15,7 +15,7 @@ function getImg(imgName) {
 const CompanyLogo = (props) => {
   const { logo, logoBackground } = props
   const logoPath = getImg(logo)
-  console.log(logoPath)
+  // console.log(logoPath)
 
   return (
     <div

@@ -4,8 +4,7 @@ import '../styles/Searchbar.css'
 import funnel from '../assets/mobile/icon-filter.svg'
 
 const Searchbar = (props) => {
-  const { darkMode, windowWidth } = useContext(DisplayContext)
-  const isDesktop = windowWidth >= 992
+  const { darkMode, screenSize } = useContext(DisplayContext)
 
   const { filters, setFilters } = props
 
@@ -34,6 +33,7 @@ const Searchbar = (props) => {
         className={`flex-container 
         ${darkMode ? 'bg-blue-700' : 'bg-white'}`}
       >
+        {/* FILTER BY TITLE/POSITION */}
         <div
           className={`input-container title flex-container 
           ${darkMode ? 'bg-blue-700' : 'bg-white'}`}
@@ -49,6 +49,8 @@ const Searchbar = (props) => {
             className="font-gray-700"
           />
         </div>
+
+        {/* FILTER BY LOCATION */}
         <div
           className={`input-container location flex-container 
           ${darkMode ? 'bg-blue-700' : 'bg-white'}`}
@@ -76,7 +78,7 @@ const Searchbar = (props) => {
               onChange={onFormChange}
             />
             <span className="checkmark" />
-            <p>Full Time{`${isDesktop ? ' Only' : ''}`}</p>
+            <p>Full Time{`${screenSize === 'desktop' ? ' Only' : ''}`}</p>
           </label>
         </div>
         <button className="prim-btn">Search</button>

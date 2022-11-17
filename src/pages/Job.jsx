@@ -4,12 +4,11 @@ import { Routes, Route, useParams } from 'react-router-dom'
 import CompanyLogo from '../components/CompanyLogo'
 import JobFooter from '../components/jobFooter'
 import '../styles/Job.css'
-import { fetchJob } from '../controllers/controller'
+import { getJob } from '../controllers/controller'
 
 const Job = () => {
   const { id } = useParams()
-  const { darkMode, windowWidth, data } = useContext(DisplayContext)
-  const windowIsMobile = windowWidth < 680
+  const { darkMode, screenSize, data } = useContext(DisplayContext)
 
   const [job, setJob] = useState({
     id: 1,
@@ -30,7 +29,7 @@ const Job = () => {
   const [roleItems, setRoleItems] = useState(`<></>`)
 
   useEffect(() => {
-    const jobData = fetchJob(id)
+    const jobData = getJob(id)
     setJob(jobData)
     setReqItems(generateBulletList(jobData.requirements.items))
     setRoleItems(generateNumberList(jobData.role.items))
@@ -115,7 +114,7 @@ ${darkMode ? 'bg-blue-700' : 'bg-white'}`}
               className={`position 
 ${darkMode ? 'font-white' : 'font-blue-700'}`}
             >
-              {windowIsMobile ? (
+              {screenSize === 'mobile' ? (
                 <h3>{job.position}</h3>
               ) : (
                 <h1>{job.position}</h1>

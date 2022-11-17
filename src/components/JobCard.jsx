@@ -5,7 +5,7 @@ import { NavLink, useLocation } from 'react-router-dom'
 import '../styles/JobCard.css'
 
 const JobCard = (props) => {
-  const { darkMode, windowWidth } = useContext(DisplayContext)
+  const { darkMode } = useContext(DisplayContext)
   const {
     id,
     company,

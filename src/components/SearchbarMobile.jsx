@@ -4,7 +4,7 @@ import '../styles/SearchbarMobile.css'
 import funnel from '../assets/mobile/icon-filter.svg'
 
 const SearchbarMobile = (props) => {
-  const { darkMode, windowWidth } = useContext(DisplayContext)
+  const { darkMode } = useContext(DisplayContext)
 
   const { filters, setFilters } = props
 

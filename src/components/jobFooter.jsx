@@ -2,8 +2,7 @@ import { useContext } from 'react'
 import { DisplayContext } from '../App'
 
 const JobFooter = (props) => {
-  const { darkMode, windowWidth, data } = useContext(DisplayContext)
-  const windowIsMobile = windowWidth < 680
+  const { darkMode, data, screenSize } = useContext(DisplayContext)
   const { position, company } = props
 
   return (
@@ -14,7 +13,7 @@ const JobFooter = (props) => {
       <div className="container flex-container">
         <div
           className={`company-info flex-container ${
-            windowIsMobile ? 'hidden' : ''
+            screenSize === 'mobile' ? 'hidden' : ''
           }`}
         >
           <div

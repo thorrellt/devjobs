@@ -9,8 +9,7 @@ import { fetchJob as fetchJob } from '../controllers/controller'
 import { getAllJobs } from '../controllers/controller'
 
 const Home = (props) => {
-  const { darkMode, windowWidth } = useContext(DisplayContext)
-  const windowIsMobile = windowWidth < 680
+  const { darkMode, screenSize } = useContext(DisplayContext)
   const [filters, setFilters] = useState({
     position: '',
     location: '',
@@ -33,7 +32,7 @@ const Home = (props) => {
 
   return (
     <main id="Home" className="flex-container">
-      {windowIsMobile ? (
+      {screenSize === 'mobile' ? (
         <SearchbarMobile filters={filters} setFilters={setFilters} />
       ) : (
         <Searchbar filters={filters} setFilters={setFilters} />

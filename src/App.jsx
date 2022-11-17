@@ -10,11 +10,18 @@ const DisplayContext = createContext()
 
 function App() {
   const [darkMode, setDarkMode] = useState(true)
+
+  /************************
+    WINDOW LOGIC/VARIABLES
+   ************************/
   const [windowWidth, setWindowWidth] = useState(window.innerWidth)
 
-  /***********************
-    FUNCTIONS & LISTENERS
-   ***********************/
+  const breakpoint = { tablet: 680, desktop: 992 }
+  const screenSize =
+    (windowWidth < breakpoint.tablet && 'mobile') ||
+    (windowWidth < breakpoint.desktop && 'tablet') ||
+    'desktop'
+
   //Update windowWidth State on width Change
   useEffect(() => {
     function watchWidth() {
@@ -28,6 +35,10 @@ function App() {
     }
   }, [])
 
+  /***********************
+    FUNCTIONS & LISTENERS
+   ***********************/
+
   //switch mode from light to dark
   const switchMode = () => {
     setDarkMode((prevMode) => !prevMode)
@@ -38,7 +49,8 @@ function App() {
       value={{
         darkMode: darkMode,
         switchMode: switchMode,
-        windowWidth: windowWidth,
+        // windowWidth: windowWidth,
+        screenSize: screenSize,
         data: data,
       }}
     >
