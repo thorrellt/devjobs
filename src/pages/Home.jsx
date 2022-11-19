@@ -12,7 +12,7 @@ const Home = (props) => {
   const [filters, setFilters] = useState({
     position: '',
     location: '',
-    fulltime: true,
+    fulltime: false,
   })
 
   const [allJobs, setAllJobs] = useState(getAllJobs())
