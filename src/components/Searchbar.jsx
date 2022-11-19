@@ -2,6 +2,7 @@ import { useState, useContext } from 'react'
 import { DisplayContext } from '../App'
 import '../styles/Searchbar.css'
 import funnel from '../assets/mobile/icon-filter.svg'
+import SearchModal from './SearchModal'
 
 const Searchbar = (props) => {
   const { darkMode, screenSize } = useContext(DisplayContext)
@@ -27,6 +28,14 @@ const Searchbar = (props) => {
       ...prevFilters,
       fulltime: !prevFilters.fulltime,
     }))
+  }
+
+  const [showModal, setShowModal] = useState(false)
+
+  const toggleModal = (event) => {
+    event.preventDefault()
+    setShowModal((prevState) => !prevState)
+    console.log(showModal)
   }
 
   return (
@@ -76,7 +85,7 @@ const Searchbar = (props) => {
               />
             </div>
 
-            {/* FULL TIME CHECKBOX */}
+            {/* FULL SCREEN CHECKBOX */}
             <div
               className={`input-container checkbox-container flex-container 
           ${darkMode ? 'bg-blue-700' : 'bg-white'}`}
@@ -96,16 +105,27 @@ const Searchbar = (props) => {
           </>
         )}
 
-        {/* TABLET/DESKTOP */}
+        {/* MOBILE */}
         {screenSize === 'mobile' && (
           <>
-            <i
-              className={`bi bi-funnel-fill 
+            <button onClick={toggleModal}>
+              <i
+                className={`bi bi-funnel-fill 
           ${darkMode ? 'font-white' : 'font-violet-500'}`}
-            />
+              />
+            </button>
+
             <button className="prim-btn">
               <i className="bi bi-search" />
             </button>
+            <SearchModal
+              onFormChange={onFormChange}
+              onCheckClick={onCheckClick}
+              filters={filters}
+              setFilters={setFilters}
+              toggleModal={toggleModal}
+              showModal={showModal}
+            />
           </>
         )}
       </form>

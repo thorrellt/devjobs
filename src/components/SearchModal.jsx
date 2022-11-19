@@ -1,0 +1,64 @@
+import { useState, useContext } from 'react'
+import { DisplayContext } from '../App'
+
+const SearchModal = (props) => {
+  const {
+    onFormChange,
+    onCheckClick,
+    filters,
+    setFilters,
+    showModal,
+    toggleModal,
+  } = props
+  const { darkMode } = useContext(DisplayContext)
+  return (
+    <>
+      <div
+        className={`modal-container flex-container ${showModal ? '' : 'hide'}`}
+        onClick={toggleModal}
+      ></div>
+      <div
+        className={`search-container flex-container
+    ${darkMode ? 'bg-blue-700' : 'bg-white'}
+    ${showModal ? '' : 'hide'}`}
+      >
+        {/* FILTER BY LOCATION */}
+        <div
+          className={`input-container location flex-container 
+          ${darkMode ? 'bg-blue-700' : 'bg-white'}
+          `}
+        >
+          <i className="bi bi-geo-alt-fill icon font-violet-500" />
+          <input
+            onChange={onFormChange}
+            type="text"
+            id="location"
+            name="location"
+            placeholder="Filter by location..."
+            value={filters.location}
+            className="font-gray-700"
+          />
+        </div>
+        {/* CHECKBOX */}
+        <div
+          className={`input-container checkbox-container flex-container 
+          ${darkMode ? 'bg-blue-700' : 'bg-white'}`}
+        >
+          <label className="checkbox-wrapper flex-container">
+            <input
+              type="checkbox"
+              checked={filters.fulltime}
+              onClick={onCheckClick}
+              onChange={onFormChange}
+            />
+            <span className="checkmark" />
+            <p>Full Time Only</p>
+          </label>
+        </div>
+        <button className="prim-btn">Search</button>
+      </div>
+    </>
+  )
+}
+
+export default SearchModal

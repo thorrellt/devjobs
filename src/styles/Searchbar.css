@@ -33,6 +33,7 @@
 .searchbar form .bi-funnel-fill {
   margin-inline-end: 1.5rem;
   margin-inline-start: 0.5rem;
+  cursor: pointer;
 }
 
 .searchbar form button {
@@ -43,6 +44,50 @@
   align-items: center;
 }
 
+.searchbar .modal-container {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding-inline: 1.5rem;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+  top: 0;
+  left: 0;
+}
+
+.searchbar .hide {
+  display: none;
+}
+.searchbar .search-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(100vw - 3rem);
+  padding: 1.5rem;
+  flex-direction: column;
+  border-radius: 6px;
+  z-index: 6;
+}
+
+.search-container .location {
+  border-bottom: 1px solid var(--gray-600);
+  padding-block-start: 0.5rem;
+  /* padding-block-end: 0; */
+  align-items: center;
+  height: fit-content;
+}
+
+form .search-container .checkbox-container {
+  border-left: none;
+  padding-inline-start: 0;
+}
+
+form .search-container button {
+  width: 100%;
+}
 /********
   TABLET
  ********/
