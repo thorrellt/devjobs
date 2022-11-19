@@ -60,6 +60,9 @@
   .jobcard {
     flex-basis: 40%;
   }
+  .jobcard {
+    margin-block-end: 0rem;
+  }
 }
 
 /********
