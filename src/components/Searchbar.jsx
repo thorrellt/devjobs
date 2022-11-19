@@ -6,7 +6,7 @@ import SearchModal from './SearchModal'
 
 const Searchbar = (props) => {
   const { darkMode, screenSize } = useContext(DisplayContext)
-  const { filters, setFilters } = props
+  const { filters, setFilters, updateJobs } = props
 
   /****************
     FORM LISTENERS
@@ -35,7 +35,12 @@ const Searchbar = (props) => {
   const toggleModal = (event) => {
     event.preventDefault()
     setShowModal((prevState) => !prevState)
-    console.log(showModal)
+  }
+
+  const onSearchClick = (event) => {
+    event.preventDefault()
+    updateJobs()
+    setShowModal((prevState) => !prevState)
   }
 
   return (
@@ -101,7 +106,9 @@ const Searchbar = (props) => {
                 <p>Full Time{`${screenSize === 'desktop' ? ' Only' : ''}`}</p>
               </label>
             </div>
-            <button className="prim-btn">Search</button>
+            <button className="prim-btn" onClick={onSearchClick}>
+              Search
+            </button>
           </>
         )}
 
@@ -115,7 +122,7 @@ const Searchbar = (props) => {
               />
             </button>
 
-            <button className="prim-btn">
+            <button className="prim-btn" onClick={onSearchClick}>
               <i className="bi bi-search" />
             </button>
             <SearchModal
@@ -125,6 +132,7 @@ const Searchbar = (props) => {
               setFilters={setFilters}
               toggleModal={toggleModal}
               showModal={showModal}
+              onSearchClick={onSearchClick}
             />
           </>
         )}

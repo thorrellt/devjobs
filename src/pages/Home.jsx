@@ -17,13 +17,21 @@ const Home = (props) => {
 
   const [allJobs, setAllJobs] = useState(getAllJobs())
 
-  useEffect(() => {
+  // useEffect(() => {
+  //   const filteredJobs = getAllJobs(filters)
+  //   setAllJobs(filteredJobs)
+  //   jobCards = filteredJobs.map((jobData) => {
+  //     return <JobCard jobData={jobData} key={jobData.id} />
+  //   })
+  // }, [filters])
+
+  const updateJobs = () => {
     const filteredJobs = getAllJobs(filters)
     setAllJobs(filteredJobs)
     jobCards = filteredJobs.map((jobData) => {
       return <JobCard jobData={jobData} key={jobData.id} />
     })
-  }, [filters])
+  }
 
   let jobCards = allJobs.map((jobData) => {
     return <JobCard jobData={jobData} key={jobData.id} />
@@ -31,7 +39,11 @@ const Home = (props) => {
 
   return (
     <main id="Home" className="flex-container">
-      <Searchbar filters={filters} setFilters={setFilters} />
+      <Searchbar
+        filters={filters}
+        setFilters={setFilters}
+        updateJobs={updateJobs}
+      />
       <div className="job-cards flex-container">{jobCards}</div>
     </main>
   )

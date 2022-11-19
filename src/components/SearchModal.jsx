@@ -9,6 +9,7 @@ const SearchModal = (props) => {
     setFilters,
     showModal,
     toggleModal,
+    onSearchClick,
   } = props
   const { darkMode } = useContext(DisplayContext)
   return (
@@ -55,7 +56,9 @@ const SearchModal = (props) => {
             <p>Full Time Only</p>
           </label>
         </div>
-        <button className="prim-btn">Search</button>
+        <button className="prim-btn" onClick={onSearchClick}>
+          Search
+        </button>
       </div>
     </>
   )
