@@ -13,11 +13,11 @@ const JobSchema = new mongoose.Schema({
   location: String,
   roleDescription: String,
   requirements: {
-    company: String,
+    content: String,
     items: [String],
   },
   role: {
-    company: String,
+    content: String,
     items: [String],
   },
 })

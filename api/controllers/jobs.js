@@ -10,9 +10,9 @@ const getJob = (req, res) => {
 }
 
 const createJob = async (req, res) => {
-  // const job = await Job.create(req.body)
-  // res.status(201).json({ job })
-  res.json(req.body)
+  const job = await Job.create(req.body)
+  res.status(201).json({ job })
+  // res.json(req.body)
 }
 
 const updateJob = async (req, res) => {
