@@ -56,6 +56,10 @@ const JobSchema = new mongoose.Schema({
     },
     items: [String],
   },
+  canPatch: {
+    type: Boolean,
+    default: true,
+  },
 })
 
 module.exports = mongoose.model('Job', JobSchema)
