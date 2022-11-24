@@ -15,7 +15,7 @@ const getJob = async (req, res) => {
     const job = await Job.findOne({ _id: jobID })
 
     if (!job) {
-      return res.status(404).jos({ msg: `No take with id : $JobID` })
+      return res.status(404).jos({ msg: `No job with id : $JobID` })
     }
     res.status(200).json({ job })
   } catch (error) {
@@ -40,8 +40,17 @@ const updateJob = async (req, res) => {
 }
 
 const deleteJob = async (req, res) => {
-  const { id } = req.params
-  res.send(`delete job id:${id}`)
+  try {
+    const { id: jobID } = req.params
+    const job = await Job.findOneAndDelete({ _id: jobID })
+
+    if (!job) {
+      return res.status(404).jos({ msg: `No job with id : $JobID` })
+    }
+    res.status(200).json({ job })
+  } catch (error) {
+    res.status(500).json({ msg: error })
+  }
 }
 
 module.exports = {
