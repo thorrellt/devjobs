@@ -2,7 +2,20 @@ const Job = require('../models/Job')
 
 const getAllJobs = async (req, res) => {
   try {
-    const jobs = await Job.find({})
+    /**
+     * had to format filters to be less strict or
+     * else only exact matches would return
+     */
+    const filters = {}
+    if ('contract' in req.body) filters.contract = req.body.contract
+    if ('location' in req.body)
+      filters.location = new RegExp(req.body.location, 'i')
+    if ('position' in req.body)
+      filters.position = new RegExp(req.body.position, 'i')
+
+    console.log(filters)
+    const jobs = await Job.find(filters)
+    console.log(`${jobs.length} jobs found`)
     res.status(200).json({ jobs })
   } catch (error) {
     res.status(500).json({ msg: error })
