@@ -6,6 +6,7 @@ const getAllJobs = async (req, res) => {
      * had to format filters to be less strict or
      * else only exact matches would return
      */
+    console.log('get all jobs pinged')
     const filters = {}
     if ('contract' in req.body) filters.contract = req.body.contract
     if ('location' in req.body)
@@ -50,11 +51,9 @@ const deleteJob = async (req, res) => {
     const job = await Job.findOneAndDelete({ _id: jobID, canPatch: true })
 
     if (!job) {
-      return res
-        .status(404)
-        .json({
-          msg: `No job with id : ${jobID} or this entry cannot be deleted`,
-        })
+      return res.status(404).json({
+        msg: `No job with id : ${jobID} or this entry cannot be deleted`,
+      })
     }
     res.status(200).json({ job })
   } catch (error) {
