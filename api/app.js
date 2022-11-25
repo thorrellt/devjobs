@@ -4,7 +4,6 @@ require('express-async-errors')
 const express = require('express')
 const app = express()
 const jobs = require('./routes/jobs')
-const port = 5000
 const connectDB = require('./db/connect')
 
 const notFound = require('./middleware/not-found')
@@ -18,6 +17,8 @@ app.use('/api/v1/jobs', jobs)
 
 app.use(notFound)
 app.use(errorMiddleware)
+
+const port = process.env.PORT || 5000
 
 const start = async () => {
   try {
