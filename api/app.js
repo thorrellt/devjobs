@@ -5,6 +5,7 @@ const express = require('express')
 const app = express()
 const jobs = require('./routes/jobs')
 const connectDB = require('./db/connect')
+const cors = require('cors')
 
 const notFound = require('./middleware/not-found')
 const errorMiddleware = require('./middleware/error-handler')

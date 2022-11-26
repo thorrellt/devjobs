@@ -5,7 +5,7 @@ import JobCard from '../components/JobCard'
 import Searchbar from '../components/Searchbar'
 import data from '../data.json'
 import { fetchJob as fetchJob } from '../controllers/controller'
-import { getAllJobs } from '../controllers/controller'
+import { getAllJobs, getJobs } from '../controllers/controller'
 
 const Home = (props) => {
   const { darkMode, screenSize } = useContext(DisplayContext)
@@ -15,15 +15,24 @@ const Home = (props) => {
     fulltime: false,
   })
 
-  const [allJobs, setAllJobs] = useState(getAllJobs())
+  const [allJobs, setAllJobs] = useState([])
+  let jobCards = []
 
-  // useEffect(() => {
-  //   const filteredJobs = getAllJobs(filters)
-  //   setAllJobs(filteredJobs)
-  //   jobCards = filteredJobs.map((jobData) => {
-  //     return <JobCard jobData={jobData} key={jobData.id} />
-  //   })
-  // }, [filters])
+  useEffect(() => {
+    let returnedJobs = []
+
+    const fetchJobs = async () => {
+      await getJobs().then((res) => setAllJobs(res))
+    }
+
+    fetchJobs()
+  }, [])
+
+  useEffect(() => {
+    jobCards = allJobs.map((jobData) => {
+      return <JobCard jobData={jobData} key={jobData.id} />
+    })
+  }, [allJobs])
 
   const updateJobs = () => {
     const filteredJobs = getAllJobs(filters)
@@ -33,7 +42,7 @@ const Home = (props) => {
     })
   }
 
-  let jobCards = allJobs.map((jobData) => {
+  jobCards = allJobs.map((jobData) => {
     return <JobCard jobData={jobData} key={jobData.id} />
   })
 

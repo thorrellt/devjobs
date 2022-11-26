@@ -5,17 +5,17 @@ const data = staticData
 
 export async function getJobs() {
   try {
-    console.log('hello')
+    // console.log('hello')
     const response = await axios.get(localURL + '/jobs')
-    console.log('response  ', response)
-    return response.data
+    // console.log('response  ', response.data.jobs)
+    return response.data.jobs
   } catch (error) {
     return []
   }
 }
 
 const response = getJobs()
-console.log(response)
+// console.log(response)
 // export async function createUser(data) {
 //   const response = await fetch(`/api/user`, {
 //     method: 'POST',
