@@ -3,27 +3,42 @@ import staticData from '../data.json'
 const localURL = 'http://localhost:5000/api/v1'
 const data = staticData
 
-export async function getJobs() {
+const formatFilter = (filter) => {
+  if (Boolean(!filter)) {
+    return {}
+  }
+
+  const { location, position, fulltime } = filter
+  let retFilter = {}
+
+  if ('location' in filter && location !== '') {
+    retFilter.location = location
+  }
+  if ('position' in filter && position !== '') {
+    retFilter.position = position
+  }
+  if (Boolean(fulltime)) {
+    retFilter.contract = 'Full Time'
+  }
+
+  return retFilter
+}
+
+export const getJobs = async (filter) => {
+  let jobFilters = formatFilter(filter)
+
   try {
-    // console.log('hello')
-    const response = await axios.get(localURL + '/jobs')
-    // console.log('response  ', response.data.jobs)
+    if (Boolean(!filter) || jobFilters === {}) {
+      const response = await axios.get(localURL + '/jobs')
+      return response.data.jobs
+    }
+    console.log(jobFilters)
+    const response = await axios.get(localURL + '/jobs', { params: jobFilters })
     return response.data.jobs
   } catch (error) {
     return []
   }
 }
-
-const response = getJobs()
-// console.log(response)
-// export async function createUser(data) {
-//   const response = await fetch(`/api/user`, {
-//     method: 'POST',
-//     headers: { 'Content-Type': 'application/json' },
-//     body: JSON.stringify({ user: data }),
-//   })
-//   return await response.json()
-// }
 
 export const fetchJob = (id) => {
   const job = data.filter((job) => {

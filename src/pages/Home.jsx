@@ -18,13 +18,10 @@ const Home = (props) => {
   const [allJobs, setAllJobs] = useState([])
   let jobCards = []
 
+  const fetchJobs = async (filter) => {
+    await getJobs(filter).then((res) => setAllJobs(res))
+  }
   useEffect(() => {
-    let returnedJobs = []
-
-    const fetchJobs = async () => {
-      await getJobs().then((res) => setAllJobs(res))
-    }
-
     fetchJobs()
   }, [])
 
@@ -35,11 +32,7 @@ const Home = (props) => {
   }, [allJobs])
 
   const updateJobs = () => {
-    const filteredJobs = getAllJobs(filters)
-    setAllJobs(filteredJobs)
-    jobCards = filteredJobs.map((jobData) => {
-      return <JobCard jobData={jobData} key={jobData.id} />
-    })
+    fetchJobs(filters)
   }
 
   jobCards = allJobs.map((jobData) => {
