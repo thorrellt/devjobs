@@ -19,6 +19,8 @@ const getAllJobs = async (req, res) => {
 }
 
 const getJob = async (req, res) => {
+  console.log('get Job pinged')
+  console.log(req.params)
   const { id: jobID } = req.params
   const job = await Job.findOne({ _id: jobID })
 

@@ -47,11 +47,16 @@ export const fetchJob = (id) => {
   return job[0]
 }
 
-export const getJob = (id) => {
-  const job = data.filter((job) => {
-    return String(job.id) === String(id)
-  })
-  return job[0]
+export const getJob = async (id) => {
+  try {
+    const response = await axios.get(localURL + '/jobs/' + id)
+    console.log('getJob')
+    console.log(response.data.job)
+    return response.data.job
+  } catch (error) {
+    console.log(error)
+    return {}
+  }
 }
 
 export const getAllJobs = (filters) => {

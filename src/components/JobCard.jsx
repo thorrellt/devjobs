@@ -7,7 +7,7 @@ import '../styles/JobCard.css'
 const JobCard = (props) => {
   const { darkMode } = useContext(DisplayContext)
   const {
-    id,
+    _id: _id,
     company,
     logo,
     logoBackground,
@@ -16,6 +16,7 @@ const JobCard = (props) => {
     contract,
     location,
   } = props.jobData
+
   return (
     <div
       className={`jobcard flex-container
@@ -39,7 +40,7 @@ const JobCard = (props) => {
         className={`position 
       ${darkMode ? 'font-white' : 'font-blue-700'}`}
       >
-        <NavLink to={`/devjobs/job/${id}`} className="">
+        <NavLink to={`/devjobs/job/${_id}`} className="">
           <h3>{position}</h3>
         </NavLink>
       </div>

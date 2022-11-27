@@ -10,7 +10,7 @@ const Job = () => {
   const { id } = useParams()
   const { darkMode, screenSize, data } = useContext(DisplayContext)
 
-  const [job, setJob] = useState({
+  const emptyJob = {
     id: 1,
     company: '',
     logo: '',
@@ -21,18 +21,30 @@ const Job = () => {
     location: '',
     website: '',
     apply: '',
-    description: '',
-    requirements: '',
-    role: '',
-  })
-  const [reqItems, setReqItems] = useState(`<></>`)
-  const [roleItems, setRoleItems] = useState(`<></>`)
+    roleDescription: '',
+    requirements: { content: 'q', items: '' },
+    role: { content: '', items: '' },
+  }
+  const [job, setJob] = useState(emptyJob)
+  const [hasLoaded, setHasLoaded] = useState()
 
+  console.log(job)
+  let reqItems, roleItems
+
+  const fetchJob = async (filter) => {
+    console.log('fetch job')
+    let response = {}
+    await getJob(id)
+      .then((res) => (response = res))
+      .then(() => {
+        console.log(response)
+        setJob(response)
+        setHasLoaded(true)
+      })
+    // await getJob(id).then((res) => console.log(res))
+  }
   useEffect(() => {
-    const jobData = getJob(id)
-    setJob(jobData)
-    setReqItems(generateBulletList(jobData.requirements.items))
-    setRoleItems(generateNumberList(jobData.role.items))
+    fetchJob()
   }, [])
 
   const generateBulletList = (items) => {
@@ -61,6 +73,11 @@ const Job = () => {
       )
     })
     return listItems
+  }
+
+  if (hasLoaded) {
+    reqItems = generateBulletList(job.requirements.items)
+    roleItems = generateNumberList(job.role.items)
   }
 
   return (
@@ -132,7 +149,7 @@ ${darkMode ? 'font-white' : 'font-blue-700'}`}
             </button>
           </form>
 
-          <p className="description">{job.description}</p>
+          <p className="roleDescription">{job.roleDescription}</p>
 
           <div className={`title ${darkMode ? 'font-white' : 'font-blue-700'}`}>
             <h3 className="">Requirements</h3>
