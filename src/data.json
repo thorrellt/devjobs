@@ -1,5 +1,6 @@
 [
   {
+    "_id": "637cdb881800420a41e8de09",
     "id": 1,
     "company": "Scoot",
     "logo": "scoot.svg",
@@ -10,7 +11,6 @@
     "location": "United Kingdom",
     "website": "https://example.com/scoot",
     "apply": "https://example.com/scoot/apply",
-    "description": "Scoot is looking for a Senior Software Engineer passionate about building approachable, innovative and user-first experiences to join our small but growing Engineering team. You will be responsible for building and maintaining front end functionality across all of Scoot’s applications, fostering a growing team of software engineers, and helping drive and maintain best software patterns and practices in our codebase.",
     "requirements": {
       "content": "The ideal candidate is as passionate about solving challenges through technology. They are well-versed in building proof of concepts from scratch and taking these POCs to production and scale. The right fit will have the engineering experience to build and iterate quickly and is comfortable working with product and design to set the technical strategy and roadmap.",
       "items": [
@@ -28,9 +28,12 @@
         "Work with limited resources to test and learn as efficiently as possible, while laying the framework to build a more scalable product over time.",
         "Collaborate with product, design, and external engineering teammates as needed."
       ]
-    }
+    },
+    "roleDescription": "Scoot is looking for a Senior Software Engineer passionate about building approachable, innovative and user-first experiences to join our small but growing Engineering team. You will be responsible for building and maintaining front end functionality across all of Scoot’s applications, fostering a growing team of software engineers, and helping drive and maintain best software patterns and practices in our codebase.",
+    "canPatch": false
   },
   {
+    "_id": "637cdb881800420a41e8de0a",
     "id": 2,
     "company": "Blogr",
     "logo": "blogr.svg",
@@ -41,7 +44,6 @@
     "location": "United States",
     "website": "https://example.com/blogr",
     "apply": "https://example.com/blogr/apply",
-    "description": "Blogr is looking for a part-time developer to join our six-strong team of full-stack engineers. Our core development values are strong, static typing and correctness, rigorous automation (in both testing and infrastructure) and everyone having a say.",
     "requirements": {
       "content": "We are looking to carefully add great developers which care about solving problems & which have been in a relationship with Purescript and/or Haskell for at least 3 years (Not necessarily monogamous though).",
       "items": [
@@ -59,9 +61,12 @@
         "Design new UIs, working closely with users, stakeholders and the backend team.",
         "Maximize robustness, performance, and scalability of solutions"
       ]
-    }
+    },
+    "roleDescription": "Blogr is looking for a part-time developer to join our six-strong team of full-stack engineers. Our core development values are strong, static typing and correctness, rigorous automation (in both testing and infrastructure) and everyone having a say.",
+    "canPatch": false
   },
   {
+    "_id": "637cdb881800420a41e8de0b",
     "id": 3,
     "company": "Vector",
     "logo": "vector.svg",
@@ -72,7 +77,6 @@
     "location": "Russia",
     "website": "https://example.com/vector",
     "apply": "https://example.com/vector/apply",
-    "description": "We are looking for a Mid-level Back End Engineer to join our growing software engineering organization. The right person will help move our platform to the next level. You’ll be working as part of a skilled, collaborative team to jointly design and implement high visibility applications.",
     "requirements": {
       "content": "As our ideal candidate, you have previous experience in Ruby on Rails and are eager to continue to develop professionally. You work well in an agile environment, and collaborate well with other Software Engineers, Test Automation Engineers, Product Managers, and Designers. You thrive in a fast-paced environment, and are able to adapt when needed.",
       "items": [
@@ -89,9 +93,12 @@
         "Conduct code-review with other developers",
         "Assist in development and peer review of plans, technical solutions, and related documentation."
       ]
-    }
+    },
+    "roleDescription": "We are looking for a Mid-level Back End Engineer to join our growing software engineering organization. The right person will help move our platform to the next level. You’ll be working as part of a skilled, collaborative team to jointly design and implement high visibility applications.",
+    "canPatch": false
   },
   {
+    "_id": "637cdb881800420a41e8de0c",
     "id": 4,
     "company": "Office Lite",
     "logo": "officelite.svg",
@@ -102,7 +109,6 @@
     "location": "Japan",
     "website": "https://example.com/officelite",
     "apply": "https://example.com/officelite/apply",
-    "description": "Office Lite is seeking a talented and enthusiastic Senior Application Engineer whose primary responsibility is software architecture and development for Office Lite systems. Additional responsibilities include participation in project time/task estimation, code and architecture reviews, providing support for junior developers, documentation of system architecture and a supporting role for all phases of the development life-cycle (project definition, process mapping, architecture, coding, acceptance testing, installation, turnover to support, etc.).",
     "requirements": {
       "content": "As a hands-on subject matter expert, you will use expert-level engineering knowledge to provide technical support and help translate customer requirements into exciting new product features. You will be working within multi-disciplinary teams to create pervasive simulation solutions, advance your industry knowledge, and grow the business impact.​",
       "items": [
@@ -121,9 +127,12 @@
         "Triaging problems with applications - identifying known errors and problem trends and finding permanent solutions through root cause analysis.",
         "Providing level 2 and 3 application support."
       ]
-    }
+    },
+    "roleDescription": "Office Lite is seeking a talented and enthusiastic Senior Application Engineer whose primary responsibility is software architecture and development for Office Lite systems. Additional responsibilities include participation in project time/task estimation, code and architecture reviews, providing support for junior developers, documentation of system architecture and a supporting role for all phases of the development life-cycle (project definition, process mapping, architecture, coding, acceptance testing, installation, turnover to support, etc.).",
+    "canPatch": false
   },
   {
+    "_id": "637cdb881800420a41e8de0d",
     "id": 5,
     "company": "Pod",
     "logo": "pod.svg",
@@ -134,7 +143,6 @@
     "location": "Japan",
     "website": "https://example.com/pod",
     "apply": "https://example.com/pod/apply",
-    "description": "Join our dynamic team in developing Pod’s core products and supporting infrastructure. Our software is currently written in Java, VB.Net, React Native, React JS and others. You will help lead new initiatives to build and improve the testing, staging and deployment solutions. You will interact with all development teams, development leadership and our hosting/IT staff to define requirements and goals for the Dev Ops Platform.",
     "requirements": {
       "content": "We are looking for talented and motivated engineers who can hit the ground running and take our products to the next level. The engineers who are building our platform across the stack are always willing to go the extra mile to deliver the highest quality software and client experiences. Ideally, you would have:",
       "items": [
@@ -157,9 +165,12 @@
         "Use ticket management system such as Jira and Confluence to manage work priorities",
         "Ability to clearly articulate and communicate complex technical ideas to non-DevOps colleagues"
       ]
-    }
+    },
+    "roleDescription": "Join our dynamic team in developing Pod’s core products and supporting infrastructure. Our software is currently written in Java, VB.Net, React Native, React JS and others. You will help lead new initiatives to build and improve the testing, staging and deployment solutions. You will interact with all development teams, development leadership and our hosting/IT staff to define requirements and goals for the Dev Ops Platform.",
+    "canPatch": false
   },
   {
+    "_id": "637cdb881800420a41e8de0e",
     "id": 6,
     "company": "Creative",
     "logo": "creative.svg",
@@ -170,7 +181,6 @@
     "location": "Germany",
     "website": "https://example.com/creative",
     "apply": "https://example.com/creative/apply",
-    "description": "Creative is seeking a Desktop Support Manager responsible for managing and leading a high-performance team in a dynamic environment. The ideal candidate should have management experience, a strong technical skillset, exceptional client service skills and enjoy mentoring a team.",
     "requirements": {
       "content": "You are likely someone with a solid background in end-user support and troubleshooting, as this position involves dealing with a large, and often changing, number of day-to-day issues which arise in supporting the information technology requirements of our applications.",
       "items": [
@@ -191,9 +201,12 @@
         "Develop and maintain KPIs for measuring team performance and improving customer experience",
         "Provide status reports to management and collaborate on new initiatives and technical planning"
       ]
-    }
+    },
+    "roleDescription": "Creative is seeking a Desktop Support Manager responsible for managing and leading a high-performance team in a dynamic environment. The ideal candidate should have management experience, a strong technical skillset, exceptional client service skills and enjoy mentoring a team.",
+    "canPatch": false
   },
   {
+    "_id": "637cdb881800420a41e8de0f",
     "id": 7,
     "company": "Pomodoro",
     "logo": "pomodoro.svg",
@@ -204,7 +217,6 @@
     "location": "United States",
     "website": "https://example.com/pomodoro",
     "apply": "https://example.com/pomodoro/apply",
-    "description": "We are looking for thoughtful, well-rounded iOS engineer to join our team. We’re looking for someone to help build out the foundation of the app and infrastructure. If you are interested in taking part in building an application that millions of people use every day to increase their productivity, this is the perfect opportunity. You will play an important part in our mobile engineering practice, implementing new features, improving performance, and building beautiful user interfaces.",
     "requirements": {
       "content": "You are an experienced mobile engineer looking to make Pomodoro one of the best mobile experiences out there. You are someone who excels at customer-centric product development and has a passion for working on application architecture and design, and making smooth, delightful experiences. You care deeply about quality, are energized by partnership and collaboration, and you strive to enable others around you to excel.",
       "items": [
@@ -222,9 +234,12 @@
         "Improve the performance and stability of the mobile app",
         "Strive to keep the mobile codebase secure"
       ]
-    }
+    },
+    "roleDescription": "We are looking for thoughtful, well-rounded iOS engineer to join our team. We’re looking for someone to help build out the foundation of the app and infrastructure. If you are interested in taking part in building an application that millions of people use every day to increase their productivity, this is the perfect opportunity. You will play an important part in our mobile engineering practice, implementing new features, improving performance, and building beautiful user interfaces.",
+    "canPatch": false
   },
   {
+    "_id": "637cdb881800420a41e8de10",
     "id": 8,
     "company": "Maker",
     "logo": "maker.svg",
@@ -235,7 +250,6 @@
     "location": "United Kingdom",
     "website": "https://example.com/maker",
     "apply": "https://example.com/maker/apply",
-    "description": "We are seeking an experienced EJB Developer who will join our fast-growing engineering team, working on mission-critical applications. Searching for a Senior Java Developer who thrives on working with enterprises in multiple industries with unique business challenges requiring sophisticated solution design.",
     "requirements": {
       "content": "The candidate must have work experience in all aspects of designing and constructing J2EE/EJB systems and developing system requirements and design specifications, and J2EE/EJB Coding for new and existing applications.",
       "items": [
@@ -253,9 +267,12 @@
         "Participate in all phases of the development lifecycle",
         "Investigate alternatives and technologies and present them for architectural review, in order to support continuous improvement"
       ]
-    }
+    },
+    "roleDescription": "We are seeking an experienced EJB Developer who will join our fast-growing engineering team, working on mission-critical applications. Searching for a Senior Java Developer who thrives on working with enterprises in multiple industries with unique business challenges requiring sophisticated solution design.",
+    "canPatch": false
   },
   {
+    "_id": "637cdb881800420a41e8de11",
     "id": 9,
     "company": "Coffeeroasters",
     "logo": "coffeeroasters.svg",
@@ -266,7 +283,6 @@
     "location": "Singapore",
     "website": "https://example.com/coffeeroasters",
     "apply": "https://example.com/coffeeroasters/apply",
-    "description": "We’re looking for an experienced Frontend Developer with an eye for Product Design along with a honed set of coding skills and who shares our values around technology. Most importantly, we’d like someone who is collaborative and can work closely with the rest of our team shaping product.",
     "requirements": {
       "content": "You will be responsible for executing high quality solutions for customers and contributing to the day-to-day technical excellence of a delivery team. You should have a deep understanding of Modern JavaScript, HTML and CSS, the software development life cycle, and possess the ability to implement and execute standard software architecture patterns.",
       "items": [
@@ -284,42 +300,12 @@
         "Cover your code with unit and integration tests written with Jest and Mocha",
         "Take part in decision-making around major architectural choices of the front-end team"
       ]
-    }
-  },
-  {
-    "id": 10,
-    "company": "Mastercraft",
-    "logo": "mastercraft.svg",
-    "logoBackground": "hsl(0, 0%, 12%)",
-    "position": "App & Website Designer",
-    "postedAt": "2w ago",
-    "contract": "Freelance",
-    "location": "United States",
-    "website": "https://example.com/mastercraft",
-    "apply": "https://example.com/mastercraft/apply",
-    "description": "Mastercraft is looking for a UX/UI Designer to turn our software into easy-to-use products for our clients. Responsibilities include gathering user requirements, designing graphic elements and building software component",
-    "requirements": {
-      "content": "To be successful in this role, you should have experience with design software and wireframe tools preferably Figma. You should also have a portfolio of professional design projects that includes work with web/mobile applications.",
-      "items": [
-        "At least 3 years of experience in a related field.",
-        "Portfolio of design projects.",
-        "Degree in Design, UX or relevant field.",
-        "Experience with design process and systematic approach to organization, workflow"
-      ]
     },
-    "role": {
-      "content": "You’ll create both functional and appealing features that address our clients’ needs and help us grow our customer base. We expect you to have experience with market/user research and stay current with most recent trends, tools, workflows.",
-      "items": [
-        "Gather and evaluate user requirements in collaboration with UX/UI manager or stakeholders.",
-        "Illustrate design ideas using storyboards, process flows and sitemaps.",
-        "Develop UI mockups and prototypes that clearly illustrate how sites function and look like.",
-        "Create original graphic designs (eg. images, sketches and tables).",
-        "Identify and troubleshoot UX problems",
-        "Conduct layout adjustments based on user feedback."
-      ]
-    }
+    "roleDescription": "We’re looking for an experienced Frontend Developer with an eye for Product Design along with a honed set of coding skills and who shares our values around technology. Most importantly, we’d like someone who is collaborative and can work closely with the rest of our team shaping product.",
+    "canPatch": false
   },
   {
+    "_id": "637cdb881800420a41e8de13",
     "id": 11,
     "company": "Crowdfund",
     "logo": "crowdfund.svg",
@@ -330,7 +316,6 @@
     "location": "New Zealand",
     "website": "https://example.com/crowdfund",
     "apply": "https://example.com/crowdfund/apply",
-    "description": "Crowdfund is currently expanding and working on revolutionizing the world of raising funds for any project – creative, entrepreneurial or cause-related. Come and join us in this growth! We are looking for an exceptionally talented Fullstack Developer who will become an integral part of the company’s exciting new chapter.",
     "requirements": {
       "content": "We'd love to hear from you if you take ownership of your work and continuously want to improve the products you've built. We're looking for developers who have an uncanny abilithy to work very well cross-functionality in a flat startup.",
       "items": [
@@ -350,9 +335,12 @@
         "Create features for the international payment system which sees millions of transactions per day.",
         "Extend the reach of our platform APIs."
       ]
-    }
+    },
+    "roleDescription": "Crowdfund is currently expanding and working on revolutionizing the world of raising funds for any project – creative, entrepreneurial or cause-related. Come and join us in this growth! We are looking for an exceptionally talented Fullstack Developer who will become an integral part of the company’s exciting new chapter.",
+    "canPatch": false
   },
   {
+    "_id": "637cdb881800420a41e8de14",
     "id": 12,
     "company": "Typemaster",
     "logo": "typemaster.svg",
@@ -363,7 +351,6 @@
     "location": "United Kingdom",
     "website": "https://example.com/typemaster",
     "apply": "https://example.com/typemaster/apply",
-    "description": "We are looking for a talented tech lead to join a team that creates large-scale, highly-performant web applications. This team creates highly visible and responsive user interfaces used by millions of people.",
     "requirements": {
       "content": "Our work is not just about the code: we seek a tech lead who cares deeply about user experience and how their work impacts users. An ideal candidate has extensive experience as a full-stack software engineer, including experience with both Django and React/Redux, our stack. This role is perfect for a seasoned full-stack developer who is looking to grow both as an engineer and technical product owner. We want someone who takes the initiative to learn, enjoys thoughtful code review, and has a history collaborating with other software engineers to develop best patterns and practices.",
       "items": [
@@ -382,9 +369,12 @@
         "Work on a modern stack including React and Django.",
         "Enforce code quality through test driven development via unit tests and automated tests."
       ]
-    }
+    },
+    "roleDescription": "We are looking for a talented tech lead to join a team that creates large-scale, highly-performant web applications. This team creates highly visible and responsive user interfaces used by millions of people.",
+    "canPatch": false
   },
   {
+    "_id": "637cdb881800420a41e8de15",
     "id": 13,
     "company": "Crowdfund",
     "logo": "crowdfund.svg",
@@ -395,7 +385,6 @@
     "location": "New Zealand",
     "website": "https://example.com/crowdfund",
     "apply": "https://example.com/crowdfund/apply",
-    "description": "We’re hiring a Front-end Developer to help create the front-end experience for Crowdfund’s management interface. As our ideal candidate, you’re an adept user of the front-end stack (React, Yarn, webpack, Babel, SCSS, JSX, GraphQL) and an avid learner of new frameworks. You enjoy building excellent user experiences as well as reusable components that other developers can use to solve similar problems. You love open-source and being part of a thriving developer community and understand that strong businesses enable great enduring communities.",
     "requirements": {
       "content": "As a mid-level developer, we expect you to have a complete understanding of JavaScript, CSS, and HTML, and proven experience building and deploying single-page applications at scale. Experience with modern JavaScript application frameworks is a given, but you also have the ability to think outside the frameworks.",
       "items": [
@@ -414,9 +403,12 @@
         "Writing clean, maintainable, and testable code",
         "Work with backend teams to solve complex problems"
       ]
-    }
+    },
+    "roleDescription": "We’re hiring a Front-end Developer to help create the front-end experience for Crowdfund’s management interface. As our ideal candidate, you’re an adept user of the front-end stack (React, Yarn, webpack, Babel, SCSS, JSX, GraphQL) and an avid learner of new frameworks. You enjoy building excellent user experiences as well as reusable components that other developers can use to solve similar problems. You love open-source and being part of a thriving developer community and understand that strong businesses enable great enduring communities.",
+    "canPatch": false
   },
   {
+    "_id": "637cdb881800420a41e8de16",
     "id": 14,
     "company": "Coffeeroasters",
     "logo": "coffeeroasters.svg",
@@ -427,7 +419,6 @@
     "location": "Singapore",
     "website": "https://example.com/coffeeroasters",
     "apply": "https://example.com/coffeeroasters/apply",
-    "description": "We’re looking for a Junior Full-Stack Developer to join our Product and Engineering team. This is an exciting opportunity to work on building our core web application.",
     "requirements": {
       "content": "This is an entry level full stack developer position that will assist in developing the next generation apps and APIs. You will be a contributor to agile teams by providing services that ensure Coffeeroasters is aligning technology efforts with business information needs. The intent is to develop a junior full stack developer to become a well-rounded API developer ready to take on any challenging opportunity.",
       "items": [
@@ -446,9 +437,12 @@
         "Apply user experience methodology and best practices to translate user needs and business requirements into engaging user-centered design.",
         "Write/maintain documentation for the client and other team members."
       ]
-    }
+    },
+    "roleDescription": "We’re looking for a Junior Full-Stack Developer to join our Product and Engineering team. This is an exciting opportunity to work on building our core web application.",
+    "canPatch": false
   },
   {
+    "_id": "637cdb881800420a41e8de17",
     "id": 15,
     "company": "Blogr",
     "logo": "blogr.svg",
@@ -459,7 +453,6 @@
     "location": "United States",
     "website": "https://example.com/blogr",
     "apply": "https://example.com/blogr/apply",
-    "description": "We’re looking for a Frontend Developer who values user experience, performance and accessibility. Through our enduring interest in how people use our products, Blogr embraces a model of software development that is iterative and gradual. Like high-performance engines, our products are built through a process of continuous refinement (usually on two week release cycles). We’re looking for someone who is comfortable embodying this approach.",
     "requirements": {
       "content": "You will be responsible for writing and debugging your code while writing your own unit tests. We are looking for self-motivated developers who are interested in learning and can quickly pick up new technologies. We’re a relatively small team in a stable yet fast growing company and would love for you to join us.",
       "items": [
@@ -477,6 +470,43 @@
         "Do code reviews",
         "Proactively solve the problems most important to the business"
       ]
-    }
+    },
+    "roleDescription": "We’re looking for a Frontend Developer who values user experience, performance and accessibility. Through our enduring interest in how people use our products, Blogr embraces a model of software development that is iterative and gradual. Like high-performance engines, our products are built through a process of continuous refinement (usually on two week release cycles). We’re looking for someone who is comfortable embodying this approach.",
+    "canPatch": false
+  },
+  {
+    "_id": "637cec45bf8c0986051834ab",
+    "id": 10,
+    "company": "Mastercraft",
+    "logo": "mastercraft.svg",
+    "logoBackground": "hsl(0, 0%, 12%)",
+    "position": "App & Website Designer",
+    "postedAt": "2w ago",
+    "contract": "Freelance",
+    "location": "United States",
+    "website": "https://example.com/mastercraft",
+    "apply": "https://example.com/mastercraft/apply",
+    "roleDescription": "Mastercraft is looking for a UX/UI Designer to turn our software into easy-to-use products for our clients. Responsibilities include gathering user requirements, designing graphic elements and building software component",
+    "requirements": {
+      "content": "To be successful in this role, you should have experience with design software and wireframe tools preferably Figma. You should also have a portfolio of professional design projects that includes work with web/mobile applications.",
+      "items": [
+        "At least 3 years of experience in a related field.",
+        "Portfolio of design projects.",
+        "Degree in Design, UX or relevant field.",
+        "Experience with design process and systematic approach to organization, workflow"
+      ]
+    },
+    "role": {
+      "content": "You’ll create both functional and appealing features that address our clients’ needs and help us grow our customer base. We expect you to have experience with market/user research and stay current with most recent trends, tools, workflows.",
+      "items": [
+        "Gather and evaluate user requirements in collaboration with UX/UI manager or stakeholders.",
+        "Illustrate design ideas using storyboards, process flows and sitemaps.",
+        "Develop UI mockups and prototypes that clearly illustrate how sites function and look like.",
+        "Create original graphic designs (eg. images, sketches and tables).",
+        "Identify and troubleshoot UX problems",
+        "Conduct layout adjustments based on user feedback."
+      ]
+    },
+    "canPatch": false
   }
 ]
