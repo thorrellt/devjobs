@@ -3,7 +3,7 @@ import './App.css'
 import Navbar from './components/Navbar'
 import Searchbar from './components/Searchbar'
 import { Outlet, useLocation } from 'react-router-dom'
-import data from './data.json'
+import data from './data/data.json'
 
 const DisplayContext = createContext()
 

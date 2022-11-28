@@ -4,7 +4,7 @@ import { Routes, Route, useParams } from 'react-router-dom'
 import CompanyLogo from '../components/CompanyLogo'
 import JobFooter from '../components/jobFooter'
 import '../styles/Job.css'
-import { getJob } from '../controllers/controller'
+import { getJob } from '../data/api'
 
 const Job = () => {
   const { id } = useParams()
@@ -43,6 +43,7 @@ const Job = () => {
       })
     // await getJob(id).then((res) => console.log(res))
   }
+
   useEffect(() => {
     fetchJob()
   }, [])
