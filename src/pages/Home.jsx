@@ -15,10 +15,18 @@ const Home = (props) => {
   })
 
   const [allJobs, setAllJobs] = useState([])
+  const [isLocal, setIsLocal] = useState(true)
+  const [hasLoaded, setHasLoaded] = useState()
   let jobCards = []
 
   const fetchJobs = async (filter) => {
-    await getJobs(filter).then((res) => setAllJobs(res))
+    await getJobs(filter).then((res) => {
+      const response = res
+      console.log(response)
+      setAllJobs(res.jobs)
+      setIsLocal(res.isLocal)
+      setHasLoaded(true)
+    })
   }
   useEffect(() => {
     fetchJobs()
@@ -34,9 +42,11 @@ const Home = (props) => {
     fetchJobs(filters)
   }
 
-  jobCards = allJobs.map((jobData) => {
-    return <JobCard jobData={jobData} key={jobData.id} />
-  })
+  if (hasLoaded) {
+    jobCards = allJobs.map((jobData) => {
+      return <JobCard jobData={jobData} key={jobData.id} />
+    })
+  }
 
   return (
     <main id="Home" className="flex-container">
@@ -45,6 +55,19 @@ const Home = (props) => {
         setFilters={setFilters}
         updateJobs={updateJobs}
       />
+
+      {isLocal && (
+        <div className="local-data-msg flex-container">
+          <div
+            className={`company 
+      ${darkMode ? 'font-white' : 'font-blue-700'}`}
+          >
+            <h4>Unable to reach API at this time.</h4>
+            <h4>Page is showing local data</h4>
+          </div>
+        </div>
+      )}
+
       <div className="job-cards flex-container">{jobCards}</div>
     </main>
   )

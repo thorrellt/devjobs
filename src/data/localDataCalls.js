@@ -37,5 +37,8 @@ export const getLocalJob = (id) => {
   const job = data.filter((job) => {
     return String(job._id) === String(id)
   })
+  if (!Boolean(job[0])) {
+    return []
+  }
   return job[0]
 }

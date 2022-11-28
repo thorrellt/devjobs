@@ -30,15 +30,15 @@ export const getJobs = async (filter) => {
     //return all jobs if no filter passed
     if (Boolean(!filter) || jobFilters === {}) {
       const response = await axios.get(localURL + '/jobs')
-      return response.data.jobs
+      return { jobs: response.data.jobs, isLocal: false }
     }
 
     //filtered jobs call
     const response = await axios.get(localURL + '/jobs', { params: jobFilters })
-    return response.data.jobs
+    return { jobs: response.data.jobs, isLocal: false }
   } catch (error) {
     const response = getLocalJobs(filter)
-    return response
+    return { jobs: response, isLocal: true }
   }
 }
 
