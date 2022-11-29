@@ -2,15 +2,16 @@
   background-color: transparent;
   min-height: 100vh;
   width: 100vw;
-  justify-content: center;
-  flex-wrap: wrap;
+  align-items: center;
+  flex-wrap: nowrap;
   position: relative;
   padding-block-start: 6.125rem;
+  flex-direction: column;
 }
 
 .job-cards {
   flex-basis: 100%;
-  /* margin-inline: 1.5rem; */
+  margin-inline: 1.5rem;
   flex-wrap: wrap;
   background-color: transparent;
   /* margin-block-start: 6.125rem; */
