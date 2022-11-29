@@ -1,7 +1,6 @@
 import { useState, useContext } from 'react'
-import './App.css'
-import Navbar from './components/Navbar'
-import Searchbar from './components/Searchbar'
+import Navbar from './components/navbar/Navbar'
+import Searchbar from './components/home/searchbar/Searchbar'
 import { Outlet, useLocation } from 'react-router-dom'
 import {
   DisplayContextProvider,

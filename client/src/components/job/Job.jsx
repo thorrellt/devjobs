@@ -1,10 +1,10 @@
 import { useContext, useEffect, useState } from 'react'
-import { DisplayContext } from '../context/DisplayContext'
+import { DisplayContext } from '../../context/DisplayContext'
 import { Routes, Route, useParams } from 'react-router-dom'
-import CompanyLogo from '../components/CompanyLogo'
-import JobFooter from '../components/jobFooter'
-import '../styles/Job.css'
-import { getJob } from '../data/api'
+import CompanyLogo from '../companyLogo/CompanyLogo'
+import JobFooter from './jobFooter'
+import './Job.css'
+import { getJob } from '../../data/api'
 
 const Job = () => {
   const { id } = useParams()

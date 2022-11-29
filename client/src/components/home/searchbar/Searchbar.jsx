@@ -1,7 +1,7 @@
 import { useState, useContext } from 'react'
-import { DisplayContext } from '../context/DisplayContext'
-import '../styles/Searchbar.css'
-import funnel from '../assets/mobile/icon-filter.svg'
+import { DisplayContext } from '../../../context/DisplayContext'
+import './Searchbar.css'
+import funnel from '../../../assets/mobile/icon-filter.svg'
 import SearchModal from './SearchModal'
 
 const Searchbar = (props) => {

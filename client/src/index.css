@@ -47,6 +47,10 @@
   background-color: var(--neutral-white-700);
 }
 
+.App {
+  flex-wrap: wrap;
+}
+
 /***************
   COLOR CLASSES
  ***************/

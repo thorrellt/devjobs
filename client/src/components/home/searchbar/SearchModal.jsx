@@ -1,5 +1,5 @@
 import { useState, useContext } from 'react'
-import { DisplayContext } from '../context/DisplayContext'
+import { DisplayContext } from '../../../context/DisplayContext'
 
 const SearchModal = (props) => {
   const {

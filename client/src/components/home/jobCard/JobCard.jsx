@@ -1,8 +1,8 @@
 import { useState, useContext } from 'react'
-import { DisplayContext } from '../context/DisplayContext'
-import CompanyLogo from './CompanyLogo'
+import { DisplayContext } from '../../../context/DisplayContext'
+import CompanyLogo from '../../companyLogo/CompanyLogo'
 import { NavLink, useLocation } from 'react-router-dom'
-import '../styles/JobCard.css'
+import './JobCard.css'
 
 const JobCard = (props) => {
   const { darkMode } = useContext(DisplayContext)

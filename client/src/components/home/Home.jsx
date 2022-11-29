@@ -1,10 +1,9 @@
 import { useState, useContext, useEffect } from 'react'
-import { DisplayContext } from '../context/DisplayContext'
-import '../styles/Home.css'
-import JobCard from '../components/JobCard'
-import Searchbar from '../components/Searchbar'
-import data from '../data/data.json'
-import { getJobs } from '../data/api'
+import { DisplayContext } from '../../context/DisplayContext'
+import './Home.css'
+import JobCard from './jobCard/JobCard'
+import Searchbar from './searchbar/Searchbar'
+import { getJobs } from '../../data/api'
 
 const Home = (props) => {
   const { darkMode, screenSize } = useContext(DisplayContext)
