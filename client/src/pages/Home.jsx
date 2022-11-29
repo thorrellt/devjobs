@@ -1,5 +1,5 @@
 import { useState, useContext, useEffect } from 'react'
-import { DisplayContext } from '../App'
+import { DisplayContext } from '../context/DisplayContext'
 import '../styles/Home.css'
 import JobCard from '../components/JobCard'
 import Searchbar from '../components/Searchbar'

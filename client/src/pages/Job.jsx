@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react'
-import { DisplayContext } from '../App'
+import { DisplayContext } from '../context/DisplayContext'
 import { Routes, Route, useParams } from 'react-router-dom'
 import CompanyLogo from '../components/CompanyLogo'
 import JobFooter from '../components/jobFooter'

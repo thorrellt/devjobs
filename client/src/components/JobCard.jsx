@@ -1,5 +1,5 @@
 import { useState, useContext } from 'react'
-import { DisplayContext } from '../App'
+import { DisplayContext } from '../context/DisplayContext'
 import CompanyLogo from './CompanyLogo'
 import { NavLink, useLocation } from 'react-router-dom'
 import '../styles/JobCard.css'
