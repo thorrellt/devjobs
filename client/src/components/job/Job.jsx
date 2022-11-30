@@ -28,20 +28,16 @@ const Job = () => {
   const [job, setJob] = useState(emptyJob)
   const [hasLoaded, setHasLoaded] = useState()
 
-  console.log(job)
   let reqItems, roleItems
 
   const fetchJob = async (filter) => {
-    console.log('fetch job')
     let response = {}
     await getJob(id)
       .then((res) => (response = res))
       .then(() => {
-        console.log(response)
         setJob(response)
         setHasLoaded(true)
       })
-    // await getJob(id).then((res) => console.log(res))
   }
 
   useEffect(() => {

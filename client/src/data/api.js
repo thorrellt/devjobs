@@ -45,12 +45,9 @@ export const getJobs = async (filter) => {
 export const getJob = async (id) => {
   try {
     const response = await axios.get(localURL + '/jobs/' + id)
-    console.log('getJob')
-    console.log(response.data.job)
     return response.data.job
   } catch (error) {
     const job = getLocalJob(id)
-    console.log(job)
     return job
   }
 }

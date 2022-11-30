@@ -21,7 +21,6 @@ const Home = (props) => {
   const fetchJobs = async (filter) => {
     await getJobs(filter).then((res) => {
       const response = res
-      console.log(response)
       setAllJobs(res.jobs)
       setIsLocal(res.isLocal)
       setHasLoaded(true)
