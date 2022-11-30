@@ -34,20 +34,32 @@ export const getJobs = async (filter) => {
     }
 
     //filtered jobs call
-    const response = await axios.get(localURL + '/jobs', { params: jobFilters })
+    const response = await axios.get(localURL + '/jobs', {
+      params: jobFilters,
+    })
     return { jobs: response.data.jobs, isLocal: false }
   } catch (error) {
     const response = getLocalJobs(filter)
+
     return { jobs: response, isLocal: true }
   }
 }
 
 export const getJob = async (id) => {
   try {
-    const response = await axios.get(localURL + '/jobs/' + id)
-    return response.data.job
+    try {
+      const response = await axios.get(localURL + '/jobs/' + id)
+      return response.data.job
+    } catch (error) {
+      const job = getLocalJob(id)
+      if (job.length === 0) {
+        throw new Error('no record found matching this ID')
+      }
+      return job
+    }
   } catch (error) {
-    const job = getLocalJob(id)
-    return job
+    // console.log('error thrown')
+    // console.log(error.message)
+    return error.message
   }
 }

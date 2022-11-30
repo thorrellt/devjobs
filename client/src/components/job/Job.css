@@ -4,8 +4,12 @@
   justify-content: center;
   width: 100%;
   height: fit-content;
+  min-height: 100vh;
   flex-wrap: wrap;
   transform: translate(0, -10px);
+}
+.errorMsg {
+  align-self: center;
 }
 .job-body {
   width: calc(100vw - 3rem);
