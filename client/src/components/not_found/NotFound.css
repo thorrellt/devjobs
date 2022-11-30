@@ -1,0 +1,10 @@
+#not-found {
+  min-height: 100%;
+  min-width: 100vw;
+  align-items: center;
+  justify-content: center;
+}
+
+#not-found img {
+  object-fit: contain;
+}

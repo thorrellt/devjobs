@@ -6,6 +6,7 @@ import Job from './components/job/Job'
 import './index.css'
 
 import { createBrowserRouter, RouterProvider, Route } from 'react-router-dom'
+import NoPageFound from './components/not_found/NotFound'
 
 /********
   ROUTER
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
       {
         path: '/devjobs/job/:id',
         element: <Job />,
+      },
+      {
+        path: '*',
+        element: <NoPageFound />,
       },
     ],
   },
