@@ -1,5 +1,7 @@
 import axios from 'axios'
 const localURL = 'http://localhost:5000/api/v1'
+const prodURL = 'https://devjobs-api-08.herokuapp.com/api/v1'
+const currURL = prodURL
 import { getLocalJob, getLocalJobs } from './localDataCalls'
 
 const formatFilter = (filter) => {
@@ -29,12 +31,12 @@ export const getJobs = async (filter) => {
   try {
     //return all jobs if no filter passed
     if (Boolean(!filter) || jobFilters === {}) {
-      const response = await axios.get(localURL + '/jobs')
+      const response = await axios.get(currURL + '/jobs')
       return { jobs: response.data.jobs, isLocal: false }
     }
 
     //filtered jobs call
-    const response = await axios.get(localURL + '/jobs', {
+    const response = await axios.get(currURL + '/jobs', {
       params: jobFilters,
     })
     return { jobs: response.data.jobs, isLocal: false }
@@ -48,7 +50,7 @@ export const getJobs = async (filter) => {
 export const getJob = async (id) => {
   try {
     try {
-      const response = await axios.get(localURL + '/jobs/' + id)
+      const response = await axios.get(currURL + '/jobs/' + id)
       return response.data.job
     } catch (error) {
       const job = getLocalJob(id)
