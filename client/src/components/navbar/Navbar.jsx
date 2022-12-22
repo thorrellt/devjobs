@@ -2,13 +2,18 @@ import { useState, useContext } from 'react'
 import { DisplayContext } from '../../context/DisplayContext'
 import { NavLink, useLocation } from 'react-router-dom'
 import './Navbar.css'
+import NightModeToggle from './NightModeToggle'
 import bg from '../../assets/mobile/bg-pattern-header.svg'
 import icon from '../../assets/desktop/logo.svg'
 import sun from '../../assets/desktop/icon-sun.svg'
 import moon from '../../assets/desktop/icon-moon.svg'
 
+const toggleNav = () => {
+  console.log('toggleNav')
+}
+
 const Navbar = (props) => {
-  const { darkMode, switchMode } = useContext(DisplayContext)
+  const { darkMode, switchMode, screenSize } = useContext(DisplayContext)
 
   return (
     <nav className="flex-container">
@@ -17,17 +22,52 @@ const Navbar = (props) => {
           <img className="logo" src={icon} alt="dev jobs icon" />
         </NavLink>
 
-        <div className="mode-toggle flex-container">
-          <img src={sun} className="icon sun" alt="" />
-          <div onClick={switchMode} className="toggle-switch">
-            <div className={`selector ${darkMode ? 'dark' : ''}`}></div>
-          </div>
-          <img src={moon} className="icon moon" alt="" />
+        {/* DESKTOP NIGHTMODE TOGGLE */}
+        {screenSize === 'desktop' && (
+          <NightModeToggle
+            darkMode={darkMode}
+            switchMode={switchMode}
+            primColor="font-white"
+            bgColor="bg-white"
+            secColor="bg-violet-500"
+          />
+        )}
+
+        {/* SMALL SCREEN MENU BTN */}
+        <div
+          className={`menu-toggle-container
+      ${screenSize === 'desktop' ? 'hidden' : ''}`}
+        >
+          <button onClick={toggleNav} className="menu-toggle-btn">
+            <i className="bi bi-list font-white" />
+          </button>
         </div>
       </div>
-      <NavLink to={`/devjobs/login`} className="font-white login">
+
+      {/* DESKTOP LOGIN LINK*/}
+      <NavLink
+        to={`/devjobs/login`}
+        className={`font-white login
+      ${screenSize === 'desktop' ? '' : 'hidden'}`}
+      >
         <h3>Log in</h3>
       </NavLink>
+
+      {/* SMALL SCREEN POP OUT MENU */}
+      <div
+        className={`bg-screen
+      ${screenSize === 'desktop' ? 'hidden' : ''}`}
+      ></div>
+      <div
+        className={`menu flex-container
+      ${screenSize === 'desktop' ? 'hidden' : ''}
+      ${darkMode ? 'bg-blue-700' : 'bg-white'}`}
+      >
+        <i
+          className={`bi bi-x 
+      ${darkMode ? 'font-white' : 'font-blue-700'}`}
+        />
+      </div>
     </nav>
   )
 }

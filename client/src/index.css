@@ -71,6 +71,10 @@
   background-color: var(--gray-300) !important;
 }
 
+.bg-violet-500 {
+  background-color: var(--violet-500) !important;
+}
+
 .font-white {
   color: var(--neutral-white) !important;
 }

@@ -9,13 +9,14 @@ nav {
   justify-content: center;
   flex-basis: 100%;
   position: relative;
+  padding-block-start: 1.75rem;
 }
 
 nav .login {
   position: absolute;
   right: 0%;
   top: 0%;
-  padding-block-start: 2rem;
+  padding-block-start: 1.75rem;
   padding-inline-end: 1.5rem;
 }
 
@@ -25,10 +26,14 @@ nav .logo {
   height: 32px;
 }
 .nav-content {
-  margin-block-start: 1.75rem;
   margin-inline: 1.5rem;
   width: 100%;
   justify-content: space-between;
+}
+
+nav .menu-toggle-btn {
+  font-size: 2.5rem;
+  padding: 0;
 }
 
 .mode-toggle {
@@ -75,6 +80,35 @@ nav .logo {
   animation: slideRight 0.5s ease-in-out;
 }
 
+/* POP OUT MENU */
+nav .bg-screen {
+  position: fixed;
+  right: 0%;
+  top: 0%;
+  min-width: 100vw;
+  min-height: 100vh;
+  background-color: var(--midnight);
+  z-index: 4;
+  opacity: 50%;
+}
+nav .menu {
+  min-width: 85vw;
+  position: fixed;
+  right: 0%;
+  top: 0%;
+  z-index: 5;
+  min-height: 100vh;
+  background-color: white;
+  flex-direction: column;
+  padding-inline: 1.5rem;
+  padding-block: 1.5rem;
+}
+
+nav .menu .bi-x {
+  align-self: flex-end;
+  font-size: 2.5rem;
+}
+
 /********
   TABLET
  ********/
@@ -85,10 +119,6 @@ nav .logo {
     height: 168px;
     max-height: 168px;
     background-size: 100% 168px;
-  }
-
-  nav .login {
-    padding-block-start: 5rem;
   }
 }
 
@@ -106,4 +136,8 @@ nav .logo {
   .nav-content {
     width: max(750px, 78vw);
   }
+}
+
+.hidden {
+  display: none !important;
 }
