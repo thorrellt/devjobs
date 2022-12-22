@@ -58,6 +58,7 @@ const Navbar = (props) => {
         className={`bg-screen
       ${screenSize === 'desktop' ? 'hidden' : ''}`}
       ></div>
+
       <div
         className={`menu flex-container
       ${screenSize === 'desktop' ? 'hidden' : ''}
@@ -67,6 +68,22 @@ const Navbar = (props) => {
           className={`bi bi-x 
       ${darkMode ? 'font-white' : 'font-blue-700'}`}
         />
+
+        <div
+          className={`menu-header flex-container ${darkMode ? 'dark' : ''} `}
+        >
+          <i className={`bi bi-person-circle font-violet-500`} />
+          <h3 className={`${darkMode ? 'font-white' : 'font-blue-700'}`}>
+            Welcome, User
+          </h3>
+          <NightModeToggle
+            darkMode={darkMode}
+            switchMode={switchMode}
+            primColor={darkMode ? 'font-white' : 'font-violet-500'}
+            bgColor={darkMode ? 'bg-white' : 'bg-violet-500'}
+            secColor={darkMode ? 'bg-violet-500' : 'bg-white'}
+          />
+        </div>
       </div>
     </nav>
   )

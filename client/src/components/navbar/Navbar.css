@@ -45,9 +45,6 @@ nav .menu-toggle-btn {
   font-size: 1.25rem;
 }
 
-.moon {
-}
-
 .toggle-switch {
   width: 48px;
   height: 24px;
@@ -102,8 +99,29 @@ nav .menu {
 }
 
 nav .menu .bi-x {
-  align-self: flex-end;
+  position: absolute;
+  right: 10%;
   font-size: 2.5rem;
+}
+
+nav .menu-header {
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid var(--blue-700);
+}
+
+nav .dark {
+  border-bottom: 1px solid white;
+}
+
+nav .menu-header .bi-person-circle {
+  font-size: 2.5rem;
+}
+
+nav .menu-header .mode-toggle {
+  margin-top: 1.5rem;
+  align-self: flex-end;
 }
 
 /********
