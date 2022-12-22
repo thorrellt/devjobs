@@ -25,6 +25,9 @@ const Navbar = (props) => {
           <img src={moon} className="icon moon" alt="" />
         </div>
       </div>
+      <NavLink to={`/devjobs/login`} className="font-white login">
+        <h3>Log in</h3>
+      </NavLink>
     </nav>
   )
 }
