@@ -1,7 +1,5 @@
 import { useState, useContext } from 'react'
 import { DisplayContext } from '../../context/DisplayContext'
-import sun from '../../assets/desktop/icon-sun.svg'
-import moon from '../../assets/desktop/icon-moon.svg'
 
 const NightModeToggle = (props) => {
   const { darkMode, switchMode } = props
@@ -15,11 +13,11 @@ const NightModeToggle = (props) => {
       className={`mode-toggle flex-container 
       `}
     >
-      <img src={sun} className={`icon sun ${primColor}`} alt="" />
+      <i className={`bi bi-brightness-high-fill icon sun ${primColor}`} />
       <div onClick={switchMode} className={`toggle-switch ${bgColor}`}>
         <div className={`selector ${darkMode ? 'dark' : ''} ${secColor}`}></div>
       </div>
-      <img src={moon} className={`icon moon ${primColor}`} alt="" />
+      <i className={`bi bi-moon-fill icon moon ${primColor}`} />
     </div>
   )
 }

@@ -42,13 +42,10 @@ nav .menu-toggle-btn {
 }
 
 .sun {
-  width: 20px;
-  height: 18.6px;
+  font-size: 1.25rem;
 }
 
 .moon {
-  max-width: 12px;
-  max-height: 12px;
 }
 
 .toggle-switch {
