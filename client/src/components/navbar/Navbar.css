@@ -124,6 +124,18 @@ nav .menu-header .mode-toggle {
   align-self: flex-end;
 }
 
+nav .menu .links-container {
+  flex-direction: column;
+  align-self: center;
+  margin-block-start: 4rem;
+  gap: 4rem;
+  align-items: center;
+}
+
+nav .menu .links-container .link {
+  font-size: 1.125rem;
+}
+
 /********
   TABLET
  ********/

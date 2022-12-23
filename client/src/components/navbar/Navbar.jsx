@@ -84,6 +84,26 @@ const Navbar = (props) => {
             secColor={darkMode ? 'bg-violet-500' : 'bg-white'}
           />
         </div>
+        <div className="links-container flex-container">
+          <NavLink
+            to={`/devjobs/`}
+            className={`link ${darkMode ? 'font-white' : 'font-blue-700'}`}
+          >
+            Saved Jobs
+          </NavLink>
+          <NavLink
+            to={`/devjobs/`}
+            className={`link ${darkMode ? 'font-white' : 'font-blue-700'}`}
+          >
+            Post Job
+          </NavLink>
+          <NavLink
+            to={`/devjobs/`}
+            className={`link ${darkMode ? 'font-white' : 'font-blue-700'}`}
+          >
+            Log Out
+          </NavLink>
+        </div>
       </div>
     </nav>
   )
