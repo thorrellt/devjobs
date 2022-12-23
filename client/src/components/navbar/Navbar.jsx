@@ -56,12 +56,12 @@ const Navbar = (props) => {
       {/* SMALL SCREEN POP OUT MENU */}
       <div
         className={`bg-screen
-      ${screenSize === 'desktop' ? 'hidden' : ''}`}
+      ${screenSize === 'desktop' ? '' : ''}`}
       ></div>
 
       <div
         className={`menu flex-container
-      ${screenSize === 'desktop' ? 'hidden' : ''}
+      ${screenSize === 'desktop' ? '' : ''}
       ${darkMode ? 'bg-blue-700' : 'bg-white'}`}
       >
         <i

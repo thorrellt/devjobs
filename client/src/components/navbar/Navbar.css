@@ -147,6 +147,12 @@ nav .menu .links-container .link {
     max-height: 168px;
     background-size: 100% 168px;
   }
+
+  nav .menu {
+    min-width: 60vw;
+    padding-inline: 2.5rem;
+    padding-block: 2.5rem;
+  }
 }
 
 /********
@@ -162,6 +168,12 @@ nav .menu .links-container .link {
 
   .nav-content {
     width: max(750px, 78vw);
+  }
+
+  nav .menu {
+    min-width: max(30vw, 25rem);
+    padding-inline: 2.5rem;
+    padding-block: 2.5rem;
   }
 }
 
