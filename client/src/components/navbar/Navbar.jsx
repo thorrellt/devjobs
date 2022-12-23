@@ -1,12 +1,13 @@
-import { useState, useContext } from 'react'
+import { useState, useContext, useEffect } from 'react'
 import { DisplayContext } from '../../context/DisplayContext'
 import { NavLink, useLocation } from 'react-router-dom'
-import './Navbar.css'
+
 import NightModeToggle from './NightModeToggle'
+import Menu from './menu/Menu'
+import './Navbar.css'
+
 import bg from '../../assets/mobile/bg-pattern-header.svg'
 import icon from '../../assets/desktop/logo.svg'
-import sun from '../../assets/desktop/icon-sun.svg'
-import moon from '../../assets/desktop/icon-moon.svg'
 
 const toggleNav = () => {
   console.log('toggleNav')
@@ -14,6 +15,18 @@ const toggleNav = () => {
 
 const Navbar = (props) => {
   const { darkMode, switchMode, screenSize } = useContext(DisplayContext)
+
+  const [navActive, setNavActive] = useState(false)
+
+  const toggleNav = () => {
+    setNavActive((prevNavState) => !prevNavState)
+  }
+
+  //minimize menu on page change
+  let location = useLocation()
+  useEffect(() => {
+    setNavActive(false)
+  }, [location])
 
   return (
     <nav className="flex-container">
@@ -54,57 +67,15 @@ const Navbar = (props) => {
       </NavLink>
 
       {/* SMALL SCREEN POP OUT MENU */}
-      <div
-        className={`bg-screen
-      ${screenSize === 'desktop' ? '' : ''}`}
-      ></div>
-
-      <div
-        className={`menu flex-container
-      ${screenSize === 'desktop' ? '' : ''}
-      ${darkMode ? 'bg-blue-700' : 'bg-white'}`}
-      >
-        <i
-          className={`bi bi-x 
-      ${darkMode ? 'font-white' : 'font-blue-700'}`}
+      {navActive && (
+        <Menu
+          darkMode={darkMode}
+          switchMode={switchMode}
+          screenSize={screenSize}
+          toggleNav={toggleNav}
+          navActive={navActive}
         />
-
-        <div
-          className={`menu-header flex-container ${darkMode ? 'dark' : ''} `}
-        >
-          <i className={`bi bi-person-circle font-violet-500`} />
-          <h3 className={`${darkMode ? 'font-white' : 'font-blue-700'}`}>
-            Welcome, User
-          </h3>
-          <NightModeToggle
-            darkMode={darkMode}
-            switchMode={switchMode}
-            primColor={darkMode ? 'font-white' : 'font-violet-500'}
-            bgColor={darkMode ? 'bg-white' : 'bg-violet-500'}
-            secColor={darkMode ? 'bg-violet-500' : 'bg-white'}
-          />
-        </div>
-        <div className="links-container flex-container">
-          <NavLink
-            to={`/devjobs/`}
-            className={`link ${darkMode ? 'font-white' : 'font-blue-700'}`}
-          >
-            Saved Jobs
-          </NavLink>
-          <NavLink
-            to={`/devjobs/`}
-            className={`link ${darkMode ? 'font-white' : 'font-blue-700'}`}
-          >
-            Post Job
-          </NavLink>
-          <NavLink
-            to={`/devjobs/`}
-            className={`link ${darkMode ? 'font-white' : 'font-blue-700'}`}
-          >
-            Log Out
-          </NavLink>
-        </div>
-      </div>
+      )}
     </nav>
   )
 }
