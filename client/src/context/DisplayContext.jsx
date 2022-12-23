@@ -38,12 +38,37 @@ const DisplayContextProvider = ({ children }) => {
     }
   }, [])
 
+  /***********
+    USER INFO
+   ***********/
+  const [user, setUser] = useState({
+    loggedIn: false,
+    name: 'John Doe',
+  })
+
+  const logOut = () => {
+    setUser((prevUser) => ({
+      ...prevUser,
+      loggedIn: !prevUser.loggedIn,
+    }))
+  }
+
+  const logIn = () => {
+    setUser((prevUser) => ({
+      ...prevUser,
+      loggedIn: !prevUser.loggedIn,
+    }))
+  }
+
   return (
     <DisplayContext.Provider
       value={{
         darkMode: darkMode,
         switchMode: switchMode,
         screenSize: screenSize,
+        user: user,
+        logOut: logOut,
+        logIn: logIn,
       }}
     >
       {children}

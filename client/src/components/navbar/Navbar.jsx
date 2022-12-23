@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect } from 'react'
+import { useState, useContext, useEffect, useReducer } from 'react'
 import { DisplayContext } from '../../context/DisplayContext'
 import { NavLink, useLocation } from 'react-router-dom'
 
@@ -14,7 +14,8 @@ const toggleNav = () => {
 }
 
 const Navbar = (props) => {
-  const { darkMode, switchMode, screenSize } = useContext(DisplayContext)
+  const { darkMode, switchMode, screenSize, user, logIn, logOut } =
+    useContext(DisplayContext)
 
   const [navActive, setNavActive] = useState(false)
 
@@ -51,20 +52,43 @@ const Navbar = (props) => {
           className={`menu-toggle-container
       ${screenSize === 'desktop' ? 'hidden' : ''}`}
         >
-          <button onClick={toggleNav} className="menu-toggle-btn">
-            <i className="bi bi-list font-white" />
-          </button>
+          {!user.loggedIn && (
+            <button onClick={toggleNav} className="menu-toggle-btn">
+              <i className="bi bi-list font-white" />
+            </button>
+          )}
+
+          {user.loggedIn && (
+            <button onClick={toggleNav} className="menu-toggle-btn">
+              <i className="bi bi-person-circle font-white" />
+            </button>
+          )}
         </div>
       </div>
 
       {/* DESKTOP LOGIN LINK*/}
-      <NavLink
-        to={`/devjobs/login`}
-        className={`font-white login
+      {!user.loggedIn && (
+        <NavLink
+          to={`/devjobs/`}
+          onClick={logIn}
+          className={`font-white login
       ${screenSize === 'desktop' ? '' : 'hidden'}`}
-      >
-        <h3>Log in</h3>
-      </NavLink>
+        >
+          <h3>Log in</h3>
+        </NavLink>
+      )}
+
+      {/* DESKTOP USER ICON*/}
+      {user.loggedIn && (
+        <div
+          className={`login
+      ${screenSize === 'desktop' ? '' : 'hidden'}`}
+        >
+          <button onClick={toggleNav} className="menu-toggle-btn">
+            <i className={`bi bi-person-circle font-white`} />
+          </button>
+        </div>
+      )}
 
       {/* SMALL SCREEN POP OUT MENU */}
       {navActive && (
@@ -74,6 +98,10 @@ const Navbar = (props) => {
           screenSize={screenSize}
           toggleNav={toggleNav}
           navActive={navActive}
+          logOut={logOut}
+          logIn={logIn}
+          userName={user.name}
+          loggedIn={user.loggedIn}
         />
       )}
     </nav>
