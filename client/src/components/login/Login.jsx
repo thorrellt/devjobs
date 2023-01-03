@@ -3,6 +3,8 @@ import { DisplayContext } from '../../context/DisplayContext'
 import './Login.css'
 
 const Login = () => {
+  const { darkMode, screenSize } = useContext(DisplayContext)
+
   const [loginState, setLoginState] = useState({
     user: {
       value: '',
@@ -19,7 +21,7 @@ const Login = () => {
     const name = event.target.id
     const newValue = event.target.value
 
-    setFormState((prevFormState) => ({
+    setLoginState((prevFormState) => ({
       ...prevFormState,
       [name]: {
         ...prevFormState.name,
@@ -68,38 +70,49 @@ const Login = () => {
     }
   }
   return (
-    <main>
-      <h1>Login</h1>
-      <p>Unable to Find username/password. please try again</p>
-      <form className="flex-container">
-        <div className="input-container flex-container">
-          {loginState.user.valid === false && (
-            <span className="input-error">This field can't be empty</span>
-          )}
-          <input
-            onChange={onFormChange}
-            type="text"
-            id="user"
-            name="user"
-            value={loginState.user.value}
-          />
-          <label htmlFor="user">User Name</label>
-        </div>
+    <main id="Login" className="flex-container">
+      <div
+        className={`main-container flex-container
+      ${darkMode ? 'bg-blue-700' : 'bg-violet-500'}`}
+      >
+        <h1 className="font-white">Login</h1>
+        <p className="font-white error-text">Invalid Login. please try again</p>
+        <form className="flex-container">
+          <div className="input-container flex-container">
+            {loginState.user.valid === false && (
+              <span className="input-error">This field can't be empty</span>
+            )}
+            <input
+              onChange={onFormChange}
+              type="text"
+              id="user"
+              name="user"
+              value={loginState.user.value}
+              className="bg-white"
+            />
+            <label htmlFor="user" className="font-white">
+              Username
+            </label>
+          </div>
 
-        <div className="input-container flex-container">
-          {loginState.password.valid === false && (
-            <span className="input-error">Must include a password</span>
-          )}
-          <input
-            onChange={onFormChange}
-            type="email"
-            id="password"
-            name="password"
-            value={loginState.password.value}
-          />
-          <label htmlFor="email">Password</label>
-        </div>
-      </form>
+          <div className="input-container flex-container">
+            {loginState.password.valid === false && (
+              <span className="input-error">Must include a password</span>
+            )}
+            <input
+              onChange={onFormChange}
+              type="email"
+              id="password"
+              name="password"
+              value={loginState.password.value}
+              className="bg-white"
+            />
+            <label htmlFor="email" className="font-white">
+              Password
+            </label>
+          </div>
+        </form>
+      </div>
     </main>
   )
 }

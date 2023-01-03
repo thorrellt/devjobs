@@ -1,0 +1,34 @@
+#Login {
+  min-width: 100%;
+  min-height: 60vh;
+  align-self: flex-start;
+  justify-content: center;
+  align-items: center;
+}
+#Login .main-container {
+  flex-direction: column;
+  flex-basis: 100%;
+  margin-inline: 2.25rem;
+  border: 1px solid red;
+  padding: 1.5rem;
+  gap: 1rem;
+}
+
+#Login .main-container .error-text {
+  text-align: center;
+}
+
+#Login .main-container form {
+  flex-direction: column;
+}
+
+#Login form .input-container {
+  flex-direction: column-reverse;
+  padding: 0;
+}
+
+#Login form input {
+  margin-block-start: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 5px;
+}
