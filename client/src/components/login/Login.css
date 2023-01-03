@@ -9,7 +9,6 @@
   flex-direction: column;
   flex-basis: 100%;
   margin-inline: 2.25rem;
-  border: 1px solid red;
   padding: 1.5rem;
   gap: 1rem;
 }
@@ -20,15 +19,28 @@
 
 #Login .main-container form {
   flex-direction: column;
+  gap: 1.5rem;
 }
 
 #Login form .input-container {
   flex-direction: column-reverse;
   padding: 0;
+  height: fit-content;
 }
 
 #Login form input {
   margin-block-start: 0.5rem;
   padding: 0.5rem;
   border-radius: 5px;
+}
+
+#Login form .submit-btn {
+  margin-block-start: 0.5rem;
+  background-color: var();
+  margin-inline: 1.5rem;
+}
+
+#Login .main-container p {
+  text-align: center;
+  margin-block-start: 1rem;
 }

@@ -1,4 +1,5 @@
 import { useState, useContext, useEffect } from 'react'
+import { NavLink, useLocation } from 'react-router-dom'
 import { DisplayContext } from '../../context/DisplayContext'
 import './Login.css'
 
@@ -111,7 +112,19 @@ const Login = () => {
               Password
             </label>
           </div>
+
+          <button
+            onClick={onSumbitClick}
+            className={`sec-btn-light submit-btn
+          ${darkMode ? 'sec-btn-dark' : 'sec-btn-light bg-white'}`}
+          >
+            Login
+          </button>
         </form>
+
+        <NavLink to={`/devjobs/`} className={`font-white login`}>
+          <p className="font-white">Sign Up</p>
+        </NavLink>
       </div>
     </main>
   )

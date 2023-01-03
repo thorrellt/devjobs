@@ -87,7 +87,7 @@ const Menu = (props) => {
 
           {!loggedIn && (
             <NavLink
-              to={`/devjobs/`}
+              to={`/devjobs/login`}
               onClick={logIn}
               className={`link ${darkMode ? 'font-white' : 'font-blue-700'}`}
             >

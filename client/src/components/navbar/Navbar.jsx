@@ -69,7 +69,7 @@ const Navbar = (props) => {
       {/* DESKTOP LOGIN LINK*/}
       {!user.loggedIn && (
         <NavLink
-          to={`/devjobs/`}
+          to={`/devjobs/login`}
           onClick={logIn}
           className={`font-white login
       ${screenSize === 'desktop' ? '' : 'hidden'}`}
