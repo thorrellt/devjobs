@@ -59,6 +59,7 @@ const Menu = (props) => {
             />
           )}
         </div>
+
         <div className="links-container flex-container">
           {loggedIn && (
             <>

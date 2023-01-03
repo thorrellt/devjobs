@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client'
 import { App } from './App'
 import Home from './components/home/Home'
 import Job from './components/job/Job'
+import Login from './components/login/Login'
 import './index.css'
 
 import { createBrowserRouter, RouterProvider, Route } from 'react-router-dom'
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
       {
         path: '/devjobs/job/:id',
         element: <Job />,
+      },
+      {
+        path: '/devjobs/login',
+        element: <Login />,
       },
       {
         path: '*',
