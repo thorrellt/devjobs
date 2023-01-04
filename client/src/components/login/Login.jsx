@@ -1,10 +1,10 @@
 import { useState, useContext, useEffect } from 'react'
-import { NavLink, useLocation } from 'react-router-dom'
+import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { DisplayContext } from '../../context/DisplayContext'
 import './Login.css'
 
 const Login = () => {
-  const { darkMode, screenSize } = useContext(DisplayContext)
+  const { darkMode, screenSize, logIn } = useContext(DisplayContext)
 
   const [loginState, setLoginState] = useState({
     user: {
@@ -18,6 +18,8 @@ const Login = () => {
     valid: true,
   })
 
+  const navigate = useNavigate()
+
   const onFormChange = (event) => {
     const name = event.target.id
     const newValue = event.target.value
@@ -30,6 +32,23 @@ const Login = () => {
         valid: true,
       },
     }))
+  }
+
+  const checkCredentials = (event) => {
+    event.preventDefault()
+
+    if (
+      loginState.user.value === 'admin' &&
+      loginState.password.value === 'admin'
+    ) {
+      logIn()
+      navigate('/devjobs')
+    } else {
+      setLoginState((prevFormState) => ({
+        ...prevFormState,
+        valid: false,
+      }))
+    }
   }
 
   /********************
@@ -102,7 +121,7 @@ const Login = () => {
             )}
             <input
               onChange={onFormChange}
-              type="email"
+              type="password"
               id="password"
               name="password"
               value={loginState.password.value}
@@ -114,7 +133,7 @@ const Login = () => {
           </div>
 
           <button
-            onClick={onSumbitClick}
+            onClick={checkCredentials}
             className={`sec-btn-light submit-btn
           ${darkMode ? 'sec-btn-dark' : 'sec-btn-light bg-white'}`}
           >

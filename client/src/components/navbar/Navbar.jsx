@@ -9,10 +9,6 @@ import './Navbar.css'
 import bg from '../../assets/mobile/bg-pattern-header.svg'
 import icon from '../../assets/desktop/logo.svg'
 
-const toggleNav = () => {
-  console.log('toggleNav')
-}
-
 const Navbar = (props) => {
   const { darkMode, switchMode, screenSize, user, logIn, logOut } =
     useContext(DisplayContext)
@@ -70,7 +66,6 @@ const Navbar = (props) => {
       {!user.loggedIn && (
         <NavLink
           to={`/devjobs/login`}
-          onClick={logIn}
           className={`font-white login
       ${screenSize === 'desktop' ? '' : 'hidden'}`}
         >

@@ -49,14 +49,14 @@ const DisplayContextProvider = ({ children }) => {
   const logOut = () => {
     setUser((prevUser) => ({
       ...prevUser,
-      loggedIn: !prevUser.loggedIn,
+      loggedIn: false,
     }))
   }
 
   const logIn = () => {
     setUser((prevUser) => ({
       ...prevUser,
-      loggedIn: !prevUser.loggedIn,
+      loggedIn: true,
     }))
   }
 
