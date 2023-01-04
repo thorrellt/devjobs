@@ -122,8 +122,8 @@ const Login = () => {
           </button>
         </form>
 
-        <NavLink to={`/devjobs/`} className={`font-white login`}>
-          <p className="font-white">Sign Up</p>
+        <NavLink to={`/devjobs/`} className={`font-white sign-up-link`}>
+          <p className="font-white ">Sign Up</p>
         </NavLink>
       </div>
     </main>

@@ -69,10 +69,17 @@
     width: 6.75rem;
     align-self: center;
   }
+
+  #Login .sign-up-link {
+    margin-block-start: 1rem;
+  }
 }
 
 /********
   DESKTOP
  ********/
 @media (min-width: 992px) {
+  #Login .main-container {
+    max-width: calc(max(50%, 48rem));
+  }
 }
