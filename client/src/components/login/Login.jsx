@@ -34,20 +34,53 @@ const Login = () => {
     }))
   }
 
-  const checkCredentials = (event) => {
-    event.preventDefault()
+  const setLoginValidity = (value) => {
+    setLoginState((prevFormState) => ({
+      ...prevFormState,
+      valid: false,
+    }))
+  }
 
+  const makeFieldInvalid = (inputField) => {
+    setLoginState((prevState) => ({
+      ...prevState,
+      [inputField]: {
+        ...prevState.inputField,
+        valid: false,
+      },
+    }))
+  }
+
+  const checkCredentials = (event) => {
     if (
       loginState.user.value === 'admin' &&
       loginState.password.value === 'admin'
     ) {
+      return true
+    }
+
+    return false
+  }
+
+  const attemptLogin = (event) => {
+    event.preventDefault()
+
+    let isFormValid = true
+
+    for (const inputField in loginState) {
+      if (loginState[inputField].value === '') {
+        makeFieldInvalid(inputField)
+        isFormValid = false
+        setLoginValidity(false)
+      }
+    }
+
+    if (checkCredentials()) {
       logIn()
+      setLoginValidity(true)
       navigate('/devjobs')
     } else {
-      setLoginState((prevFormState) => ({
-        ...prevFormState,
-        valid: false,
-      }))
+      setLoginValidity(false)
     }
   }
 
@@ -62,26 +95,16 @@ const Login = () => {
     }))
   }
 
-  const makeFieldInvalid = (inputField) => {
-    setLoginState((prevState) => ({
-      ...prevState,
-      [inputField]: {
-        ...prevState.inputField,
-        valid: false,
-      },
-    }))
-  }
-
   const onSumbitClick = (event) => {
     event.preventDefault()
 
     let isFormValid = true
 
     for (const inputField in loginState) {
-      if (inputField !== 'updates' && loginState[inputField].value === '') {
+      if (loginState[inputField].value === '') {
         makeFieldInvalid(inputField)
         isFormValid = false
-        setFormValid(false)
+        setLoginValidity(false)
       }
     }
 
@@ -96,11 +119,17 @@ const Login = () => {
       ${darkMode ? 'bg-blue-700' : 'bg-violet-500'}`}
       >
         <h1 className="font-white">Login</h1>
-        <p className="font-white error-text">Invalid Login. please try again</p>
+        {loginState.valid == false && (
+          <p className="font-white error-text">
+            Invalid Login. please try again
+          </p>
+        )}
         <form className="flex-container">
           <div className="input-container flex-container">
             {loginState.user.valid === false && (
-              <span className="input-error">This field can't be empty</span>
+              <span className="input-error font-white">
+                This field can't be empty
+              </span>
             )}
             <input
               onChange={onFormChange}
@@ -117,7 +146,9 @@ const Login = () => {
 
           <div className="input-container flex-container">
             {loginState.password.valid === false && (
-              <span className="input-error">Must include a password</span>
+              <span className="input-error font-white">
+                Must include a password
+              </span>
             )}
             <input
               onChange={onFormChange}
@@ -133,7 +164,7 @@ const Login = () => {
           </div>
 
           <button
-            onClick={checkCredentials}
+            onClick={attemptLogin}
             className={`sec-btn-light submit-btn
           ${darkMode ? 'sec-btn-dark' : 'sec-btn-light bg-white'}`}
           >
