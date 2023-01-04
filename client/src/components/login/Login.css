@@ -19,6 +19,7 @@
 
 #Login .main-container form {
   flex-direction: column;
+  justify-content: center;
   gap: 1.5rem;
 }
 
@@ -36,11 +37,42 @@
 
 #Login form .submit-btn {
   margin-block-start: 0.5rem;
-  background-color: var();
   margin-inline: 1.5rem;
 }
 
 #Login .main-container p {
   text-align: center;
   margin-block-start: 1rem;
+}
+
+/********
+  TABLET
+ ********/
+@media (min-width: 680px) {
+  #Login .main-container {
+    padding: 3rem;
+    margin-inline: 6.5rem;
+    gap: 0;
+  }
+
+  #Login h1 {
+    margin-block-end: 1rem;
+  }
+
+  #Login .main-container form {
+    margin-block-start: 1.5rem;
+    gap: 3rem;
+  }
+
+  #Login form .submit-btn {
+    margin-inline: 0;
+    width: 6.75rem;
+    align-self: center;
+  }
+}
+
+/********
+  DESKTOP
+ ********/
+@media (min-width: 992px) {
 }
