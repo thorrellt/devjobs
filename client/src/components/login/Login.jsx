@@ -37,7 +37,7 @@ const Login = () => {
   const setLoginValidity = (value) => {
     setLoginState((prevFormState) => ({
       ...prevFormState,
-      valid: false,
+      valid: value,
     }))
   }
 
@@ -88,30 +88,6 @@ const Login = () => {
     ON CLICK FUNCTIONS
    ********************/
 
-  const setFormValid = (newState) => {
-    setLoginState((prevState) => ({
-      ...prevState,
-      valid: newState,
-    }))
-  }
-
-  const onSumbitClick = (event) => {
-    event.preventDefault()
-
-    let isFormValid = true
-
-    for (const inputField in loginState) {
-      if (loginState[inputField].value === '') {
-        makeFieldInvalid(inputField)
-        isFormValid = false
-        setLoginValidity(false)
-      }
-    }
-
-    if (isFormValid) {
-      console.log('successful login')
-    }
-  }
   return (
     <main id="Login" className="flex-container">
       <div

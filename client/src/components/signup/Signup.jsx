@@ -22,6 +22,8 @@ const Signup = () => {
     valid: true,
   })
 
+  const navigate = useNavigate()
+
   const onFormChange = (event) => {
     const name = event.target.id
     const newValue = event.target.value
@@ -36,8 +38,56 @@ const Signup = () => {
     }))
   }
 
-  const formSubmit = () => {
-    console.log('user posted')
+  const setFormValid = (newState) => {
+    setLoginState((prevState) => ({
+      ...prevState,
+      valid: newState,
+    }))
+  }
+
+  const setFormValidity = (value) => {
+    setFormState((prevFormState) => ({
+      ...prevFormState,
+      valid: value,
+    }))
+  }
+
+  const makeFieldInvalid = (inputField) => {
+    setFormState((prevState) => ({
+      ...prevState,
+      [inputField]: {
+        ...prevState.inputField,
+        valid: false,
+      },
+    }))
+  }
+
+  const postUser = () => {
+    return true
+  }
+
+  const onSubmitClick = (event) => {
+    event.preventDefault()
+
+    let isFormValid = true
+
+    for (const inputField in formState) {
+      if (formState[inputField].value === '') {
+        makeFieldInvalid(inputField)
+        isFormValid = false
+      }
+    }
+
+    if (formState.password1.value !== formState.password2.value) {
+      setFormValidity(false)
+      isFormValid = false
+    }
+
+    if (isFormValid && postUser()) {
+      logIn()
+      setFormValidity(true)
+      navigate('/devjobs')
+    }
   }
 
   return (
@@ -110,7 +160,7 @@ const Signup = () => {
           </div>
 
           <button
-            onClick={formSubmit}
+            onClick={onSubmitClick}
             className={`sec-btn-light submit-btn
           ${darkMode ? 'sec-btn-dark' : 'sec-btn-light bg-white'}`}
           >
