@@ -4,6 +4,7 @@ import { App } from './App'
 import Home from './components/home/Home'
 import Job from './components/job/Job'
 import Login from './components/login/Login'
+import Signup from './components/signup/Signup'
 import './index.css'
 
 import { createBrowserRouter, RouterProvider, Route } from 'react-router-dom'
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
       {
         path: '/devjobs/login',
         element: <Login />,
+      },
+      {
+        path: '/devjobs/signup',
+        element: <Signup />,
       },
       {
         path: '*',

@@ -158,7 +158,7 @@ const Login = () => {
               value={loginState.password.value}
               className="bg-white"
             />
-            <label htmlFor="email" className="font-white">
+            <label htmlFor="password" className="font-white">
               Password
             </label>
           </div>
@@ -172,7 +172,7 @@ const Login = () => {
           </button>
         </form>
 
-        <NavLink to={`/devjobs/`} className={`font-white sign-up-link`}>
+        <NavLink to={`/devjobs/signup`} className={`font-white sign-up-link`}>
           <p className="font-white ">Sign Up</p>
         </NavLink>
       </div>
