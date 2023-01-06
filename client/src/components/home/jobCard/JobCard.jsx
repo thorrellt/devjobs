@@ -21,6 +21,7 @@ const JobCard = (props) => {
     <div
       className={`jobcard flex-container
     ${darkMode ? 'bg-blue-700' : 'bg-white'}`}
+      key={_id}
     >
       <CompanyLogo logo={logo} logoBackground={logoBackground} />
 

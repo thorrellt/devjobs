@@ -312,9 +312,9 @@ button:disabled {
   }
 }
 
-/****************
+/*************
   FORM STYLES 
- ****************/
+ *************/
 
 .form-container {
   flex-direction: column;
@@ -346,7 +346,8 @@ button:disabled {
   height: fit-content;
 }
 
-.form-container form input {
+.form-container form input,
+.form-container form select {
   margin-block-start: 0.5rem;
   padding: 0.5rem;
   border-radius: 5px;
@@ -362,9 +363,9 @@ button:disabled {
   margin-block-start: 1rem;
 }
 
-/********
-  TABLET
- ********/
+/********************
+  TABLET FORM STYLES 
+ ********************/
 @media (min-width: 680px) {
   .form-container {
     padding: 3rem;
@@ -388,9 +389,9 @@ button:disabled {
   }
 }
 
-/********
-  DESKTOP
- ********/
+/*********************
+  DESKTOP FORM STYLES 
+ *********************/
 @media (min-width: 992px) {
   .form-container {
     max-width: calc(max(50%, 48rem));
@@ -401,7 +402,8 @@ button:disabled {
   INPUT PRESETS 
  ****************/
 
-input {
+input,
+select {
   font-weight: 400;
 }
 
@@ -436,12 +438,14 @@ input {
   padding-inline-start: 1.5rem;
 }
 
-.input-container input {
+.input-container input,
+.input-container select {
   padding-inline-start: 1rem;
 }
 
 label,
-input {
+input,
+select {
   transition-duration: 100ms;
 }
 
@@ -451,16 +455,20 @@ label {
   display: block;
 }
 
-input:focus + label {
+input:focus + label,
+select:focus + label {
   opacity: 1;
 }
 
-input {
+input,
+select {
   opacity: 0.7;
 }
 
 input:active,
-input:focus {
+input:focus,
+select:active,
+select:focus {
   opacity: 1;
 }
 

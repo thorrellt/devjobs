@@ -1,0 +1,7 @@
+#Addjob {
+  min-width: 100%;
+  min-height: 60vh;
+  align-self: flex-start;
+  justify-content: center;
+  align-items: center;
+}

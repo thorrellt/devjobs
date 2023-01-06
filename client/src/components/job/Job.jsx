@@ -84,7 +84,7 @@ const Job = () => {
     reqItems = generateBulletList(job.requirements.items)
     roleItems = generateNumberList(job.role.items)
   }
-  console.log(errorMsg)
+
   return (
     <>
       {!hasLoaded && (
