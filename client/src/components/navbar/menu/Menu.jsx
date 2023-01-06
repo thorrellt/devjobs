@@ -70,7 +70,7 @@ const Menu = (props) => {
                 Saved Jobs
               </NavLink>
               <NavLink
-                to={`/devjobs/`}
+                to={`/devjobs/postjob`}
                 className={`link ${darkMode ? 'font-white' : 'font-blue-700'}`}
               >
                 Post Job

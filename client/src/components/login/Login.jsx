@@ -6,7 +6,7 @@ import './Login.css'
 const Login = () => {
   const { darkMode, screenSize, logIn } = useContext(DisplayContext)
 
-  const [loginState, setLoginState] = useState({
+  const [formState, setFormState] = useState({
     user: {
       value: '',
       valid: true,
@@ -24,7 +24,7 @@ const Login = () => {
     const name = event.target.id
     const newValue = event.target.value
 
-    setLoginState((prevFormState) => ({
+    setFormState((prevFormState) => ({
       ...prevFormState,
       [name]: {
         ...prevFormState.name,
@@ -35,14 +35,14 @@ const Login = () => {
   }
 
   const setLoginValidity = (value) => {
-    setLoginState((prevFormState) => ({
+    setFormState((prevFormState) => ({
       ...prevFormState,
       valid: value,
     }))
   }
 
   const makeFieldInvalid = (inputField) => {
-    setLoginState((prevState) => ({
+    setFormState((prevState) => ({
       ...prevState,
       [inputField]: {
         ...prevState.inputField,
@@ -53,8 +53,8 @@ const Login = () => {
 
   const checkCredentials = (event) => {
     if (
-      loginState.user.value === 'admin' &&
-      loginState.password.value === 'admin'
+      formState.user.value === 'admin' &&
+      formState.password.value === 'admin'
     ) {
       return true
     }
@@ -67,8 +67,8 @@ const Login = () => {
 
     let isFormValid = true
 
-    for (const inputField in loginState) {
-      if (loginState[inputField].value === '') {
+    for (const inputField in formState) {
+      if (formState[inputField].value === '') {
         makeFieldInvalid(inputField)
         isFormValid = false
         setLoginValidity(false)
@@ -78,7 +78,7 @@ const Login = () => {
     if (checkCredentials()) {
       logIn()
       setLoginValidity(true)
-      navigate('/devjobs')
+      navigate('/devjobs/')
     } else {
       setLoginValidity(false)
     }
@@ -95,14 +95,14 @@ const Login = () => {
       ${darkMode ? 'bg-blue-700' : 'bg-violet-500'}`}
       >
         <h1 className="font-white">Login</h1>
-        {loginState.valid == false && (
+        {formState.valid == false && (
           <p className="font-white error-text">
             Invalid Login. please try again
           </p>
         )}
         <form className="flex-container">
           <div className="input-container flex-container">
-            {loginState.user.valid === false && (
+            {formState.user.valid === false && (
               <span className="input-error font-white">
                 This field can't be empty
               </span>
@@ -112,7 +112,7 @@ const Login = () => {
               type="text"
               id="user"
               name="user"
-              value={loginState.user.value}
+              value={formState.user.value}
               className="bg-white"
             />
             <label htmlFor="user" className="font-white">
@@ -121,7 +121,7 @@ const Login = () => {
           </div>
 
           <div className="input-container flex-container">
-            {loginState.password.valid === false && (
+            {formState.password.valid === false && (
               <span className="input-error font-white">
                 Must include a password
               </span>
@@ -131,7 +131,7 @@ const Login = () => {
               type="password"
               id="password"
               name="password"
-              value={loginState.password.value}
+              value={formState.password.value}
               className="bg-white"
             />
             <label htmlFor="password" className="font-white">

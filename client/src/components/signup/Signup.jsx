@@ -86,7 +86,7 @@ const Signup = () => {
     if (isFormValid && postUser()) {
       logIn()
       setFormValidity(true)
-      navigate('/devjobs')
+      navigate('/devjobs/')
     }
   }
 

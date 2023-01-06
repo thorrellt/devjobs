@@ -1,7 +1,7 @@
 import { useState, useContext, useEffect } from 'react'
 import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { DisplayContext } from '../../context/DisplayContext'
-import './AddJob.css'
+import './PostJob.css'
 
 const AddJob = () => {
   const { darkMode, screenSize } = useContext(DisplayContext)
@@ -163,10 +163,10 @@ const AddJob = () => {
       }
     }
 
-    if (checkCredentials()) {
-      console.log('Job Added')
+    if (isFormValid) {
+      console.log('hello')
       setFormValidity(true)
-      navigate('/devjobs')
+      // navigate('/devjobs/')
     } else {
       setFormValidity(false)
     }
@@ -182,39 +182,21 @@ const AddJob = () => {
         className={`form-container flex-container
         ${darkMode ? 'bg-blue-700' : 'bg-violet-500'}`}
       >
-        <h1 className="font-white">Add Job</h1>
+        <h1 className="font-white">Post a Job</h1>
         {formState.valid == false && (
           <p className="font-white error-text">
             Please verify all fields are correct
           </p>
         )}
         <form className="flex-container" id="add-job-form">
-          {/* <div className="input-container flex-container">
-            {formState.company.valid === false && (
-              <span className="input-error font-white">
-                This field can't be empty
-              </span>
-            )}
-            <input
-              onChange={onFormChange}
-              type="text"
-              id="user"
-              name="user"
-              value={formState.company.value}
-              className="bg-white"
-            />
-            <label htmlFor="user" className="font-white">
-              Company Name
-            </label>
-          </div> */}
-
           <div className="input-container flex-container">
             <select
               name="company"
               id="company"
+              value={formState.company.value}
               form="add-job-form"
               className="bg-white"
-              onChange={onSelectChange}
+              onChange={onFormChange}
             >
               {companyOptions}
             </select>
@@ -227,9 +209,10 @@ const AddJob = () => {
             <select
               name="jobType"
               id="jobType"
+              value={formState.jobType.value}
               form="add-job-form"
               className="bg-white"
-              onChange={onSelectChange}
+              onChange={onFormChange}
             >
               {jobTypeOptions}
             </select>
@@ -241,7 +224,7 @@ const AddJob = () => {
           <div className="input-container flex-container">
             {formState.position.valid === false && (
               <span className="input-error font-white">
-                Must include a password
+                Must include a Position Title
               </span>
             )}
             <input
@@ -261,9 +244,10 @@ const AddJob = () => {
             <select
               name="location"
               id="location"
+              value={formState.location.value}
               form="add-job-form"
               className="bg-white"
-              onChange={onSelectChange}
+              onChange={onFormChange}
             >
               {locationOptions}
             </select>
@@ -277,13 +261,9 @@ const AddJob = () => {
             className={`sec-btn-light submit-btn
             ${darkMode ? 'sec-btn-dark' : 'sec-btn-light bg-white'}`}
           >
-            Add Job
+            Post Job
           </button>
         </form>
-
-        <NavLink to={`/devjobs/signup`} className={`font-white sign-up-link`}>
-          <p className="font-white ">Sign Up</p>
-        </NavLink>
       </div>
     </main>
   )
