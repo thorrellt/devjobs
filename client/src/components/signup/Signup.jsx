@@ -93,7 +93,7 @@ const Signup = () => {
   return (
     <main id="Signup" className="flex-container">
       <div
-        className={`main-container flex-container
+        className={`form-container flex-container
     ${darkMode ? 'bg-blue-700' : 'bg-violet-500'}`}
       >
         <h1 className="font-white">Sign up</h1>

@@ -91,7 +91,7 @@ const Login = () => {
   return (
     <main id="Login" className="flex-container">
       <div
-        className={`main-container flex-container
+        className={`form-container flex-container
       ${darkMode ? 'bg-blue-700' : 'bg-violet-500'}`}
       >
         <h1 className="font-white">Login</h1>
