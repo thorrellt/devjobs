@@ -4,6 +4,9 @@ import { DisplayContext } from '../../context/DisplayContext'
 import './Login.css'
 
 const Login = () => {
+  /*******
+    HOOKS
+   *******/
   const { darkMode, screenSize, logIn } = useContext(DisplayContext)
 
   const [formState, setFormState] = useState({
@@ -20,6 +23,9 @@ const Login = () => {
 
   const navigate = useNavigate()
 
+  /********************
+    ON CLICK FUNCTIONS
+   ********************/
   const onFormChange = (event) => {
     const name = event.target.id
     const newValue = event.target.value
@@ -34,7 +40,7 @@ const Login = () => {
     }))
   }
 
-  const setLoginValidity = (value) => {
+  const setLoginValidityTo = (value) => {
     setFormState((prevFormState) => ({
       ...prevFormState,
       valid: value,
@@ -51,37 +57,42 @@ const Login = () => {
     }))
   }
 
-  const checkCredentials = (event) => {
+  const areCredentialsValid = (event) => {
     if (
       formState.user.value === 'admin' &&
       formState.password.value === 'admin'
-    ) {
+    )
       return true
-    }
 
     return false
   }
 
-  const attemptLogin = (event) => {
-    event.preventDefault()
-
-    let isFormValid = true
-
+  const areInputFieldsValid = () => {
+    let valid = true
     for (const inputField in formState) {
       if (formState[inputField].value === '') {
         makeFieldInvalid(inputField)
-        isFormValid = false
-        setLoginValidity(false)
+        valid = false
       }
     }
+    return valid
+  }
 
-    if (checkCredentials()) {
+  const clickSubmit = (event) => {
+    event.preventDefault()
+    let credentialsAreValid = false
+
+    const formIsValid = areInputFieldsValid()
+    if (formIsValid) credentialsAreValid = areCredentialsValid()
+
+    if (credentialsAreValid) {
+      setLoginValidityTo(true)
       logIn()
-      setLoginValidity(true)
       navigate('/devjobs/')
-    } else {
-      setLoginValidity(false)
+      return true
     }
+
+    setLoginValidityTo(false)
   }
 
   /********************
@@ -94,13 +105,17 @@ const Login = () => {
         className={`form-container flex-container
       ${darkMode ? 'bg-blue-700' : 'bg-violet-500'}`}
       >
+        {/* error message for invalid form */}
         <h1 className="font-white">Login</h1>
         {formState.valid == false && (
           <p className="font-white error-text">
             Invalid Login. please try again
           </p>
         )}
+
+        {/* form fields */}
         <form className="flex-container">
+          {/* user name */}
           <div className="input-container flex-container">
             {formState.user.valid === false && (
               <span className="input-error font-white">
@@ -120,6 +135,7 @@ const Login = () => {
             </label>
           </div>
 
+          {/* password */}
           <div className="input-container flex-container">
             {formState.password.valid === false && (
               <span className="input-error font-white">
@@ -139,8 +155,9 @@ const Login = () => {
             </label>
           </div>
 
+          {/* login submission button */}
           <button
-            onClick={attemptLogin}
+            onClick={clickSubmit}
             className={`sec-btn-light submit-btn
           ${darkMode ? 'sec-btn-dark' : 'sec-btn-light bg-white'}`}
           >
@@ -148,6 +165,7 @@ const Login = () => {
           </button>
         </form>
 
+        {/* sign up link */}
         <NavLink to={`/devjobs/signup`} className={`font-white sign-up-link`}>
           <p className="font-white ">Sign Up</p>
         </NavLink>

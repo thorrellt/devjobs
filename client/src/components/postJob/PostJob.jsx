@@ -7,7 +7,7 @@ const AddJob = () => {
   /*******
     HOOKS
    *******/
-  const { darkMode, screenSize } = useContext(DisplayContext)
+  const { darkMode, screenSize, loggedIn } = useContext(DisplayContext)
 
   const [formState, setFormState] = useState({
     company: {

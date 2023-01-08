@@ -5,7 +5,7 @@ import Home from './components/home/Home'
 import Job from './components/job/Job'
 import Login from './components/login/Login'
 import Signup from './components/signup/Signup'
-import PostJob from './components/addjob/PostJob'
+import PostJob from './components/postJob/PostJob'
 import './index.css'
 
 import { createBrowserRouter, RouterProvider, Route } from 'react-router-dom'
