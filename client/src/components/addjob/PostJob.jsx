@@ -4,6 +4,9 @@ import { DisplayContext } from '../../context/DisplayContext'
 import './PostJob.css'
 
 const AddJob = () => {
+  /*******
+    HOOKS
+   *******/
   const { darkMode, screenSize } = useContext(DisplayContext)
 
   const [formState, setFormState] = useState({
@@ -26,9 +29,12 @@ const AddJob = () => {
     valid: true,
   })
 
-  console.log(formState)
+  const navigate = useNavigate()
 
-  const [optionsState, setOptionsState] = useState({
+  /***************************
+    DROPDOWN LISTS GENERATION
+   ***************************/
+  const dropdownSelections = {
     companies: [
       { name: '', value: '' },
       { name: 'Blogr', value: 'blogr' },
@@ -62,9 +68,9 @@ const AddJob = () => {
       'France',
       'Italy',
     ],
-  })
+  }
 
-  const companyOptions = optionsState.companies.map((company, index) => {
+  const companyOptions = dropdownSelections.companies.map((company, index) => {
     return (
       <option key={index} value={company.value}>
         {company.name}
@@ -72,7 +78,7 @@ const AddJob = () => {
     )
   })
 
-  const jobTypeOptions = optionsState.jobTypes.map((jobType, index) => {
+  const jobTypeOptions = dropdownSelections.jobTypes.map((jobType, index) => {
     return (
       <option key={index} value={jobType.value}>
         {jobType.name}
@@ -80,7 +86,7 @@ const AddJob = () => {
     )
   })
 
-  const locationOptions = optionsState.locations
+  const locationOptions = dropdownSelections.locations
     .sort()
     .map((location, index) => {
       return (
@@ -90,27 +96,12 @@ const AddJob = () => {
       )
     })
 
-  const navigate = useNavigate()
-
+  /********************
+    ON CLICK FUNCTIONS
+   ********************/
   const onFormChange = (event) => {
     const name = event.target.id
     const newValue = event.target.value
-
-    setFormState((prevFormState) => ({
-      ...prevFormState,
-      [name]: {
-        ...prevFormState.name,
-        value: newValue,
-        valid: true,
-      },
-    }))
-  }
-
-  const onSelectChange = (event) => {
-    const name = event.target.id
-    const newValue = event.target.value
-    console.log(name)
-    console.log(newValue)
 
     setFormState((prevFormState) => ({
       ...prevFormState,
@@ -139,32 +130,34 @@ const AddJob = () => {
     }))
   }
 
-  const checkCredentials = (event) => {
-    if (
-      formState.company.value === 'admin' &&
-      formState.password.value === 'admin'
-    ) {
-      return true
+  const checkInputFieldsValidity = () => {
+    let valid = true
+    for (const inputField in formState) {
+      if (formState[inputField].value === '') {
+        makeFieldInvalid(inputField)
+        valid = false
+      }
     }
+    return valid
+  }
 
-    return false
+  const attemptToPost = (job) => {
+    job ? console.log(true) : console.log(false)
   }
 
   const clickSubmit = (event) => {
     event.preventDefault()
 
-    let isFormValid = true
+    const formIsValid = checkInputFieldsValidity()
 
-    for (const inputField in formState) {
-      if (formState[inputField].value === '') {
-        makeFieldInvalid(inputField)
-        isFormValid = false
-        setFormValidity(false)
+    if (formIsValid) {
+      const validJob = {
+        company: formState.company.value,
+        contract: formState.jobType.value,
+        position: formState.position.value,
+        location: formState.location.value,
       }
-    }
-
-    if (isFormValid) {
-      console.log('hello')
+      attemptToPost(validJob)
       setFormValidity(true)
       // navigate('/devjobs/')
     } else {
@@ -172,23 +165,23 @@ const AddJob = () => {
     }
   }
 
-  /********************
-      ON CLICK FUNCTIONS
-     ********************/
-
   return (
     <main id="Addjob" className="flex-container">
       <div
         className={`form-container flex-container
         ${darkMode ? 'bg-blue-700' : 'bg-violet-500'}`}
       >
+        {/* error message for invalid form */}
         <h1 className="font-white">Post a Job</h1>
         {formState.valid == false && (
           <p className="font-white error-text">
             Please verify all fields are correct
           </p>
         )}
+
+        {/* form fields */}
         <form className="flex-container" id="add-job-form">
+          {/* company name */}
           <div className="input-container flex-container">
             <select
               name="company"
@@ -205,6 +198,7 @@ const AddJob = () => {
             </label>
           </div>
 
+          {/* job type */}
           <div className="input-container flex-container">
             <select
               name="jobType"
@@ -221,6 +215,7 @@ const AddJob = () => {
             </label>
           </div>
 
+          {/* position title */}
           <div className="input-container flex-container">
             {formState.position.valid === false && (
               <span className="input-error font-white">
@@ -240,6 +235,7 @@ const AddJob = () => {
             </label>
           </div>
 
+          {/* location */}
           <div className="input-container flex-container">
             <select
               name="location"
