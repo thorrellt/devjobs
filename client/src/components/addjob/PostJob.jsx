@@ -183,6 +183,12 @@ const AddJob = () => {
         <form className="flex-container" id="add-job-form">
           {/* company name */}
           <div className="input-container flex-container">
+            {formState.company.valid === false && (
+              <span className="input-error font-white">
+                Must include the company name
+              </span>
+            )}
+
             <select
               name="company"
               id="company"
@@ -200,6 +206,12 @@ const AddJob = () => {
 
           {/* job type */}
           <div className="input-container flex-container">
+            {formState.jobType.valid === false && (
+              <span className="input-error font-white">
+                Must include the job type
+              </span>
+            )}
+
             <select
               name="jobType"
               id="jobType"
@@ -219,9 +231,10 @@ const AddJob = () => {
           <div className="input-container flex-container">
             {formState.position.valid === false && (
               <span className="input-error font-white">
-                Must include a Position Title
+                Must include a position's title
               </span>
             )}
+
             <input
               onChange={onFormChange}
               type="text"
@@ -237,6 +250,12 @@ const AddJob = () => {
 
           {/* location */}
           <div className="input-container flex-container">
+            {formState.location.valid === false && (
+              <span className="input-error font-white">
+                Must include the location of thie position
+              </span>
+            )}
+
             <select
               name="location"
               id="location"
