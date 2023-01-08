@@ -124,7 +124,7 @@ const AddJob = () => {
     setFormState((prevState) => ({
       ...prevState,
       [inputField]: {
-        ...prevState.inputField,
+        ...prevState[inputField],
         valid: false,
       },
     }))
@@ -145,7 +145,7 @@ const AddJob = () => {
     job ? console.log(true) : console.log(false)
   }
 
-  const clickSubmit = (event) => {
+  const onSubmitClick = (event) => {
     event.preventDefault()
 
     const formIsValid = checkInputFieldsValidity()
@@ -272,7 +272,7 @@ const AddJob = () => {
           </div>
 
           <button
-            onClick={clickSubmit}
+            onClick={onSubmitClick}
             className={`sec-btn-light submit-btn
             ${darkMode ? 'sec-btn-dark' : 'sec-btn-light bg-white'}`}
           >

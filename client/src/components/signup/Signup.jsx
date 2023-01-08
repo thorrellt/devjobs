@@ -4,9 +4,12 @@ import { DisplayContext } from '../../context/DisplayContext'
 import './Signup.css'
 
 const Signup = () => {
+  /*******
+    HOOKS
+   *******/
   const { darkMode, screenSize, logIn } = useContext(DisplayContext)
 
-  const [formState, setFormState] = useState({
+  const [formState, setFormState] = useState(() => ({
     user: {
       value: '',
       valid: true,
@@ -20,10 +23,14 @@ const Signup = () => {
       valid: true,
     },
     valid: true,
-  })
+    errorMsg: '',
+  }))
 
   const navigate = useNavigate()
 
+  /********************
+    ON CLICK FUNCTIONS
+   ********************/
   const onFormChange = (event) => {
     const name = event.target.id
     const newValue = event.target.value
@@ -38,13 +45,6 @@ const Signup = () => {
     }))
   }
 
-  const setFormValid = (newState) => {
-    setLoginState((prevState) => ({
-      ...prevState,
-      valid: newState,
-    }))
-  }
-
   const setFormValidity = (value) => {
     setFormState((prevFormState) => ({
       ...prevFormState,
@@ -52,11 +52,18 @@ const Signup = () => {
     }))
   }
 
+  const updateErrorMsg = (message) => {
+    setFormState((prevFormState) => ({
+      ...prevFormState,
+      errorMsg: message,
+    }))
+  }
+
   const makeFieldInvalid = (inputField) => {
     setFormState((prevState) => ({
       ...prevState,
       [inputField]: {
-        ...prevState.inputField,
+        ...prevState[inputField],
         valid: false,
       },
     }))
@@ -66,28 +73,41 @@ const Signup = () => {
     return true
   }
 
-  const onSubmitClick = (event) => {
-    event.preventDefault()
-
-    let isFormValid = true
-
+  const areInputFieldsValid = () => {
+    let valid = true
     for (const inputField in formState) {
       if (formState[inputField].value === '') {
         makeFieldInvalid(inputField)
-        isFormValid = false
+        valid = false
       }
     }
 
-    if (formState.password1.value !== formState.password2.value) {
-      setFormValidity(false)
-      isFormValid = false
-    }
+    if (!valid) updateErrorMsg('Please complete all fields')
+    return valid
+  }
 
-    if (isFormValid && postUser()) {
+  const doPasswordsMatch = () => {
+    if (formState.password1.value === formState.password2.value) return true
+
+    updateErrorMsg('Passwords must match')
+    return false
+  }
+
+  const onSubmitClick = (event) => {
+    event.preventDefault()
+
+    const passwordsMatch = doPasswordsMatch()
+    const formIsValid = areInputFieldsValid()
+
+    if (formIsValid && passwordsMatch) {
+      postUser()
       logIn()
       setFormValidity(true)
       navigate('/devjobs/')
+      return true
     }
+
+    setFormValidity(false)
   }
 
   return (
@@ -96,16 +116,19 @@ const Signup = () => {
         className={`form-container flex-container
     ${darkMode ? 'bg-blue-700' : 'bg-violet-500'}`}
       >
+        {/* error message for invalid form */}
         <h1 className="font-white">Sign up</h1>
         {formState.valid == false && (
-          <p className="font-white error-text">Passwords must Match</p>
+          <p className="font-white error-text">{formState.errorMsg}</p>
         )}
 
+        {/* form fields */}
         <form className="flex-container">
+          {/* username field */}
           <div className="input-container flex-container">
             {formState.user.valid === false && (
               <span className="input-error font-white">
-                This field can't be empty
+                Must enter a user name
               </span>
             )}
             <input
@@ -121,6 +144,7 @@ const Signup = () => {
             </label>
           </div>
 
+          {/* password field #1 */}
           <div className="input-container flex-container">
             {formState.password1.valid === false && (
               <span className="input-error font-white">
@@ -140,6 +164,7 @@ const Signup = () => {
             </label>
           </div>
 
+          {/* password field #2 */}
           <div className="input-container flex-container">
             {formState.password2.valid === false && (
               <span className="input-error font-white">

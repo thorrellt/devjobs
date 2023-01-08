@@ -51,7 +51,7 @@ const Login = () => {
     setFormState((prevState) => ({
       ...prevState,
       [inputField]: {
-        ...prevState.inputField,
+        ...prevState[inputField],
         valid: false,
       },
     }))
@@ -78,7 +78,7 @@ const Login = () => {
     return valid
   }
 
-  const clickSubmit = (event) => {
+  const onSubmitClick = (event) => {
     event.preventDefault()
     let credentialsAreValid = false
 
@@ -94,10 +94,6 @@ const Login = () => {
 
     setLoginValidityTo(false)
   }
-
-  /********************
-    ON CLICK FUNCTIONS
-   ********************/
 
   return (
     <main id="Login" className="flex-container">
@@ -157,7 +153,7 @@ const Login = () => {
 
           {/* login submission button */}
           <button
-            onClick={clickSubmit}
+            onClick={onSubmitClick}
             className={`sec-btn-light submit-btn
           ${darkMode ? 'sec-btn-dark' : 'sec-btn-light bg-white'}`}
           >
