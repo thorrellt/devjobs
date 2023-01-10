@@ -42,7 +42,7 @@ const DisplayContextProvider = ({ children }) => {
     USER INFO
    ***********/
   const [user, setUser] = useState({
-    loggedIn: false,
+    loggedIn: true,
     name: 'John Doe',
   })
 
