@@ -37,7 +37,7 @@ const companyData = {
   },
   officeLite: {
     name: 'Office Lite',
-    logo: 'officeLite.svg',
+    logo: 'officelite.svg',
     logoBackground: 'hsl(227, 62%, 48%)',
   },
   pod: { name: 'Pod', logo: 'pod.svg', logoBackground: 'hsl(216, 46%, 14%)' },
