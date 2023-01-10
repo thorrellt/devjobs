@@ -15,9 +15,6 @@ const Menu = (props) => {
     loggedIn,
   } = props
 
-  console.log(loggedIn)
-  console.log('userName:' + userName)
-
   return (
     <>
       <div className={`bg-screen`}></div>
@@ -77,7 +74,7 @@ const Menu = (props) => {
               </NavLink>
               <NavLink
                 to={`/devjobs/`}
-                onClick={logOut}
+                // onClick={logOut}
                 className={`link ${darkMode ? 'font-white' : 'font-blue-700'}`}
               >
                 Log Out

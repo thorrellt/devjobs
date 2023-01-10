@@ -31,7 +31,6 @@ const AddJob = () => {
   })
 
   const navigate = useNavigate()
-  console.log(formState)
   /***************************
     DROPDOWN LISTS GENERATION
    ***************************/
@@ -138,10 +137,7 @@ const AddJob = () => {
   }
 
   const attemptToPost = async (job) => {
-    await postJob(job).then((res) => {
-      const response = res
-      console.log(`PostJob response:: ${res}`)
-    })
+    await postJob(job).then(() => navigate('/devjobs/'))
   }
 
   const onSubmitClick = (event) => {
@@ -158,7 +154,6 @@ const AddJob = () => {
       }
       attemptToPost(validJob)
       setFormValidity(true)
-      // navigate('/devjobs/')
     } else {
       setFormValidity(false)
     }
