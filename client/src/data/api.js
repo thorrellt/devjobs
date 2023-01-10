@@ -10,10 +10,10 @@ const lorem = new LoremIpsum({
   },
   wordsPerSentence: {
     max: 12,
-    min: 4,
+    min: 7,
   },
 })
-console.log(lorem.generateParagraphs(3))
+
 import { getLocalJob, getLocalJobs } from './localDataCalls'
 
 const formatFilter = (filter) => {
@@ -78,18 +78,29 @@ export const getJob = async (id) => {
   }
 }
 
+const generateItem = () => {
+  const numOfItems = Math.floor(Math.random() * 5) + 2
+  var items = []
+  for (let i = 0; i < numOfItems; i++) {
+    items[i] = lorem.generateSentences(1)
+  }
+  return items
+}
+
+// var items = generateItem()
+// console.log(items)
+
 const generateJob = (jobData) => {
-  job = {
-    company: 'Creative',
+  var job = {
+    company: jobData.company,
     logo: 'creative.svg',
     logoBackground: 'hsl(295, 55%, 21%)',
-    position: 'Junior Software Developer',
+    position: jobData.position,
     postedAt: '1d ago',
-    contract: 'Full Time',
-    location: 'France',
+    contract: jobData.contract,
+    location: jobData.location,
     requirements: {
-      content:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fusce id velit ut tortor pretium viverra. Vestibulum mattis ullamcorper velit sed ullamcorper morbi tincidunt ornare. Auctor augue mauris augue neque gravida.',
+      content: lorem.generateParagraphs(1),
       items: [
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
         '5+ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -110,7 +121,16 @@ const generateJob = (jobData) => {
     roleDescription:
       'Creative is seeking a Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sit amet aliquam id diam maecenas ultricies.',
   }
+
+  console.log(job)
 }
+const validJob = {
+  company: 'Rando Inc',
+  contract: 'Full Time',
+  position: 'Full Stack Dev',
+  location: 'France',
+}
+generateJob(validJob)
 
 export const postJob = async (id) => {
   try {
