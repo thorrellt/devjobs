@@ -30,7 +30,7 @@ const AddJob = () => {
   })
 
   const navigate = useNavigate()
-
+  console.log(formState)
   /***************************
     DROPDOWN LISTS GENERATION
    ***************************/
@@ -50,12 +50,7 @@ const AddJob = () => {
       { name: 'Typemaster', value: 'typemaster' },
       { name: 'Vector', value: 'vector' },
     ],
-    jobTypes: [
-      { name: '', value: '' },
-      { name: 'Full Time', value: 'fullTime' },
-      { name: 'Part Time', value: 'partTime' },
-      { name: 'Freelance', value: 'freelance' },
-    ],
+    jobTypes: ['', 'Full Time', 'Part Time', 'Freelance'],
     locations: [
       '',
       'United Kingdom',
@@ -80,8 +75,8 @@ const AddJob = () => {
 
   const jobTypeOptions = dropdownSelections.jobTypes.map((jobType, index) => {
     return (
-      <option key={index} value={jobType.value}>
-        {jobType.name}
+      <option key={index} value={jobType}>
+        {jobType}
       </option>
     )
   })
