@@ -2,6 +2,7 @@ import { useState, useContext, useEffect } from 'react'
 import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { DisplayContext } from '../../context/DisplayContext'
 import './PostJob.css'
+import { postJob } from '../../data/api'
 
 const AddJob = () => {
   /*******
@@ -136,8 +137,11 @@ const AddJob = () => {
     return valid
   }
 
-  const attemptToPost = (job) => {
-    job ? console.log(true) : console.log(false)
+  const attemptToPost = async (job) => {
+    await postJob(job).then((res) => {
+      const response = res
+      console.log(`PostJob response:: ${res}`)
+    })
   }
 
   const onSubmitClick = (event) => {

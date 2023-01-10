@@ -177,7 +177,7 @@ const generateJob = (jobData) => {
     roleDescription: lorem.generateParagraphs(1),
   }
 
-  console.log(job)
+  return job
 }
 const validJob = {
   company: 'blogr',
@@ -187,21 +187,14 @@ const validJob = {
 }
 generateJob(validJob)
 
-export const postJob = async (id) => {
+export const postJob = async (job) => {
+  const fullJob = generateJob(job)
   try {
-    try {
-      const response = await axios.get(currURL + '/jobs/' + id)
-      return response.data.job
-    } catch (error) {
-      const job = getLocalJob(id)
-      if (job.length === 0) {
-        throw new Error('no record found matching this ID')
-      }
-      return job
-    }
+    const response = await axios.post(currURL + '/jobs/', fullJob)
+    console.log(response)
+    return response
   } catch (error) {
-    // console.log('error thrown')
-    // console.log(error.message)
+    console.log(error.message)
     return error.message
   }
 }
