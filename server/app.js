@@ -10,6 +10,7 @@ const cors = require('cors')
 const express = require('express')
 const app = express()
 const jobs = require('./routes/jobs')
+const user = require('./routes/user')
 const connectDB = require('./db/connect')
 
 const notFound = require('./middleware/not-found')
@@ -30,6 +31,7 @@ app.use(xss())
 
 // routes
 app.use('/api/v1/jobs', jobs)
+app.use('/api/v1/user', user)
 
 app.use(notFound)
 app.use(errorMiddleware)

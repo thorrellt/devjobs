@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 
-const User = require('../models/user')
+const User = require('../models/User')
 
 exports.user_signup = (req, res, next) => {
   User.find({ name: req.body.name })
@@ -10,7 +10,7 @@ exports.user_signup = (req, res, next) => {
     .then((user) => {
       if (user.length >= 1) {
         return res.status(409).json({
-          message: 'Mail exists',
+          message: 'User name exists',
         })
       } else {
         bcrypt.hash(req.body.password, 10, (err, hash) => {
