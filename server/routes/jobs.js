@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const cors = require('cors')
+const checkAuth = require('../middleware/check-auth')
 
 var corsOptions = {
   origin: '*',

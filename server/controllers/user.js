@@ -1,7 +1,6 @@
 const mongoose = require('mongoose')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
-// require('dotenv').config()
 
 const User = require('../models/User')
 
@@ -89,6 +88,14 @@ exports.user_login = (req, res, next) => {
         error: err,
       })
     })
+}
+
+exports.user_activeAuth = async (req, res) => {
+  console.log(`activeAuth req rec'd`)
+
+  res.status(200).json({
+    message: 'Auth successful',
+  })
 }
 
 exports.user_delete = (req, res, next) => {
