@@ -35,18 +35,18 @@ const Page = () => {
             }
             if (res === 401) {
               console.log('logged out')
-              // logOut()
+              logOut()
             }
           })
           .catch(() => {
             console.log('logged out')
-            // logOut()
+            logOut()
           })
       }
 
       checkLogin()
     } else {
-      // logOut()
+      logOut()
     }
   }, [])
 
