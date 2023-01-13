@@ -48,9 +48,11 @@ const DisplayContextProvider = ({ children }) => {
 
   const logOut = () => {
     setUser((prevUser) => ({
-      ...prevUser,
+      name: '',
       loggedIn: false,
     }))
+    localStorage.removeItem('token')
+    localStorage.removeItem('userName')
   }
 
   const logIn = (user) => {
