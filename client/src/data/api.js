@@ -94,4 +94,20 @@ export const loginUser = async (user) => {
     return err
   }
 }
-const test = loginUser({ name: 'userName', password: 'password' })
+
+export const isActiveAuth = async (user) => {
+  try {
+    const token = localStorage.getItem('token')
+    const res = await axios.get(currURL + '/user/activeAuth', {
+      headers: {
+        authorization: `Bearer ${token}`,
+      },
+    })
+    console.log(res)
+    console.log('res statuses: ' + res.request.status)
+    return res.request.status
+  } catch (err) {
+    console.log(err.response)
+    return err.response
+  }
+}

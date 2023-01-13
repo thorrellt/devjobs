@@ -64,6 +64,13 @@ const DisplayContextProvider = ({ children }) => {
     localStorage.setItem('userName', user.name)
   }
 
+  const setLoggedIn = () => {
+    setUser(() => ({
+      name: localStorage.getItem('userName'),
+      loggedIn: true,
+    }))
+  }
+
   return (
     <DisplayContext.Provider
       value={{
@@ -73,6 +80,7 @@ const DisplayContextProvider = ({ children }) => {
         user: user,
         logOut: logOut,
         logIn: logIn,
+        setLoggedIn: setLoggedIn,
       }}
     >
       {children}

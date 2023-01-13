@@ -9,7 +9,7 @@ router.post('/signup', UserController.user_signup)
 
 router.post('/login', UserController.user_login)
 
-router.get('/activeAuth', UserController.user_activeAuth)
+router.get('/activeAuth', checkAuth, UserController.user_activeAuth)
 
 router.delete('/:userId', checkAuth, UserController.user_delete)
 
