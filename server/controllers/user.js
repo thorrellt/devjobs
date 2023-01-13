@@ -1,10 +1,12 @@
 const mongoose = require('mongoose')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
+// require('dotenv').config()
 
 const User = require('../models/User')
 
 exports.user_signup = (req, res, next) => {
+  console.log('user sign up pinged')
   User.find({ name: req.body.name })
     .exec()
     .then((user) => {

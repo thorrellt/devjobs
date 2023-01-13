@@ -9,8 +9,11 @@ import {
 
 const localURL = 'http://localhost:5000/api/v1'
 const prodURL = 'https://devjobs-api-08.herokuapp.com/api/v1'
-const currURL = prodURL
+const currURL = localURL
 
+/***********
+  JOB CALLS 
+ ***********/
 export const getJobs = async (filter) => {
   let jobFilters = formatFilter(filter)
 
@@ -56,8 +59,27 @@ export const postJob = async (job) => {
   const fullJob = generateJob(job)
   try {
     const response = await axios.post(currURL + '/jobs/', fullJob)
+    console.log(response)
     return response
   } catch (error) {
     return error.message
   }
 }
+
+/***********
+  USER CALLS 
+ ***********/
+
+export const postUser = async (user) => {
+  try {
+    const res = await axios.post(currURL + '/user/signup', user)
+    if (res.request.status === 409) {
+      throw res
+    }
+    return res.request.status
+  } catch (err) {
+    return err.response.status
+  }
+}
+
+// postUser({ name: 'John Doe', password: 'password' })

@@ -1,6 +1,7 @@
 import { useState, useContext, useEffect } from 'react'
 import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { DisplayContext } from '../../context/DisplayContext'
+import { postUser } from '../../data/api'
 import './Signup.css'
 
 const Signup = () => {
@@ -69,10 +70,6 @@ const Signup = () => {
     }))
   }
 
-  const postUser = () => {
-    return true
-  }
-
   const areInputFieldsValid = () => {
     let valid = true
     for (const inputField in formState) {
@@ -93,21 +90,35 @@ const Signup = () => {
     return false
   }
 
-  const onSubmitClick = (event) => {
+  const onSubmitClick = async (event) => {
     event.preventDefault()
 
     const passwordsMatch = doPasswordsMatch()
     const formIsValid = areInputFieldsValid()
 
     if (formIsValid && passwordsMatch) {
-      postUser()
-      logIn()
-      setFormValidity(true)
-      navigate('/devjobs/')
-      return true
-    }
+      await postUser({
+        name: formState.user.value,
+        password: formState.password1.value,
+      })
+        .then((res) => {
+          if (res === 201) {
+            setFormValidity(true)
+            navigate('/devjobs/')
+          }
 
-    setFormValidity(false)
+          if (res === 409) {
+            updateErrorMsg('User name already exist')
+            setFormValidity(false)
+          }
+        })
+        .catch(() => {
+          updateErrorMsg('There was an error signing up')
+          setFormValidity(false)
+        })
+    } else {
+      setFormValidity(false)
+    }
   }
 
   return (
