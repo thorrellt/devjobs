@@ -43,7 +43,7 @@ const DisplayContextProvider = ({ children }) => {
    ***********/
   const [user, setUser] = useState({
     loggedIn: false,
-    name: 'John Doe',
+    name: '',
   })
 
   const logOut = () => {
@@ -53,11 +53,13 @@ const DisplayContextProvider = ({ children }) => {
     }))
   }
 
-  const logIn = () => {
-    setUser((prevUser) => ({
-      ...prevUser,
+  const logIn = (user) => {
+    setUser(() => ({
+      name: user.name,
       loggedIn: true,
     }))
+    localStorage.setItem('token', user.token)
+    localStorage.setItem('userName', user.name)
   }
 
   return (

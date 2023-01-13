@@ -47,6 +47,7 @@ exports.user_signup = (req, res, next) => {
 }
 
 exports.user_login = (req, res, next) => {
+  console.log(`login rec'd for ${req.body.name}`)
   User.find({ name: req.body.name })
     .exec()
     .then((user) => {

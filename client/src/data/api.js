@@ -82,4 +82,16 @@ export const postUser = async (user) => {
   }
 }
 
-// postUser({ name: 'John Doe', password: 'password' })
+export const loginUser = async (user) => {
+  try {
+    const res = await axios.post(currURL + '/user/login', user)
+
+    console.log(res.request.status)
+    console.log('token: ' + res.data.token)
+
+    return res
+  } catch (err) {
+    return err
+  }
+}
+const test = loginUser({ name: 'userName', password: 'password' })

@@ -1,6 +1,7 @@
 import { useState, useContext, useEffect } from 'react'
 import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { DisplayContext } from '../../context/DisplayContext'
+import { loginUser } from '../../data/api'
 import './Login.css'
 
 const Login = () => {
@@ -19,6 +20,7 @@ const Login = () => {
       valid: true,
     },
     valid: true,
+    errorMsg: '',
   })
 
   const navigate = useNavigate()
@@ -78,18 +80,41 @@ const Login = () => {
     return valid
   }
 
-  const onSubmitClick = (event) => {
+  const updateErrorMsg = (message) => {
+    setFormState((prevFormState) => ({
+      ...prevFormState,
+      errorMsg: message,
+    }))
+  }
+
+  const onSubmitClick = async (event) => {
     event.preventDefault()
     let credentialsAreValid = false
 
     const formIsValid = areInputFieldsValid()
-    if (formIsValid) credentialsAreValid = areCredentialsValid()
 
-    if (credentialsAreValid) {
-      setLoginValidityTo(true)
-      logIn()
-      navigate('/devjobs/')
-      return true
+    if (formIsValid) {
+      await loginUser({
+        name: formState.user.value,
+        password: formState.password.value,
+      }).then((res) => {
+        const status = res.request.status
+        console.log('status:  ' + status)
+        if (status === 200) {
+          logIn({ name: formState.user.value, token: res.data.token })
+          setLoginValidityTo(true)
+          navigate('/devjobs/')
+          return true
+        }
+
+        if (status === 401) {
+          updateErrorMsg('Authorization Failed')
+        }
+
+        if (status === 500) {
+          updateErrorMsg('Server Error')
+        }
+      })
     }
 
     setLoginValidityTo(false)
