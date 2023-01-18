@@ -6,44 +6,55 @@ import Searchbar from './searchbar/Searchbar'
 import { getJobs } from '../../data/api'
 
 const Home = (props) => {
+  /*******
+    HOOKS
+   *******/
   const { darkMode, screenSize } = useContext(DisplayContext)
+
   const [filters, setFilters] = useState({
     position: '',
     location: '',
     fulltime: false,
   })
-
   const [allJobs, setAllJobs] = useState([])
   const [isLocal, setIsLocal] = useState(true)
   const [hasLoaded, setHasLoaded] = useState()
   let jobCards = []
 
+  /***********
+    API CALLS
+   ***********/
   const fetchJobs = async (filter) => {
     await getJobs(filter).then((res) => {
-      const response = res
       setAllJobs(res.jobs)
       setIsLocal(res.isLocal)
       setHasLoaded(true)
     })
   }
-  useEffect(() => {
-    fetchJobs()
-  }, [])
-
-  useEffect(() => {
-    jobCards = allJobs.map((jobData) => {
-      return <JobCard jobData={jobData} key={jobData.id} />
-    })
-  }, [allJobs])
 
   const updateJobs = () => {
     fetchJobs(filters)
   }
 
-  if (hasLoaded) {
-    jobCards = allJobs.map((jobData) => {
+  useEffect(() => {
+    fetchJobs()
+  }, [])
+
+  /***************
+    CARD CREATION
+   ***************/
+  const generateJobCards = () => {
+    return allJobs.map((jobData) => {
       return <JobCard jobData={jobData} key={jobData.id} />
     })
+  }
+
+  useEffect(() => {
+    jobCards = generateJobCards()
+  }, [allJobs])
+
+  if (hasLoaded) {
+    jobCards = generateJobCards()
   }
 
   return (
