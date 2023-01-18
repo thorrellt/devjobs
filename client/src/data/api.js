@@ -49,8 +49,6 @@ export const getJob = async (id) => {
       return job
     }
   } catch (error) {
-    // console.log('error thrown')
-    // console.log(error.message)
     return error.message
   }
 }
@@ -59,7 +57,6 @@ export const postJob = async (job) => {
   const fullJob = generateJob(job)
   try {
     const response = await axios.post(currURL + '/jobs/', fullJob)
-    console.log(response)
     return response
   } catch (error) {
     return error.message
@@ -85,10 +82,6 @@ export const postUser = async (user) => {
 export const loginUser = async (user) => {
   try {
     const res = await axios.post(currURL + '/user/login', user)
-
-    console.log(res.request.status)
-    console.log('token: ' + res.data.token)
-
     return res
   } catch (err) {
     return err
@@ -103,11 +96,8 @@ export const isActiveAuth = async (user) => {
         authorization: `Bearer ${token}`,
       },
     })
-    console.log(res)
-    console.log('res statuses: ' + res.request.status)
     return res.request.status
   } catch (err) {
-    console.log(err.response)
     return err.response
   }
 }
