@@ -43,7 +43,7 @@ const AddJob = () => {
       { name: 'Crowdfund', value: 'crowdfund' },
       { name: 'Maker', value: 'maker' },
       { name: 'Mastercraft', value: 'mastercraft' },
-      { name: 'Office Lite', value: 'officeLite' },
+      { name: 'Office Lite', value: 'officelite' },
       { name: 'Pod', value: 'pod' },
       { name: 'Pomodoro', value: 'pomodoro' },
       { name: 'Scoot', value: 'scoot' },
