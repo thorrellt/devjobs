@@ -55,8 +55,21 @@ export const getJob = async (id) => {
 
 export const postJob = async (job) => {
   const fullJob = generateJob(job)
+  const token = localStorage.getItem('token')
+  // const res = await axios.get(currURL + '/user/activeAuth', {
+  //   headers: {
+  //     authorization: `Bearer ${token}`,
+  //   },
+  // })
   try {
-    const response = await axios.post(currURL + '/jobs/', fullJob)
+    const response = await axios({
+      method: 'post',
+      url: currURL + '/jobs/',
+      data: fullJob,
+      headers: {
+        authorization: `Bearer ${token}`,
+      },
+    })
     return response
   } catch (error) {
     return error.message
