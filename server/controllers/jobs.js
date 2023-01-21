@@ -42,7 +42,7 @@ const createJob = async (req, res) => {
 const deleteJob = async (req, res) => {
   const deleteRequestParams = {
     _id: req.params.id,
-    userId: 'req.userData.userId',
+    userId: req.userData.userId,
     canPatch: true,
   }
 
@@ -50,7 +50,7 @@ const deleteJob = async (req, res) => {
 
   if (!job) {
     res.status(404).json({
-      error: `No task with id : ${jobID} or this entry cannot be deleted`,
+      error: `No task with id : ${req.params.id} or this entry cannot be deleted`,
     })
   } else {
     res.status(200).json({ job })

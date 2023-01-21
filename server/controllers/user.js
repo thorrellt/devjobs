@@ -101,6 +101,33 @@ exports.user_activeAuth = async (req, res) => {
   })
 }
 
+exports.addFavorite = async (req, res, next) => {
+  console.log('jobID:: ' + req.params.jobId)
+  console.log('userId:: ' + req.userData.userId)
+  const userId = req.userData.userId
+  const jobID = req.params.jobId
+
+  // Retrieve document
+  const user = await User.findOne({ _id: userId })
+
+  if (!user.favorites.includes(jobID)) {
+    user.favorites.push(jobID)
+    await user.save().then((result) => {
+      res.status(201).json({
+        jobId: req.params.jobId,
+        userId: req.userData.userId,
+        message: `${jobID} added`,
+      })
+    })
+  } else {
+    res.status(400).json({
+      jobId: req.params.jobId,
+      userId: req.userData.userId,
+      message: `${jobID} already exist`,
+    })
+  }
+}
+
 exports.user_delete = (req, res, next) => {
   User.remove({ _id: req.params.userId })
     .exec()
