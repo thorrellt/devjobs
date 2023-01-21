@@ -40,17 +40,21 @@ const createJob = async (req, res) => {
 }
 
 const deleteJob = async (req, res) => {
-  const { id: jobID } = req.params
-  const job = await Job.findOneAndDelete({ _id: jobID, canPatch: true })
-
-  if (!job) {
-    throw new CustomAPIError(
-      `No task with id : ${jobID} or this entry cannot be deleted`,
-      404
-    )
+  const deleteRequestParams = {
+    _id: req.params.id,
+    userId: 'req.userData.userId',
+    canPatch: true,
   }
 
-  res.status(200).json({ job })
+  const job = await Job.findOneAndDelete(deleteRequestParams)
+
+  if (!job) {
+    res.status(404).json({
+      error: `No task with id : ${jobID} or this entry cannot be deleted`,
+    })
+  } else {
+    res.status(200).json({ job })
+  }
 }
 
 const updateJob = async (req, res) => {

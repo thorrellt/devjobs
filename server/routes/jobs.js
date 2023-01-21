@@ -28,6 +28,6 @@ router
   .route('/:id')
   .get(cors(corsOptions), getJob)
   .patch(cors(corsOptions), updateJob)
-  .delete(cors(corsOptions), deleteJob)
+  .delete(cors(corsOptions), checkAuth, deleteJob)
 
 module.exports = router
