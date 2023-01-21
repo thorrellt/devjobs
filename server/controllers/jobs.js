@@ -31,7 +31,10 @@ const getJob = async (req, res) => {
 }
 
 const createJob = async (req, res) => {
-  const job = await Job.create(req.body)
+  const jobData = req.body
+  jobData.userId = req.userData.userId
+  console.log(jobData)
+  const job = await Job.create(jobData)
   res.status(201).json({ job })
   // res.json(req.body)
 }

@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
+const jwt_decode = require('jwt-decode')
 
 const User = require('../models/User')
 
@@ -93,6 +94,7 @@ exports.user_login = (req, res, next) => {
 
 exports.user_activeAuth = async (req, res) => {
   console.log(`activeAuth req rec'd`)
+  console.log(req.userData)
 
   res.status(200).json({
     message: 'Auth successful',

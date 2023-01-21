@@ -60,6 +60,11 @@ const JobSchema = new mongoose.Schema({
     type: Boolean,
     default: true,
   },
+  userId: {
+    type: String,
+    required: [true, 'must include userId'],
+    trim: true,
+  },
 })
 
 module.exports = mongoose.model('Job', JobSchema)

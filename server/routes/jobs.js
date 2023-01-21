@@ -19,7 +19,7 @@ const {
 router
   .route('/')
   .get(cors(corsOptions), getAllJobs)
-  .post(cors(corsOptions), createJob)
+  .post(cors(corsOptions), checkAuth, createJob)
 
 // router.get('/', cors(corsOptions), getAllJobs)
 // router.post('/', cors(corsOptions), createJob)
