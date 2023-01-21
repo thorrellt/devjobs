@@ -35,7 +35,7 @@ const companyData = {
     logo: 'mastercraft.svg',
     logoBackground: 'hsl(0, 0%, 12%)',
   },
-  officeLite: {
+  officelite: {
     name: 'Office Lite',
     logo: 'officelite.svg',
     logoBackground: 'hsl(227, 62%, 48%)',
