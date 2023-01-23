@@ -95,12 +95,23 @@ exports.user_login = (req, res, next) => {
 }
 
 exports.user_activeAuth = async (req, res) => {
-  console.log(`activeAuth req rec'd`)
-  console.log(req.userData)
+  // console.log(`activeAuth req rec'd`)
+  // console.log(req.userData)
 
-  res.status(200).json({
-    message: 'Auth successful',
-  })
+  User.find({ name: req.userData.name })
+    .exec()
+    .then((user) => {
+      console.log(user)
+      res.status(200).json({
+        message: 'Auth successful',
+        _id: user[0]._id,
+        name: user[0].name,
+        favorites: user[0].favorites,
+      })
+    })
+  // res.status(200).json({
+  //   message: 'Auth successful',
+  // })
 }
 
 exports.addFavorite = async (req, res, next) => {

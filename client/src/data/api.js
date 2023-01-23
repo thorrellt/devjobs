@@ -104,7 +104,7 @@ export const isActiveAuth = async (user) => {
         authorization: `Bearer ${token}`,
       },
     })
-    return res.request.status
+    return res.request
   } catch (err) {
     return err.response
   }
