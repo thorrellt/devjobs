@@ -44,6 +44,7 @@ const DisplayContextProvider = ({ children }) => {
   const [user, setUser] = useState({
     loggedIn: false,
     name: '',
+    favorites: [],
   })
 
   const logOut = () => {

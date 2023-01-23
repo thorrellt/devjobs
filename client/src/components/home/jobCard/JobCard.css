@@ -19,6 +19,12 @@
 .jobcard .posted-at {
 }
 
+.jobcard .star {
+  position: absolute;
+  right: 10%;
+  top: 10%;
+}
+
 .jobcard .divider {
   width: 4px;
   height: 4px;

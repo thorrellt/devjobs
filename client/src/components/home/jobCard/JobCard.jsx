@@ -5,7 +5,7 @@ import { NavLink, useLocation } from 'react-router-dom'
 import './JobCard.css'
 
 const JobCard = (props) => {
-  const { darkMode } = useContext(DisplayContext)
+  const { darkMode, user } = useContext(DisplayContext)
   const {
     _id: _id,
     company,
@@ -17,6 +17,10 @@ const JobCard = (props) => {
     location,
   } = props.jobData
 
+  const [isFav, setIsFav] = useState(false)
+
+  const star = isFav ? `bi bi-star-fill` : `bi bi-star`
+
   return (
     <div
       className={`jobcard flex-container
@@ -24,6 +28,14 @@ const JobCard = (props) => {
       key={_id}
     >
       <CompanyLogo logo={logo} logoBackground={logoBackground} />
+
+      {user.loggedIn && (
+        <i
+          className={`${star} star ${
+            darkMode ? 'font-white' : 'font-blue-700'
+          }`}
+        />
+      )}
 
       <div className="header flex-container">
         <div className="posted-at">

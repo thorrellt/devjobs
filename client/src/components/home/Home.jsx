@@ -40,6 +40,10 @@ const Home = (props) => {
     fetchJobs()
   }, [])
 
+  if (allJobs[0]) {
+    console.log(allJobs[0]._id)
+  }
+
   /***************
     CARD CREATION
    ***************/
