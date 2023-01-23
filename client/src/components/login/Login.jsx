@@ -101,7 +101,12 @@ const Login = () => {
         const status = res.request.status
         console.log('status:  ' + status)
         if (status === 200) {
-          logIn({ name: formState.user.value, token: res.data.token })
+          console.log(res.data)
+          logIn({
+            name: formState.user.value,
+            favorites: res.data.favorites,
+            token: res.data.token,
+          })
           setLoginValidityTo(true)
           navigate('/devjobs/')
           return true

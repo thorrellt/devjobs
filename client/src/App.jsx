@@ -29,11 +29,14 @@ const Page = () => {
         await isActiveAuth({ token: token })
           .then((res) => {
             console.log('res:: ' + res)
-            if (res === 200) {
+            const favorites = JSON.parse(res.response).favorites
+            console.log(favorites)
+            if (res.status === 200) {
               console.log('logged in')
               setLoggedIn()
+              localStorage.setItem('favorites', favorites)
             }
-            if (res === 401) {
+            if (res.status === 401) {
               console.log('logged out')
               logOut()
             }

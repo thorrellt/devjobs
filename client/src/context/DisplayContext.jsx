@@ -59,15 +59,18 @@ const DisplayContextProvider = ({ children }) => {
   const logIn = (user) => {
     setUser(() => ({
       name: user.name,
+      favorites: user.favorites,
       loggedIn: true,
     }))
     localStorage.setItem('token', user.token)
     localStorage.setItem('userName', user.name)
+    localStorage.setItem('favorites', user.favorites)
   }
 
   const setLoggedIn = () => {
     setUser(() => ({
       name: localStorage.getItem('userName'),
+      favorites: localStorage.getItem('favorites'),
       loggedIn: true,
     }))
   }

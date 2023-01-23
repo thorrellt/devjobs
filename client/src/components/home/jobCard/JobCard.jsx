@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react'
+import { useState, useContext, useEffect } from 'react'
 import { DisplayContext } from '../../../context/DisplayContext'
 import CompanyLogo from '../../companyLogo/CompanyLogo'
 import { NavLink, useLocation } from 'react-router-dom'
@@ -20,6 +20,12 @@ const JobCard = (props) => {
   const [isFav, setIsFav] = useState(false)
 
   const star = isFav ? `bi bi-star-fill` : `bi bi-star`
+
+  useEffect(() => {
+    if (user.favorites) {
+      setIsFav(user.favorites.includes(_id))
+    }
+  }, [isFav])
 
   return (
     <div
