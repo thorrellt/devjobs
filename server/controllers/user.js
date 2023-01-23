@@ -73,9 +73,11 @@ exports.user_login = (req, res, next) => {
               expiresIn: '1h',
             }
           )
+          console.log(user[0])
           return res.status(200).json({
-            name: user.name,
-            message: 'Auth successfuls',
+            name: user[0].name,
+            favorites: user[0].favorites,
+            message: 'Auth successful',
             token: token,
           })
         }
