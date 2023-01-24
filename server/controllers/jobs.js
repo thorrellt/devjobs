@@ -1,5 +1,6 @@
 const Job = require('../models/Job')
 const { createCustomError, CustomAPIError } = require('../errors/custom-error')
+
 const getAllJobs = async (req, res) => {
   /**
    * SEARCH FILTER SETUP

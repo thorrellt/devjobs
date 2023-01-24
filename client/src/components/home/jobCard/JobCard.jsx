@@ -3,6 +3,7 @@ import { DisplayContext } from '../../../context/DisplayContext'
 import CompanyLogo from '../../companyLogo/CompanyLogo'
 import { NavLink, useLocation } from 'react-router-dom'
 import './JobCard.css'
+import { addFavorite, deleteFavorite } from '../../../data/api'
 
 const JobCard = (props) => {
   const { darkMode, user } = useContext(DisplayContext)
@@ -27,6 +28,18 @@ const JobCard = (props) => {
     }
   }, [isFav])
 
+  const onFavClick = async () => {
+    if (isFav) {
+      const favDeleted = await deleteFavorite(_id).then((response) => {
+        console.log('favDeleted::' + response)
+      })
+    } else {
+      await addFavorite(_id).then((res) => {
+        console.log('favAdded::' + res)
+      })
+    }
+  }
+
   return (
     <div
       className={`jobcard flex-container
@@ -40,6 +53,7 @@ const JobCard = (props) => {
           className={`${star} star ${
             darkMode ? 'font-white' : 'font-blue-700'
           }`}
+          onClick={onFavClick}
         />
       )}
 

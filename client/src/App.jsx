@@ -30,7 +30,6 @@ const Page = () => {
           .then((res) => {
             console.log('res:: ' + res)
             const favorites = JSON.parse(res.response).favorites
-            console.log(favorites)
             if (res.status === 200) {
               console.log('logged in')
               setLoggedIn()

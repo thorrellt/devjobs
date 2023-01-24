@@ -116,36 +116,42 @@ export const isActiveAuth = async (user) => {
 
 export const addFavorite = async (jobId) => {
   const token = localStorage.getItem('token')
+
   try {
-    const response = await axios({
+    const res = await axios({
       method: 'patch',
       url: currURL + '/user/add_favorite/' + jobId,
       headers: {
         authorization: `Bearer ${token}`,
       },
     })
-    return true
+
+    console.log('fav call axios res:: ' + res.status)
+
+    if (res.status === 201) {
+      return true
+    }
+    return false
   } catch (error) {
     return false
   }
 }
 
-// addFavorite('637cdb881800420a41e8de0a')
-
 export const deleteFavorite = async (jobId) => {
   const token = localStorage.getItem('token')
   try {
-    const response = await axios({
+    const res = await axios({
       method: 'patch',
       url: currURL + '/user/delete_favorite/' + jobId,
       headers: {
         authorization: `Bearer ${token}`,
       },
     })
-    return true
+    if (res.status === 201) {
+      return true
+    }
+    return 'try fail'
   } catch (error) {
-    return false
+    return error
   }
 }
-
-deleteFavorite('637cdb881800420a41e8de0a')
