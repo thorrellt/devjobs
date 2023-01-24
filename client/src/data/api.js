@@ -71,9 +71,9 @@ export const postJob = async (job) => {
   }
 }
 
-/***********
+/************
   USER CALLS 
- ***********/
+ ************/
 
 export const postUser = async (user) => {
   try {
@@ -107,5 +107,45 @@ export const isActiveAuth = async (user) => {
     return res.request
   } catch (err) {
     return err.response
+  }
+}
+
+/*****************
+  FAVORITES CALLS 
+ *****************/
+
+export const addFavorite = async (jobId) => {
+  const token = localStorage.getItem('token')
+  try {
+    const response = await axios({
+      method: 'patch',
+      url: currURL + '/user/add_favorite/' + jobId,
+      headers: {
+        authorization: `Bearer ${token}`,
+      },
+    })
+    return true
+  } catch (error) {
+    return false
+  }
+}
+
+addFavorite('637cdb881800420a41e8de0a')
+
+export const deleteFavorite = async (job) => {
+  const fullJob = generateJob(job)
+  const token = localStorage.getItem('token')
+  try {
+    const response = await axios({
+      method: 'post',
+      url: currURL + '/jobs/',
+      data: fullJob,
+      headers: {
+        authorization: `Bearer ${token}`,
+      },
+    })
+    return response
+  } catch (error) {
+    return error.message
   }
 }
