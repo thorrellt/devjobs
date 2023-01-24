@@ -6,7 +6,8 @@ import './JobCard.css'
 import { addFavorite, deleteFavorite } from '../../../data/api'
 
 const JobCard = (props) => {
-  const { darkMode, user } = useContext(DisplayContext)
+  const { darkMode, user, delFavFromLocal, addFavToLocal } =
+    useContext(DisplayContext)
   const {
     _id: _id,
     company,
@@ -26,16 +27,24 @@ const JobCard = (props) => {
     if (user.favorites) {
       setIsFav(user.favorites.includes(_id))
     }
-  }, [isFav])
+  }, [])
 
   const onFavClick = async () => {
     if (isFav) {
-      const favDeleted = await deleteFavorite(_id).then((response) => {
-        console.log('favDeleted::' + response)
+      const favDeleted = await deleteFavorite(_id).then((res) => {
+        console.log('favDeleted::' + res)
+        if (res) {
+          delFavFromLocal(_id)
+          setIsFav(false)
+        }
       })
     } else {
       await addFavorite(_id).then((res) => {
         console.log('favAdded::' + res)
+        if (res) {
+          addFavToLocal(_id)
+          setIsFav(true)
+        }
       })
     }
   }

@@ -54,6 +54,7 @@ const DisplayContextProvider = ({ children }) => {
     }))
     localStorage.removeItem('token')
     localStorage.removeItem('userName')
+    localStorage.removeItem('favorites')
   }
 
   const logIn = (user) => {
@@ -64,15 +65,29 @@ const DisplayContextProvider = ({ children }) => {
     }))
     localStorage.setItem('token', user.token)
     localStorage.setItem('userName', user.name)
-    localStorage.setItem('favorites', user.favorites)
+    localStorage.setItem('favorites', JSON.stringify(user.favorites))
   }
 
   const setLoggedIn = () => {
     setUser(() => ({
       name: localStorage.getItem('userName'),
-      favorites: localStorage.getItem('favorites'),
+      favorites: JSON.stringify(localStorage.getItem('favorites')),
       loggedIn: true,
     }))
+  }
+
+  const addFavToLocal = (jobId) => {
+    let favorites = JSON.parse(localStorage.getItem('favorites'))
+    favorites.push(jobId)
+    // const filteredFavs = favorites.filter((id) => id !== jobId)
+    localStorage.setItem('favorites', JSON.stringify(favorites))
+  }
+
+  const delFavFromLocal = (jobId) => {
+    let favorites = JSON.parse(localStorage.getItem('favorites'))
+    const filteredFavs = favorites.filter((id) => id !== jobId)
+    console.log(filteredFavs)
+    localStorage.setItem('favorites', JSON.stringify(filteredFavs))
   }
 
   return (
@@ -85,6 +100,8 @@ const DisplayContextProvider = ({ children }) => {
         logOut: logOut,
         logIn: logIn,
         setLoggedIn: setLoggedIn,
+        delFavFromLocal: delFavFromLocal,
+        addFavToLocal: addFavToLocal,
       }}
     >
       {children}
