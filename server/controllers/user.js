@@ -114,31 +114,60 @@ exports.user_activeAuth = async (req, res) => {
   // })
 }
 
-exports.addFavorite = async (req, res, next) => {
+exports.favorite_add = async (req, res, next) => {
   console.log('jobID:: ' + req.params.jobId)
   console.log('userId:: ' + req.userData.userId)
   const userId = req.userData.userId
-  const jobID = req.params.jobId
+  const jobId = req.params.jobId
 
   // Retrieve document
   const user = await User.findOne({ _id: userId })
 
-  if (!user.favorites.includes(jobID)) {
-    user.favorites.push(jobID)
+  if (!user.favorites.includes(jobId)) {
+    user.favorites.push(jobId)
     await user.save().then((result) => {
       res.status(201).json({
         jobId: req.params.jobId,
         userId: req.userData.userId,
-        message: `${jobID} added`,
+        message: `${jobId} added`,
       })
     })
   } else {
     res.status(400).json({
       jobId: req.params.jobId,
       userId: req.userData.userId,
-      message: `${jobID} already exist`,
+      message: `${jobId} already exist`,
     })
   }
+}
+
+exports.favorite_delete = async (req, res, next) => {
+  console.log('jobID:: ' + req.params.jobId)
+  console.log('userId:: ' + req.userData.userId)
+  const userId = req.userData.userId
+  const jobId = req.params.jobId
+
+  // Retrieve document
+  const user = await User.findOne({ _id: userId })
+
+  const filteredFavs = user.favorites.filter((id) => id !== jobId)
+  user.favorites = filteredFavs
+
+  await user
+    .save()
+    .then((result) => {
+      res.status(201).json({
+        jobId: req.params.jobId,
+        userId: req.userData.userId,
+        message: `${jobId} deleted`,
+      })
+    })
+    .catch((err) => {
+      console.log(err)
+      res.status(500).json({
+        error: err,
+      })
+    })
 }
 
 exports.user_delete = (req, res, next) => {
