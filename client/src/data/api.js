@@ -130,22 +130,22 @@ export const addFavorite = async (jobId) => {
   }
 }
 
-addFavorite('637cdb881800420a41e8de0a')
+// addFavorite('637cdb881800420a41e8de0a')
 
-export const deleteFavorite = async (job) => {
-  const fullJob = generateJob(job)
+export const deleteFavorite = async (jobId) => {
   const token = localStorage.getItem('token')
   try {
     const response = await axios({
-      method: 'post',
-      url: currURL + '/jobs/',
-      data: fullJob,
+      method: 'patch',
+      url: currURL + '/user/delete_favorite/' + jobId,
       headers: {
         authorization: `Bearer ${token}`,
       },
     })
-    return response
+    return true
   } catch (error) {
-    return error.message
+    return false
   }
 }
+
+deleteFavorite('637cdb881800420a41e8de0a')
