@@ -73,6 +73,12 @@ const Menu = (props) => {
                 Post Job
               </NavLink>
               <NavLink
+                to={`/devjobs/deletejob`}
+                className={`link ${darkMode ? 'font-white' : 'font-blue-700'}`}
+              >
+                Delete Job
+              </NavLink>
+              <NavLink
                 to={`/devjobs/`}
                 onClick={logOut}
                 className={`link ${darkMode ? 'font-white' : 'font-blue-700'}`}

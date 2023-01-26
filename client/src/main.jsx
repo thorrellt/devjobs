@@ -6,6 +6,7 @@ import Job from './components/job/Job'
 import Login from './components/login/Login'
 import Signup from './components/signup/Signup'
 import PostJob from './components/postJob/PostJob'
+import DeleteJob from './components/deleteJob/DeleteJob'
 import './index.css'
 
 import { createBrowserRouter, RouterProvider, Route } from 'react-router-dom'
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
       {
         path: '/devjobs/postjob',
         element: <PostJob />,
+      },
+      {
+        path: '/devjobs/deletejob',
+        element: <DeleteJob />,
       },
       {
         path: '*',
