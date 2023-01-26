@@ -106,6 +106,7 @@ const Login = () => {
             name: formState.user.value,
             favorites: res.data.favorites,
             token: res.data.token,
+            _id: res.data._id,
           })
           setLoginValidityTo(true)
           navigate('/devjobs/')

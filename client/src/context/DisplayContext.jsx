@@ -45,6 +45,7 @@ const DisplayContextProvider = ({ children }) => {
     loggedIn: false,
     name: '',
     favorites: [],
+    _id: '',
   })
 
   const logOut = () => {
@@ -55,6 +56,7 @@ const DisplayContextProvider = ({ children }) => {
     localStorage.removeItem('token')
     localStorage.removeItem('userName')
     localStorage.removeItem('favorites')
+    localStorage.removeItem('_id')
   }
 
   const logIn = (user) => {
@@ -62,16 +64,19 @@ const DisplayContextProvider = ({ children }) => {
       name: user.name,
       favorites: user.favorites,
       loggedIn: true,
+      _id: user._id,
     }))
     localStorage.setItem('token', user.token)
     localStorage.setItem('userName', user.name)
     localStorage.setItem('favorites', JSON.stringify(user.favorites))
+    localStorage.setItem('_id', JSON.stringify(user._id))
   }
 
   const setLoggedIn = () => {
     setUser(() => ({
       name: localStorage.getItem('userName'),
       favorites: JSON.stringify(localStorage.getItem('favorites')),
+      favorites: JSON.stringify(localStorage.getItem('_id')),
       loggedIn: true,
     }))
   }
