@@ -16,13 +16,26 @@
   gap: 0.75rem;
 }
 
-.jobcard .posted-at {
-}
-
 .jobcard .star {
   position: absolute;
   right: 10%;
   top: 10%;
+}
+
+.spin {
+  animation-name: spin;
+  animation-duration: 5000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .jobcard .divider {

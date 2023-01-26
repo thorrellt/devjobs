@@ -20,6 +20,7 @@ const JobCard = (props) => {
   } = props.jobData
 
   const [isFav, setIsFav] = useState(false)
+  const [favLoaded, setFavLoaded] = useState(true)
 
   const star = isFav ? `bi bi-star-fill` : `bi bi-star`
 
@@ -30,22 +31,28 @@ const JobCard = (props) => {
   }, [])
 
   const onFavClick = async () => {
-    if (isFav) {
-      const favDeleted = await deleteFavorite(_id).then((res) => {
-        console.log('favDeleted::' + res)
-        if (res) {
-          delFavFromLocal(_id)
-          setIsFav(false)
-        }
-      })
-    } else {
-      await addFavorite(_id).then((res) => {
-        console.log('favAdded::' + res)
-        if (res) {
-          addFavToLocal(_id)
-          setIsFav(true)
-        }
-      })
+    if (!favLoaded) return
+    setFavLoaded(false)
+    try {
+      if (isFav) {
+        const favDeleted = await deleteFavorite(_id).then((res) => {
+          if (res) {
+            delFavFromLocal(_id)
+            setIsFav(false)
+          }
+        })
+      } else {
+        await addFavorite(_id).then((res) => {
+          if (res) {
+            addFavToLocal(_id)
+            setIsFav(true)
+          }
+        })
+      }
+    } catch (error) {
+      console.log(error)
+    } finally {
+      setFavLoaded(true)
     }
   }
 
@@ -59,9 +66,9 @@ const JobCard = (props) => {
 
       {user.loggedIn && (
         <i
-          className={`${star} star ${
-            darkMode ? 'font-white' : 'font-blue-700'
-          }`}
+          className={`${star} star 
+          ${darkMode ? 'font-white' : 'font-blue-700'}
+          ${!favLoaded ? 'spin' : ''}`}
           onClick={onFavClick}
         />
       )}
