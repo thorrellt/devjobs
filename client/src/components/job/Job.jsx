@@ -56,7 +56,7 @@ const Job = () => {
     const listItems = items.map((item, i) => {
       return (
         <>
-          <li key={i} className="flex-container">
+          <li key={`${i}`} className="flex-container">
             <div className="marker"></div>
             <span>{item}</span>
           </li>
@@ -70,7 +70,7 @@ const Job = () => {
     const listItems = items.map((item, i) => {
       return (
         <>
-          <li key={i} className="flex-container">
+          <li key={`${i}`} className="flex-container">
             <span className="number">{`${i + 1}`}</span>
             <span className="item">{item}</span>
           </li>

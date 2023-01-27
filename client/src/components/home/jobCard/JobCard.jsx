@@ -20,9 +20,11 @@ const JobCard = (props) => {
   } = props.jobData
 
   const [isFav, setIsFav] = useState(false)
+  const [isSelected, setIsSeleted] = useState(false)
   const [favLoaded, setFavLoaded] = useState(true)
 
   const star = isFav ? `bi bi-star-fill` : `bi bi-star`
+  const checkBox = isSelected ? `bi bi-check-square-fill` : `bi bi-square`
 
   useEffect(() => {
     if (user.favorites) {
@@ -56,6 +58,10 @@ const JobCard = (props) => {
     }
   }
 
+  const oncheckClick = async () => {
+    setIsSeleted((prevState) => !prevState)
+  }
+
   return (
     <div
       className={`jobcard flex-container
@@ -64,12 +70,23 @@ const JobCard = (props) => {
     >
       <CompanyLogo logo={logo} logoBackground={logoBackground} />
 
-      {user.loggedIn && (
+      {/* render Favorite star Icon */}
+      {user.loggedIn && props.cardType === 'home' && (
         <i
           className={`${star} star 
           ${darkMode ? 'font-white' : 'font-blue-700'}
           ${!favLoaded ? 'spin' : ''}`}
           onClick={onFavClick}
+        />
+      )}
+
+      {/* render Favorite star Icon */}
+      {user.loggedIn && props.cardType === 'delete' && (
+        <i
+          className={`${checkBox} star 
+          ${darkMode ? 'font-white' : 'font-blue-700'}
+          ${!favLoaded ? 'spin' : ''}`}
+          onClick={oncheckClick}
         />
       )}
 

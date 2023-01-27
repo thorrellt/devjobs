@@ -3,6 +3,7 @@ import { DisplayContext } from '../../context/DisplayContext'
 import './DeleteJob.css'
 import JobCard from '../home/jobCard/JobCard'
 import { getJobs } from '../../data/api'
+import { PromiseProvider } from 'mongoose'
 
 const DeleteJob = () => {
   /*******
@@ -48,7 +49,7 @@ const DeleteJob = () => {
      ***************/
   const generateJobCards = () => {
     return allJobs.map((jobData) => {
-      return <JobCard jobData={jobData} key={jobData.id} />
+      return <JobCard jobData={jobData} cardType="delete" key={jobData._id} />
     })
   }
 
