@@ -82,7 +82,7 @@ export const formatFilter = (filter) => {
     return {}
   }
 
-  const { location, position, fulltime } = filter
+  const { location, position, fulltime, userId } = filter
   let retFilter = {}
 
   if ('location' in filter && location !== '') {
@@ -90,6 +90,9 @@ export const formatFilter = (filter) => {
   }
   if ('position' in filter && position !== '') {
     retFilter.position = position
+  }
+  if ('userId' in filter && userId !== '') {
+    retFilter.userId = userId
   }
   if (Boolean(fulltime)) {
     retFilter.contract = 'Full Time'

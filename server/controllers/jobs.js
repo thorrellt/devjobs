@@ -8,6 +8,7 @@ const getAllJobs = async (req, res) => {
    * else only exact matches would return
    */
   console.log('get all jobs pinged')
+
   const filters = {}
   if ('userId' in req.query) filters.userId = req.query.userId
   if ('contract' in req.query) filters.contract = req.query.contract
@@ -15,8 +16,9 @@ const getAllJobs = async (req, res) => {
     filters.location = new RegExp(req.query.location, 'i')
   if ('position' in req.query)
     filters.position = new RegExp(req.query.position, 'i')
-  console.log(req.query)
+  console.log(filters)
   const jobs = await Job.find(filters)
+  console.log(jobs.length)
   res.status(200).json({ jobs })
 }
 

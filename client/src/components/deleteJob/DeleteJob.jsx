@@ -8,7 +8,7 @@ const DeleteJob = () => {
   /*******
     HOOKS
    *******/
-  const { darkMode, screenSize } = useContext(DisplayContext)
+  const { darkMode, screenSize, user } = useContext(DisplayContext)
 
   const [filters, setFilters] = useState({
     position: '',
@@ -19,12 +19,14 @@ const DeleteJob = () => {
   const [isLocal, setIsLocal] = useState(true)
   const [hasLoaded, setHasLoaded] = useState()
   let jobCards = []
+  const [deleteList, setDeleteList] = useState([])
 
   /***********
     API CALLS
   ***********/
-  const fetchJobs = async (filter) => {
-    await getJobs(filter).then((res) => {
+  const fetchJobs = async () => {
+    if (!user.loggedIn) return
+    await getJobs({ userId: user._id }).then((res) => {
       setAllJobs(res.jobs)
       setIsLocal(res.isLocal)
       setHasLoaded(true)
@@ -32,20 +34,20 @@ const DeleteJob = () => {
   }
 
   const updateJobs = () => {
-    fetchJobs(filters)
+    fetchJobs()
   }
 
   useEffect(() => {
     fetchJobs()
-  }, [])
+  }, [user])
 
   if (allJobs[0]) {
     console.log(allJobs[0]._id)
   }
 
   /***************
-      CARD CREATION
-     ***************/
+    CARD CREATION
+  ***************/
   const generateJobCards = () => {
     return allJobs.map((jobData) => {
       return <JobCard jobData={jobData} cardType="delete" key={jobData._id} />

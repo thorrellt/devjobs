@@ -16,11 +16,13 @@ const currURL = localURL
  ***********/
 export const getJobs = async (filter) => {
   let jobFilters = formatFilter(filter)
+  console.log(jobFilters)
 
   try {
     //return all jobs if no filter passed
     if (Boolean(!filter) || jobFilters === {}) {
       const response = await axios.get(currURL + '/jobs')
+      console.log(response.data)
       return { jobs: response.data.jobs, isLocal: false }
     }
 
@@ -28,6 +30,7 @@ export const getJobs = async (filter) => {
     const response = await axios.get(currURL + '/jobs', {
       params: jobFilters,
     })
+    console.log(response.data.jobs)
     return { jobs: response.data.jobs, isLocal: false }
   } catch (error) {
     const response = getLocalJobs(filter)

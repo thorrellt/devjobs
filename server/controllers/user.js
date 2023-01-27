@@ -29,7 +29,7 @@ exports.user_signup = (req, res, next) => {
             user
               .save()
               .then((result) => {
-                console.log(result)
+                // console.log(result)
                 res.status(201).json({
                   message: 'User created',
                 })
@@ -73,7 +73,7 @@ exports.user_login = (req, res, next) => {
               expiresIn: '1h',
             }
           )
-          console.log(user[0])
+          // console.log(user[0])
           return res.status(200).json({
             name: user[0].name,
             favorites: user[0].favorites,
@@ -102,7 +102,7 @@ exports.user_activeAuth = async (req, res) => {
   User.find({ name: req.userData.name })
     .exec()
     .then((user) => {
-      console.log(user)
+      // console.log(user)
       res.status(200).json({
         message: 'Auth successful',
         _id: user[0]._id,
@@ -116,8 +116,8 @@ exports.user_activeAuth = async (req, res) => {
 }
 
 exports.favorite_add = async (req, res, next) => {
-  console.log('jobID:: ' + req.params.jobId)
-  console.log('userId:: ' + req.userData.userId)
+  // console.log('jobID:: ' + req.params.jobId)
+  // console.log('userId:: ' + req.userData.userId)
   const userId = req.userData.userId
   const jobId = req.params.jobId
 
@@ -143,8 +143,8 @@ exports.favorite_add = async (req, res, next) => {
 }
 
 exports.favorite_delete = async (req, res, next) => {
-  console.log('jobID:: ' + req.params.jobId)
-  console.log('userId:: ' + req.userData.userId)
+  // console.log('jobID:: ' + req.params.jobId)
+  // console.log('userId:: ' + req.userData.userId)
   const userId = req.userData.userId
   const jobId = req.params.jobId
 
