@@ -3,7 +3,6 @@ import { DisplayContext } from '../../context/DisplayContext'
 import './DeleteJob.css'
 import JobCard from '../home/jobCard/JobCard'
 import { getJobs } from '../../data/api'
-import { PromiseProvider } from 'mongoose'
 
 const DeleteJob = () => {
   /*******
@@ -22,8 +21,8 @@ const DeleteJob = () => {
   let jobCards = []
 
   /***********
-      API CALLS
-     ***********/
+    API CALLS
+  ***********/
   const fetchJobs = async (filter) => {
     await getJobs(filter).then((res) => {
       setAllJobs(res.jobs)
