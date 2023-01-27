@@ -52,6 +52,8 @@ const DisplayContextProvider = ({ children }) => {
     setUser((prevUser) => ({
       name: '',
       loggedIn: false,
+      favorites: [],
+      _id: '',
     }))
     localStorage.removeItem('token')
     localStorage.removeItem('userName')
@@ -73,10 +75,11 @@ const DisplayContextProvider = ({ children }) => {
   }
 
   const setLoggedIn = () => {
+    console.log('set user called')
     setUser(() => ({
       name: localStorage.getItem('userName'),
-      favorites: JSON.stringify(localStorage.getItem('favorites')),
-      favorites: JSON.stringify(localStorage.getItem('_id')),
+      favorites: JSON.parse(localStorage.getItem('favorites')),
+      _id: JSON.parse(localStorage.getItem('_id')),
       loggedIn: true,
     }))
   }
