@@ -1,7 +1,7 @@
 import { useState, useContext, useEffect } from 'react'
 import { DisplayContext } from '../../context/DisplayContext'
 import './DeleteJob.css'
-import JobCard from '../home/jobCard/JobCard'
+import JobCard from './jobCard/JobCard'
 import { getJobs } from '../../data/api'
 
 const DeleteJob = () => {
@@ -18,22 +18,22 @@ const DeleteJob = () => {
   const [allJobs, setAllJobs] = useState([])
   const [isLocal, setIsLocal] = useState(true)
   const [hasLoaded, setHasLoaded] = useState()
-  const [selectedJobs, setSelectedJobs] = useState({})
-  let jobCards = []
-  const [deleteList, setDeleteList] = useState([])
+  const [deleteList, setDeleteList] = useState({})
 
-  const addSelectedJob = (jobId) => {
-    setSelectedJobs((prevJobs) => ({ ...prevJobs, jobId: jobId }))
+  const addToDeleteList = (jobId) => {
+    setDeleteList((prevJobs) => ({ ...prevJobs, jobId: jobId }))
   }
 
-  const removeSelectedJob = (jobId) => {
-    setSelectedJobs((prevJobs) => {
+  const removeFromDeleteList = (jobId) => {
+    setDeleteList((prevJobs) => {
       if (prevJobs[jobId]) {
         delete prevJobs[jobId]
       }
       return prevJobs
     })
   }
+
+  let jobCards = []
 
   /***********
     API CALLS
@@ -64,7 +64,15 @@ const DeleteJob = () => {
   ***************/
   const generateJobCards = () => {
     return allJobs.map((jobData) => {
-      return <JobCard jobData={jobData} cardType="delete" key={jobData._id} />
+      return (
+        <JobCard
+          jobData={jobData}
+          cardType="delete"
+          key={jobData._id}
+          addToDeleteList={addToDeleteList}
+          removeFromDeleteList={removeFromDeleteList}
+        />
+      )
     })
   }
 

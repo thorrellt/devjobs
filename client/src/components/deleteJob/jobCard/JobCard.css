@@ -1,0 +1,94 @@
+.jobcard {
+  position: relative;
+  height: 228px;
+  flex: 1 1 327px;
+  padding-block-start: 3rem;
+  padding-inline: 2rem 1rem;
+  flex-wrap: wrap;
+  border-radius: 6px;
+  margin-block-end: 3rem;
+}
+.jobcard > * {
+  height: min-content;
+}
+.jobcard .header {
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.jobcard .check {
+  position: absolute;
+  right: 10%;
+  top: 10%;
+}
+
+.spin {
+  animation-name: spin;
+  animation-duration: 5000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.jobcard .divider {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: var(--gray-700);
+  flex: 0 0 4px;
+}
+
+.jobcard .contract {
+}
+
+.jobcard .position {
+  flex: 1 0 100%;
+}
+
+.jobcard .company {
+  flex: 1 0 100%;
+}
+
+.jobcard .location {
+  flex: 1 0 100%;
+}
+
+.company-logo {
+  position: absolute;
+  height: 50px;
+  width: 50px;
+  left: 2rem;
+  top: -25px;
+  border-radius: 15px;
+  justify-content: center;
+  align-items: center;
+}
+
+/********
+  TABLET
+ ********/
+@media (min-width: 680px) {
+  .jobcard {
+    flex-basis: 40%;
+  }
+  .jobcard {
+    margin-block-end: 0rem;
+  }
+}
+
+/********
+    DESKTOP
+   ********/
+@media (min-width: 992px) {
+  .jobcard {
+    flex-basis: 30%;
+  }
+}

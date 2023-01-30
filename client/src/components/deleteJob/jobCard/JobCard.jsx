@@ -25,38 +25,36 @@ const JobCard = (props) => {
   const [isSelected, setIsSeleted] = useState(false)
   const [favLoaded, setFavLoaded] = useState(true)
 
-  const star = isFav ? `bi bi-star-fill` : `bi bi-star`
+  const checkBox = isSelected ? `bi bi-check-square-fill` : `bi bi-square`
 
-  useEffect(() => {
-    if (user.favorites) {
-      setIsFav(user.favorites.includes(_id))
-    }
-  }, [])
+  useEffect(() => {}, [])
 
   const onFavClick = async () => {
-    if (!favLoaded) return
-    setFavLoaded(false)
-    try {
-      if (isFav) {
-        const favDeleted = await deleteFavorite(_id).then((res) => {
-          if (res) {
-            delFavFromLocal(_id)
-            setIsFav(false)
-          }
-        })
-      } else {
-        await addFavorite(_id).then((res) => {
-          if (res) {
-            addFavToLocal(_id)
-            setIsFav(true)
-          }
-        })
-      }
-    } catch (error) {
-      console.log(error)
-    } finally {
-      setFavLoaded(true)
-    }
+    // try {
+    //   if (isFav) {
+    //     const favDeleted = await deleteFavorite(_id).then((res) => {
+    //       if (res) {
+    //         delFavFromLocal(_id)
+    //         setIsFav(false)
+    //       }
+    //     })
+    //   } else {
+    //     await addFavorite(_id).then((res) => {
+    //       if (res) {
+    //         addFavToLocal(_id)
+    //         setIsFav(true)
+    //       }
+    //     })
+    //   }
+    // } catch (error) {
+    //   console.log(error)
+    // } finally {
+    //   setFavLoaded(true)
+    // }
+  }
+
+  const oncheckClick = async () => {
+    setIsSeleted((prevState) => !prevState)
   }
 
   return (
@@ -67,13 +65,13 @@ const JobCard = (props) => {
     >
       <CompanyLogo logo={logo} logoBackground={logoBackground} />
 
-      {/* render Favorite star Icon */}
+      {/* render Favorite checkbox Icon */}
       {user.loggedIn && (
         <i
-          className={`${star} star 
+          className={`${checkBox} check 
           ${darkMode ? 'font-white' : 'font-blue-700'}
           ${!favLoaded ? 'spin' : ''}`}
-          onClick={onFavClick}
+          onClick={oncheckClick}
         />
       )}
 

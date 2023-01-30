@@ -49,7 +49,7 @@ const Home = (props) => {
    ***************/
   const generateJobCards = () => {
     return allJobs.map((jobData) => {
-      return <JobCard jobData={jobData} cardType="home" key={jobData.id} />
+      return <JobCard jobData={jobData} key={jobData.id} />
     })
   }
 
