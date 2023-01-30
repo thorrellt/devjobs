@@ -18,8 +18,22 @@ const DeleteJob = () => {
   const [allJobs, setAllJobs] = useState([])
   const [isLocal, setIsLocal] = useState(true)
   const [hasLoaded, setHasLoaded] = useState()
+  const [selectedJobs, setSelectedJobs] = useState({})
   let jobCards = []
   const [deleteList, setDeleteList] = useState([])
+
+  const addSelectedJob = (jobId) => {
+    setSelectedJobs((prevJobs) => ({ ...prevJobs, jobId: jobId }))
+  }
+
+  const removeSelectedJob = (jobId) => {
+    setSelectedJobs((prevJobs) => {
+      if (prevJobs[jobId]) {
+        delete prevJobs[jobId]
+      }
+      return prevJobs
+    })
+  }
 
   /***********
     API CALLS
