@@ -18,19 +18,38 @@ const DeleteJob = () => {
   const [allJobs, setAllJobs] = useState([])
   const [isLocal, setIsLocal] = useState(true)
   const [hasLoaded, setHasLoaded] = useState()
-  const [deleteList, setDeleteList] = useState({})
+  const [deleteList, setDeleteList] = useState({ items: ['hello'] })
+
+  const isSelectedForDeletion = (jobId) => {
+    const arr = deleteList.items
+    return arr.includes(jobId)
+  }
 
   const addToDeleteList = (jobId) => {
-    setDeleteList((prevJobs) => ({ ...prevJobs, jobId: jobId }))
+    if (isSelectedForDeletion(jobId)) return
+    setDeleteList((prevJobs) => ({
+      items: [...prevJobs.items, jobId],
+    }))
   }
 
   const removeFromDeleteList = (jobId) => {
+    if (!isSelectedForDeletion(jobId)) return
     setDeleteList((prevJobs) => {
-      if (prevJobs[jobId]) {
-        delete prevJobs[jobId]
+      let arr = prevJobs.items
+      const index = arr.indexOf(jobId)
+      if (index > -1) {
+        arr.splice(index, 1)
       }
       return prevJobs
     })
+  }
+
+  const toggleDeleteSelection = (jobId) => {
+    if (isSelectedForDeletion(jobId)) {
+      removeFromDeleteList(jobId)
+    } else {
+      addToDeleteList(jobId)
+    }
   }
 
   let jobCards = []
@@ -69,8 +88,8 @@ const DeleteJob = () => {
           jobData={jobData}
           cardType="delete"
           key={jobData._id}
-          addToDeleteList={addToDeleteList}
-          removeFromDeleteList={removeFromDeleteList}
+          toggleDeleteSelection={toggleDeleteSelection}
+          isSelectedForDeletion={isSelectedForDeletion}
         />
       )
     })

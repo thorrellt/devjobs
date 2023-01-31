@@ -19,13 +19,14 @@ const JobCard = (props) => {
     location,
   } = props.jobData
 
-  const { removeFromDeleteList, addToDeleteList } = props
+  const { toggleDeleteSelection, isSelectedForDeletion } = props
 
-  const [isFav, setIsFav] = useState(false)
   const [isSelected, setIsSeleted] = useState(false)
   const [favLoaded, setFavLoaded] = useState(true)
 
-  const checkBox = isSelected ? `bi bi-check-square-fill` : `bi bi-square`
+  const checkBox = isSelectedForDeletion()
+    ? `bi bi-check-square-fill`
+    : `bi bi-square`
 
   useEffect(() => {}, [])
 
@@ -54,7 +55,8 @@ const JobCard = (props) => {
   }
 
   const oncheckClick = async () => {
-    setIsSeleted((prevState) => !prevState)
+    console.log('click')
+    toggleDeleteSelection(_id)
   }
 
   return (
