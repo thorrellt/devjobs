@@ -10,46 +10,18 @@ const DeleteJob = () => {
    *******/
   const { darkMode, screenSize, user } = useContext(DisplayContext)
 
-  const [filters, setFilters] = useState({
-    position: '',
-    location: '',
-    fulltime: false,
-  })
-  const [allJobs, setAllJobs] = useState([])
+  const [jobsList, setJobsList] = useState([])
+
   const [isLocal, setIsLocal] = useState(true)
   const [hasLoaded, setHasLoaded] = useState()
-  const [deleteList, setDeleteList] = useState({ items: ['hello'] })
 
-  const isSelectedForDeletion = (jobId) => {
-    const arr = deleteList.items
-    return arr.includes(jobId)
-  }
+  //deletion list
+  const [deletionList, setDeletionList] = useState({})
 
-  const addToDeleteList = (jobId) => {
-    if (isSelectedForDeletion(jobId)) return
-    setDeleteList((prevJobs) => ({
-      items: [...prevJobs.items, jobId],
-    }))
-  }
-
-  const removeFromDeleteList = (jobId) => {
-    if (!isSelectedForDeletion(jobId)) return
-    setDeleteList((prevJobs) => {
-      let arr = prevJobs.items
-      const index = arr.indexOf(jobId)
-      if (index > -1) {
-        arr.splice(index, 1)
-      }
-      return prevJobs
+  const toggleDeletionState = (jobId) => {
+    setDeletionList((prevState) => {
+      return { ...prevState, [jobId]: !prevState[jobId] }
     })
-  }
-
-  const toggleDeleteSelection = (jobId) => {
-    if (isSelectedForDeletion(jobId)) {
-      removeFromDeleteList(jobId)
-    } else {
-      addToDeleteList(jobId)
-    }
   }
 
   let jobCards = []
@@ -60,36 +32,39 @@ const DeleteJob = () => {
   const fetchJobs = async () => {
     if (!user.loggedIn) return
     await getJobs({ userId: user._id }).then((res) => {
-      setAllJobs(res.jobs)
+      var jobArr = res.jobs
+
+      //set Job list state
+      setJobsList(jobArr)
+
+      //Set deletionList state
+      const deleteListObj = {}
+      jobArr.forEach((item) => {
+        deleteListObj[item._id] = true
+      })
+      setDeletionList(deleteListObj)
+
       setIsLocal(res.isLocal)
       setHasLoaded(true)
     })
-  }
-
-  const updateJobs = () => {
-    fetchJobs()
   }
 
   useEffect(() => {
     fetchJobs()
   }, [user])
 
-  if (allJobs[0]) {
-    console.log(allJobs[0]._id)
-  }
-
   /***************
     CARD CREATION
   ***************/
   const generateJobCards = () => {
-    return allJobs.map((jobData) => {
+    return jobsList.map((jobData) => {
       return (
         <JobCard
           jobData={jobData}
           cardType="delete"
           key={jobData._id}
-          toggleDeleteSelection={toggleDeleteSelection}
-          isSelectedForDeletion={isSelectedForDeletion}
+          toggleDeletionState={toggleDeletionState}
+          isSelected={deletionList[jobData._id]}
         />
       )
     })
@@ -97,7 +72,7 @@ const DeleteJob = () => {
 
   useEffect(() => {
     jobCards = generateJobCards()
-  }, [allJobs])
+  }, [jobsList, deletionList])
 
   if (hasLoaded) {
     jobCards = generateJobCards()

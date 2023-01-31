@@ -19,44 +19,17 @@ const JobCard = (props) => {
     location,
   } = props.jobData
 
-  const { toggleDeleteSelection, isSelectedForDeletion } = props
+  const { toggleDeletionState, isSelected } = props
 
-  const [isSelected, setIsSeleted] = useState(false)
   const [favLoaded, setFavLoaded] = useState(true)
 
-  const checkBox = isSelectedForDeletion()
-    ? `bi bi-check-square-fill`
-    : `bi bi-square`
+  var checkBox = isSelected ? `bi bi-check-square-fill` : `bi bi-square`
 
   useEffect(() => {}, [])
 
-  const onFavClick = async () => {
-    // try {
-    //   if (isFav) {
-    //     const favDeleted = await deleteFavorite(_id).then((res) => {
-    //       if (res) {
-    //         delFavFromLocal(_id)
-    //         setIsFav(false)
-    //       }
-    //     })
-    //   } else {
-    //     await addFavorite(_id).then((res) => {
-    //       if (res) {
-    //         addFavToLocal(_id)
-    //         setIsFav(true)
-    //       }
-    //     })
-    //   }
-    // } catch (error) {
-    //   console.log(error)
-    // } finally {
-    //   setFavLoaded(true)
-    // }
-  }
-
-  const oncheckClick = async () => {
+  const oncheckClick = () => {
     console.log('click')
-    toggleDeleteSelection(_id)
+    toggleDeletionState(_id)
   }
 
   return (
