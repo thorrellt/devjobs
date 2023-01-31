@@ -24,26 +24,24 @@ const DeleteJob = () => {
     })
   }
 
-  let jobCards = []
-
   /***********
     API CALLS
   ***********/
   const fetchJobs = async () => {
     if (!user.loggedIn) return
     await getJobs({ userId: user._id }).then((res) => {
-      var jobArr = res.jobs
-
       //set Job list state
-      setJobsList(jobArr)
+      setJobsList(res.jobs)
 
       //Set deletionList state
       const deleteListObj = {}
-      jobArr.forEach((item) => {
-        deleteListObj[item._id] = true
+      res.jobs.forEach((item) => {
+        deleteListObj[item._id] = false
       })
+
       setDeletionList(deleteListObj)
 
+      //update additional states
       setIsLocal(res.isLocal)
       setHasLoaded(true)
     })
@@ -52,6 +50,10 @@ const DeleteJob = () => {
   useEffect(() => {
     fetchJobs()
   }, [user])
+
+  const onSubmitClick = () => {
+    console.log('submit click')
+  }
 
   /***************
     CARD CREATION
@@ -70,10 +72,7 @@ const DeleteJob = () => {
     })
   }
 
-  useEffect(() => {
-    jobCards = generateJobCards()
-  }, [jobsList, deletionList])
-
+  let jobCards = []
   if (hasLoaded) {
     jobCards = generateJobCards()
   }
@@ -91,6 +90,10 @@ const DeleteJob = () => {
           </div>
         </div>
       )}
+
+      <button onClick={onSubmitClick} className={`delete-btn prim-btn`}>
+        Delete Selected Items
+      </button>
 
       <div className="job-cards flex-container">{jobCards}</div>
     </main>
