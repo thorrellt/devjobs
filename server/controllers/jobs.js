@@ -62,15 +62,10 @@ const deleteJob = async (req, res) => {
 }
 
 const deleteJobs = async (req, res) => {
-  /**
-   * SEARCH FILTER SETUP
-   * had to format filters to be less strict or
-   * else only exact matches would return
-   */
   console.log('delete jobs pinged')
 
-  const _ids = ['63d00b8f68737589c7848d4c']
-  const userId = '63cc291392d9c86c51674394'
+  const _ids = req.body
+  const userId = req.userData.userId
 
   const deleteCount = await Job.deleteMany({
     _id: { $in: _ids },
