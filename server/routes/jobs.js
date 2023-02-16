@@ -14,12 +14,14 @@ const {
   createJob,
   updateJob,
   deleteJob,
+  deleteJobs,
 } = require('../controllers/jobs')
 
 router
   .route('/')
   .get(cors(corsOptions), getAllJobs)
   .post(cors(corsOptions), checkAuth, createJob)
+  .delete(cors(corsOptions), checkAuth, deleteJobs)
 
 // router.get('/', cors(corsOptions), getAllJobs)
 // router.post('/', cors(corsOptions), createJob)

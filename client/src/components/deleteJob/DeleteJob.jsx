@@ -51,6 +51,14 @@ const DeleteJob = () => {
     fetchJobs()
   }, [user])
 
+  const deleteJobs = async (filter) => {
+    await getJobs(filter).then((res) => {
+      setAllJobs(res.jobs)
+      setIsLocal(res.isLocal)
+      setHasLoaded(true)
+    })
+  }
+
   const onSubmitClick = () => {
     console.log('submit click')
   }

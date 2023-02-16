@@ -61,6 +61,27 @@ const deleteJob = async (req, res) => {
   }
 }
 
+const deleteJobs = async (req, res) => {
+  /**
+   * SEARCH FILTER SETUP
+   * had to format filters to be less strict or
+   * else only exact matches would return
+   */
+  console.log('delete jobs pinged')
+
+  // const filters = {}
+  // if ('userId' in req.query) filters.userId = req.query.userId
+  // if ('contract' in req.query) filters.contract = req.query.contract
+  // if ('location' in req.query)
+  //   filters.location = new RegExp(req.query.location, 'i')
+  // if ('position' in req.query)
+  //   filters.position = new RegExp(req.query.position, 'i')
+  // console.log(filters)
+  // const jobs = await Job.find(filters)
+  // console.log(jobs.length)
+  res.status(200).json('delete jobs pinged')
+}
+
 const updateJob = async (req, res) => {
   const { id: jobID } = req.params
 
@@ -86,4 +107,5 @@ module.exports = {
   createJob,
   updateJob,
   deleteJob,
+  deleteJobs,
 }
