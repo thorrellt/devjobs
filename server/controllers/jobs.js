@@ -69,17 +69,23 @@ const deleteJobs = async (req, res) => {
    */
   console.log('delete jobs pinged')
 
-  // const filters = {}
-  // if ('userId' in req.query) filters.userId = req.query.userId
-  // if ('contract' in req.query) filters.contract = req.query.contract
-  // if ('location' in req.query)
-  //   filters.location = new RegExp(req.query.location, 'i')
-  // if ('position' in req.query)
-  //   filters.position = new RegExp(req.query.position, 'i')
-  // console.log(filters)
-  // const jobs = await Job.find(filters)
-  // console.log(jobs.length)
-  res.status(200).json('delete jobs pinged')
+  const _ids = ['63d00b8f68737589c7848d4c']
+  const userId = '63cc291392d9c86c51674394'
+
+  const deleteCount = await Job.deleteMany({
+    _id: { $in: _ids },
+    userId: userId,
+  })
+  console.log(deleteCount)
+
+  if (!deleteCount || deleteCount.deletedCount === 0) {
+    res.status(404).json({
+      error: `Nothing deleted`,
+    })
+  } else {
+    const retMsg = `${deleteCount.deletedCount} items deleted`
+    res.status(200).json({ retMsg })
+  }
 }
 
 const updateJob = async (req, res) => {
