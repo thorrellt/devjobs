@@ -2,7 +2,7 @@ import { useState, useContext, useEffect } from 'react'
 import { DisplayContext } from '../../context/DisplayContext'
 import './DeleteJob.css'
 import JobCard from './jobCard/JobCard'
-import { getJobs } from '../../data/api'
+import { getJobs, deleteJobs } from '../../data/api'
 
 const DeleteJob = () => {
   /*******
@@ -24,8 +24,30 @@ const DeleteJob = () => {
     })
   }
 
-  /***********
-    API CALLS
+  /**************
+   CARD CREATION
+  ***************/
+  const generateJobCards = () => {
+    return jobsList.map((jobData) => {
+      return (
+        <JobCard
+          jobData={jobData}
+          cardType="delete"
+          key={jobData._id}
+          toggleDeletionState={toggleDeletionState}
+          isSelected={deletionList[jobData._id]}
+        />
+      )
+    })
+  }
+
+  let jobCards = []
+  if (hasLoaded) {
+    jobCards = generateJobCards()
+  }
+
+  /**********
+   API CALLS
   ***********/
   const fetchJobs = async () => {
     if (!user.loggedIn) return
@@ -51,38 +73,17 @@ const DeleteJob = () => {
     fetchJobs()
   }, [user])
 
-  const deleteJobs = async (filter) => {
-    await getJobs(filter).then((res) => {
-      setAllJobs(res.jobs)
-      setIsLocal(res.isLocal)
-      setHasLoaded(true)
+  const onSubmitClick = async (event) => {
+    const deletionArr = Object.keys(deletionList).filter(
+      (job) => deletionList[job]
+    )
+
+    await deleteJobs(deletionArr).then((res) => {
+      console.log(`${res.data} item(s) deleted`)
+      fetchJobs()
     })
-  }
 
-  const onSubmitClick = () => {
-    console.log('submit click')
-  }
-
-  /***************
-    CARD CREATION
-  ***************/
-  const generateJobCards = () => {
-    return jobsList.map((jobData) => {
-      return (
-        <JobCard
-          jobData={jobData}
-          cardType="delete"
-          key={jobData._id}
-          toggleDeletionState={toggleDeletionState}
-          isSelected={deletionList[jobData._id]}
-        />
-      )
-    })
-  }
-
-  let jobCards = []
-  if (hasLoaded) {
-    jobCards = generateJobCards()
+    console.log(deletionArr)
   }
 
   return (
