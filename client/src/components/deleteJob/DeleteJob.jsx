@@ -24,28 +24,6 @@ const DeleteJob = () => {
     })
   }
 
-  /**************
-   CARD CREATION
-  ***************/
-  const generateJobCards = () => {
-    return jobsList.map((jobData) => {
-      return (
-        <JobCard
-          jobData={jobData}
-          cardType="delete"
-          key={jobData._id}
-          toggleDeletionState={toggleDeletionState}
-          isSelected={deletionList[jobData._id]}
-        />
-      )
-    })
-  }
-
-  let jobCards = []
-  if (hasLoaded) {
-    jobCards = generateJobCards()
-  }
-
   /**********
    API CALLS
   ***********/
@@ -77,13 +55,33 @@ const DeleteJob = () => {
     const deletionArr = Object.keys(deletionList).filter(
       (job) => deletionList[job]
     )
+    if (deletionArr.length > 0) {
+      await deleteJobs(deletionArr).then((res) => {
+        fetchJobs()
+      })
+    }
+  }
 
-    await deleteJobs(deletionArr).then((res) => {
-      console.log(`${res.data} item(s) deleted`)
-      fetchJobs()
+  /**************
+   CARD CREATION
+  ***************/
+  const generateJobCards = () => {
+    return jobsList.map((jobData) => {
+      return (
+        <JobCard
+          jobData={jobData}
+          cardType="delete"
+          key={jobData._id}
+          toggleDeletionState={toggleDeletionState}
+          isSelected={deletionList[jobData._id]}
+        />
+      )
     })
+  }
 
-    console.log(deletionArr)
+  let jobCards = []
+  if (hasLoaded) {
+    jobCards = generateJobCards()
   }
 
   return (
