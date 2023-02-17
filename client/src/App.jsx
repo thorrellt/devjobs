@@ -1,5 +1,6 @@
 import { useState, useContext, useEffect } from 'react'
 import Navbar from './components/navbar/Navbar'
+import Footer from './components/footer/Footer'
 import Searchbar from './components/home/searchbar/Searchbar'
 import { Outlet, useLocation } from 'react-router-dom'
 import {
@@ -63,6 +64,7 @@ const Page = () => {
     >
       <Navbar />
       <Outlet />
+      <Footer />
     </div>
   )
 }
