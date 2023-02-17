@@ -79,7 +79,7 @@ const deleteJobs = async (req, res) => {
     })
   } else {
     const retMsg = `${deleteCount.deletedCount} items deleted`
-    res.status(200).json({ retMsg })
+    res.status(200).json(deleteCount.deletedCount)
   }
 }
 

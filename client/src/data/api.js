@@ -73,6 +73,24 @@ export const postJob = async (job) => {
   }
 }
 
+export const deleteJobs = async (jobs) => {
+  const token = localStorage.getItem('token')
+  try {
+    const response = await axios({
+      method: 'delete',
+      url: currURL + '/jobs/',
+      data: jobs,
+      headers: {
+        authorization: `Bearer ${token}`,
+      },
+    })
+    console.log(response)
+    return response
+  } catch (error) {
+    return error.message
+  }
+}
+
 /************
   USER CALLS 
  ************/
