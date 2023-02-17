@@ -26,7 +26,7 @@ const Searchbar = (props) => {
   const onCheckClick = () => {
     setFilters((prevFilters) => ({
       ...prevFilters,
-      fulltime: !prevFilters.fulltime,
+      favorites: !prevFilters.favorites,
     }))
   }
 
@@ -90,7 +90,7 @@ const Searchbar = (props) => {
               />
             </div>
 
-            {/* FULL SCREEN CHECKBOX */}
+            {/* FAVORITES CHECKBOX */}
             <div
               className={`input-container checkbox-container flex-container 
           ${darkMode ? 'bg-blue-700' : 'bg-white'}`}
@@ -98,12 +98,12 @@ const Searchbar = (props) => {
               <label className="checkbox-wrapper flex-container">
                 <input
                   type="checkbox"
-                  checked={filters.fulltime}
+                  checked={filters.favorite}
                   onClick={onCheckClick}
                   onChange={onFormChange}
                 />
                 <span className="checkmark" />
-                <p>Full Time{`${screenSize === 'desktop' ? ' Only' : ''}`}</p>
+                <p>Favorites {`${screenSize === 'desktop' ? ' Only' : ''}`}</p>
               </label>
             </div>
             <button className="prim-btn" onClick={onSearchClick}>

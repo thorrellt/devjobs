@@ -94,9 +94,9 @@ export const formatFilter = (filter) => {
   if ('userId' in filter && userId !== '') {
     retFilter.userId = userId
   }
-  if (Boolean(fulltime)) {
-    retFilter.contract = 'Full Time'
-  }
+  // if (Boolean(fulltime)) {
+  //   retFilter.contract = 'Full Time'
+  // }
 
   return retFilter
 }

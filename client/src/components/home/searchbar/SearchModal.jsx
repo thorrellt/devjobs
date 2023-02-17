@@ -48,12 +48,12 @@ const SearchModal = (props) => {
           <label className="checkbox-wrapper flex-container">
             <input
               type="checkbox"
-              checked={filters.fulltime}
+              checked={filters.favorites}
               onClick={onCheckClick}
               onChange={onFormChange}
             />
             <span className="checkmark" />
-            <p>Full Time Only</p>
+            <p>Favorites Only</p>
           </label>
         </div>
         <button className="prim-btn" onClick={onSearchClick}>

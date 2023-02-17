@@ -9,12 +9,12 @@ const Home = (props) => {
   /*******
     HOOKS
    *******/
-  const { darkMode, screenSize } = useContext(DisplayContext)
+  const { darkMode, screenSize, user } = useContext(DisplayContext)
 
   const [filters, setFilters] = useState({
     position: '',
     location: '',
-    fulltime: false,
+    favorites: false,
   })
   const [allJobs, setAllJobs] = useState([])
   const [isLocal, setIsLocal] = useState(true)
@@ -48,6 +48,13 @@ const Home = (props) => {
     CARD CREATION
    ***************/
   const generateJobCards = () => {
+    if (filters.favorites) {
+      return allJobs.map((jobData) => {
+        if (user.favorites.includes(jobData._id)) {
+          return <JobCard jobData={jobData} key={jobData.id} />
+        }
+      })
+    }
     return allJobs.map((jobData) => {
       return <JobCard jobData={jobData} key={jobData.id} />
     })
