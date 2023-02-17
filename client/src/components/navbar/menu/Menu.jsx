@@ -61,12 +61,6 @@ const Menu = (props) => {
           {loggedIn && (
             <>
               <NavLink
-                to={`/devjobs/`}
-                className={`link ${darkMode ? 'font-white' : 'font-blue-700'}`}
-              >
-                Saved Jobs
-              </NavLink>
-              <NavLink
                 to={`/devjobs/postjob`}
                 className={`link ${darkMode ? 'font-white' : 'font-blue-700'}`}
               >
@@ -77,6 +71,12 @@ const Menu = (props) => {
                 className={`link ${darkMode ? 'font-white' : 'font-blue-700'}`}
               >
                 Delete Job
+              </NavLink>
+              <NavLink
+                to={`/devjobs/project`}
+                className={`link ${darkMode ? 'font-white' : 'font-blue-700'}`}
+              >
+                Meet the Dav
               </NavLink>
               <NavLink
                 to={`/devjobs/`}

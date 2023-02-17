@@ -7,6 +7,7 @@ import Login from './components/login/Login'
 import Signup from './components/signup/Signup'
 import PostJob from './components/postJob/PostJob'
 import DeleteJob from './components/deleteJob/DeleteJob'
+import Project from './components/project/Project'
 import './index.css'
 
 import { createBrowserRouter, RouterProvider, Route } from 'react-router-dom'
@@ -43,6 +44,10 @@ const router = createBrowserRouter([
       {
         path: '/devjobs/deletejob',
         element: <DeleteJob />,
+      },
+      {
+        path: '/devjobs/project',
+        element: <Project />,
       },
       {
         path: '*',

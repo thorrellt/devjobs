@@ -1,0 +1,163 @@
+.Project {
+  flex-direction: column;
+  padding-block-start: 7.875rem;
+  margin-block-end: 3rem;
+  margin-inline: 1.5rem;
+  align-items: center;
+}
+
+.Project section {
+  flex-direction: column;
+  align-items: center;
+}
+
+.Project .img-container {
+  justify-content: center;
+  margin-block-start: 1.5rem;
+  filter: drop-shadow(2px 3px 10px rgba(0, 0, 0, 0.5));
+  overflow: hidden;
+  border-radius: 45vw;
+  position: relative;
+  width: 90vw;
+  height: 90vw;
+}
+
+.Project .circle-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.Project .circle-container .circle {
+  width: 100%;
+  height: 100%;
+}
+
+.Project p {
+  text-align: center;
+}
+
+/* .Project>p {
+    margin-block-start: 2rem;
+} */
+
+.Project .portfolio-wrapper {
+  flex-direction: column;
+  margin-block-start: 2rem;
+  gap: 2rem;
+}
+
+.Project .portfolio-wrapper p {
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.Project .portfolio-wrapper > a {
+  margin-inline: auto;
+}
+
+.Project .my-links {
+  margin-block-start: 2rem;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.Project a i {
+  font-size: 2.5rem;
+}
+
+/********
+  TABLET
+ ********/
+@media (min-width: 680px) {
+  .Project {
+    padding-block-start: 10.25rem;
+    margin-inline: 2.5rem;
+    margin-block-end: 4.5rem;
+  }
+
+  .Project h2 {
+    font-size: 3rem;
+  }
+
+  .Project .img-container {
+    justify-content: center;
+    margin-block-start: 1.5rem;
+    border-radius: 32.5vw;
+    width: 65vw;
+    height: 65vw;
+  }
+}
+
+/********
+ DESKTOP
+ ********/
+@media (min-width: 992px) {
+  .Project {
+    padding-block-start: 10.625rem;
+    margin-inline: 10.25rem;
+    margin-block-end: 6.25rem;
+  }
+
+  .Project h2 {
+    font-size: 3.5rem;
+    text-align: left;
+    align-self: flex-start;
+  }
+
+  .Project section {
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+  }
+  .Project .portfolio-wrapper {
+    flex: 0 1 40%;
+  }
+
+  .Project p {
+    text-align: left;
+  }
+
+  .Project .portfolio-wrapper > a {
+    align-self: flex-start;
+    margin-inline: 0;
+  }
+
+  .Project .my-links {
+    margin-block-start: 1.5rem;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+  }
+
+  .Project .img-container {
+    flex-shrink: 0;
+    flex-basis: 60%;
+    width: 40vw;
+    height: 40vw;
+    max-width: 40vw;
+    max-height: 40vw;
+  }
+}
+
+/************
+  ANIMATIONS
+ ************/
+.Project .img-container > img {
+  animation: fadeIn ease-in 2s;
+}
+
+.circle-container {
+  position: absolute;
+  width: 780px;
+  height: 780px;
+  display: inline;
+}
+
+.circle {
+  z-index: -10;
+  width: 780px;
+  height: 780px;
+}
