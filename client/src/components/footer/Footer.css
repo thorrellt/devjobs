@@ -1,5 +1,5 @@
 footer {
-  margin-block-start: 5rem;
+  margin-block-start: 0rem;
   padding-inline: 1rem;
   padding-block: 0.75rem;
   justify-content: space-between;
@@ -17,4 +17,22 @@ footer .contacts {
 
 footer .contact-container {
   font-size: 1.5rem;
+}
+
+/********
+  TABLET
+ ********/
+@media (min-width: 680px) {
+  footer {
+    margin-block-start: 3rem;
+  }
+}
+
+/*********
+  DESKTOP
+ *********/
+@media (min-width: 992px) {
+  footer {
+    margin-block-start: 5rem;
+  }
 }
