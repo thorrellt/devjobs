@@ -101,7 +101,7 @@ const JobCard = (props) => {
       ${darkMode ? 'font-white' : 'font-blue-700'}`}
       >
         <NavLink
-          to={`${edit ? '/devjobs/editjob/${_id}' : '/devjobs/job/${_id}'}`}
+          to={`${edit ? '/devjobs/editjob/' + _id : '/devjobs/job/' + _id}`}
           className=""
         >
           <h3>{position}</h3>
