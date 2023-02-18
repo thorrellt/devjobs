@@ -39,23 +39,29 @@ const JobCard = (props) => {
     try {
       if (isFav) {
         const favDeleted = await deleteFavorite(_id).then((res) => {
-          if (res) {
-            delFavFromLocal(_id)
-            setIsFav(false)
-          }
+          setTimeout(() => {
+            if (res) {
+              delFavFromLocal(_id)
+              setIsFav(false)
+            }
+          }, '1000')
         })
       } else {
         await addFavorite(_id).then((res) => {
-          if (res) {
-            addFavToLocal(_id)
-            setIsFav(true)
-          }
+          setTimeout(() => {
+            if (res) {
+              delFavFromLocal(_id)
+              setIsFav(true)
+            }
+          }, '1000')
         })
       }
     } catch (error) {
       console.log(error)
     } finally {
-      setFavLoaded(true)
+      setTimeout(() => {
+        setFavLoaded(true)
+      }, '1000')
     }
   }
   const onEditClick = () => {

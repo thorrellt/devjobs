@@ -182,7 +182,7 @@ const EditJob = () => {
   }
 
   const attemptToPost = async (job) => {
-    await patchJob(job).then(() => navigate('/devjobs/'))
+    await patchJob(job).then(() => navigate('/devjobs/editjobs'))
   }
 
   const onSubmitClick = (event) => {
