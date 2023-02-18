@@ -87,9 +87,28 @@ const Login = () => {
     }))
   }
 
+  const fillGuestLogin = () => {
+    setFormState({
+      user: {
+        value: 'guest',
+        valid: true,
+      },
+      password: {
+        value: 'guest',
+        valid: true,
+      },
+      valid: true,
+      errorMsg: '',
+    })
+  }
+
   const onSubmitClick = async (event) => {
     event.preventDefault()
     let credentialsAreValid = false
+    if (formState.user.value === '' && formState.password.value === '') {
+      fillGuestLogin()
+      return
+    }
 
     const formIsValid = areInputFieldsValid()
 
@@ -188,7 +207,9 @@ const Login = () => {
             className={`sec-btn-light submit-btn
           ${darkMode ? 'sec-btn-dark' : 'sec-btn-light bg-white'}`}
           >
-            Login
+            {formState.user.value === '' && formState.password.value === ''
+              ? 'Guest'
+              : 'Login'}
           </button>
         </form>
 
