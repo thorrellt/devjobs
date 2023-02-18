@@ -68,7 +68,7 @@ const EditJobs = (props) => {
       <h1 className={`${darkMode ? 'font-white' : 'font-blue-700'}`}>
         Edit a Job
       </h1>
-      {isLocal && (
+      {isLocal && hasLoaded && (
         <div className="local-data-msg flex-container">
           <div
             className={`company 

@@ -86,7 +86,7 @@ const DeleteJob = () => {
 
   return (
     <main id="Delete-Jobs" className="flex-container">
-      {isLocal && (
+      {isLocal && hasLoaded && (
         <div className="local-data-msg flex-container">
           <div
             className={`company 

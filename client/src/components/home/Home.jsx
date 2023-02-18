@@ -72,7 +72,7 @@ const Home = (props) => {
         updateJobs={updateJobs}
       />
 
-      {isLocal && (
+      {isLocal && hasLoaded && (
         <div className="local-data-msg flex-container">
           <div
             className={`company 
