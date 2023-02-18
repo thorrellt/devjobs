@@ -3,7 +3,7 @@ import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { Routes, Route, useParams } from 'react-router-dom'
 import { DisplayContext } from '../../context/DisplayContext'
 import './EditJob.css'
-import { postJob, getJob } from '../../data/api'
+import { patchJob, getJob } from '../../data/api'
 
 const EditJob = () => {
   /*******
@@ -182,7 +182,7 @@ const EditJob = () => {
   }
 
   const attemptToPost = async (job) => {
-    await postJob(job).then(() => navigate('/devjobs/'))
+    await patchJob(job).then(() => navigate('/devjobs/'))
   }
 
   const onSubmitClick = (event) => {
@@ -196,6 +196,7 @@ const EditJob = () => {
         contract: formState.jobType.value,
         position: formState.position.value,
         location: formState.location.value,
+        id: id,
       }
       attemptToPost(validJob)
       setFormValidity(true)

@@ -72,6 +72,24 @@ export const postJob = async (job) => {
   }
 }
 
+export const patchJob = async (job) => {
+  const fullJob = generateJob(job)
+  const token = localStorage.getItem('token')
+  try {
+    const response = await axios({
+      method: 'patch',
+      url: currURL + `/jobs/${job.id}`,
+      data: fullJob,
+      headers: {
+        authorization: `Bearer ${token}`,
+      },
+    })
+    return response
+  } catch (error) {
+    return error.message
+  }
+}
+
 export const deleteJobs = async (jobs) => {
   const token = localStorage.getItem('token')
   try {

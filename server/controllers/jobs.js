@@ -43,6 +43,25 @@ const createJob = async (req, res) => {
   // res.json(req.body)
 }
 
+const patchJob = async (req, res) => {
+  const { id: jobID } = req.params
+
+  const job = await Job.findOneAndUpdate(
+    { _id: jobID, canPatch: true },
+    req.body,
+    { new: true, runValidators: true }
+  )
+
+  if (!job) {
+    throw new CustomAPIError(
+      `No task with id : ${jobID} or this job cannot be altered`,
+      404
+    )
+  }
+
+  res.status(200).json({ id: jobID, data: req.body })
+}
+
 const deleteJob = async (req, res) => {
   const deleteRequestParams = {
     _id: req.params.id,
@@ -83,30 +102,11 @@ const deleteJobs = async (req, res) => {
   }
 }
 
-const updateJob = async (req, res) => {
-  const { id: jobID } = req.params
-
-  const job = await Job.findOneAndUpdate(
-    { _id: jobID, canPatch: true },
-    req.body,
-    { new: true, runValidators: true }
-  )
-
-  if (!job) {
-    throw new CustomAPIError(
-      `No task with id : ${jobID} or this job cannot be altered`,
-      404
-    )
-  }
-
-  res.status(200).json({ id: jobID, data: req.body })
-}
-
 module.exports = {
   getAllJobs,
   getJob,
   createJob,
-  updateJob,
+  patchJob,
   deleteJob,
   deleteJobs,
 }

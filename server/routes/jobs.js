@@ -12,7 +12,7 @@ const {
   getAllJobs,
   getJob,
   createJob,
-  updateJob,
+  patchJob,
   deleteJob,
   deleteJobs,
 } = require('../controllers/jobs')
@@ -29,7 +29,7 @@ router
 router
   .route('/:id')
   .get(cors(corsOptions), getJob)
-  .patch(cors(corsOptions), updateJob)
+  .patch(cors(corsOptions), patchJob)
   .delete(cors(corsOptions), checkAuth, deleteJob)
 
 module.exports = router
