@@ -2,7 +2,6 @@ import { useState, useContext, useEffect } from 'react'
 import { DisplayContext } from '../../context/DisplayContext'
 import './EditJobs.css'
 import JobCard from '../home/jobCard/JobCard'
-import Searchbar from '../home/searchbar/Searchbar'
 import { getJobs } from '../../data/api'
 
 const EditJobs = (props) => {
@@ -25,7 +24,7 @@ const EditJobs = (props) => {
     API CALLS
    ***********/
   const fetchJobs = async (filter) => {
-    await getJobs(filter).then((res) => {
+    await getJobs({ userId: user._id }).then((res) => {
       setAllJobs(res.jobs)
       setIsLocal(res.isLocal)
       setHasLoaded(true)
@@ -66,12 +65,6 @@ const EditJobs = (props) => {
 
   return (
     <main id="Home" className="flex-container">
-      <Searchbar
-        filters={filters}
-        setFilters={setFilters}
-        updateJobs={updateJobs}
-      />
-
       {isLocal && (
         <div className="local-data-msg flex-container">
           <div
