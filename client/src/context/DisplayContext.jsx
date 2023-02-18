@@ -87,15 +87,21 @@ const DisplayContextProvider = ({ children }) => {
   const addFavToLocal = (jobId) => {
     let favorites = JSON.parse(localStorage.getItem('favorites'))
     favorites.push(jobId)
-    // const filteredFavs = favorites.filter((id) => id !== jobId)
     localStorage.setItem('favorites', JSON.stringify(favorites))
+    setUser((prevUser) => ({
+      ...prevUser,
+      favorites: favorites,
+    }))
   }
 
   const delFavFromLocal = (jobId) => {
     let favorites = JSON.parse(localStorage.getItem('favorites'))
     const filteredFavs = favorites.filter((id) => id !== jobId)
-    console.log(filteredFavs)
     localStorage.setItem('favorites', JSON.stringify(filteredFavs))
+    setUser((prevUser) => ({
+      ...prevUser,
+      favorites: filteredFavs,
+    }))
   }
 
   return (

@@ -21,7 +21,6 @@ export const getJobs = async (filter) => {
     //return all jobs if no filter passed
     if (Boolean(!filter) || jobFilters === {}) {
       const response = await axios.get(currURL + '/jobs')
-      console.log(response.data)
       return { jobs: response.data.jobs, isLocal: false }
     }
 
@@ -145,8 +144,6 @@ export const addFavorite = async (jobId) => {
         authorization: `Bearer ${token}`,
       },
     })
-
-    console.log('fav call axios res:: ' + res.status)
 
     if (res.status === 201) {
       return true
