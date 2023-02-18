@@ -1,3 +1,86 @@
+#Delete-Jobs {
+  background-color: transparent;
+  min-height: 100vh;
+  width: 100vw;
+  align-items: center;
+  flex-wrap: nowrap;
+  position: relative;
+  padding-block-start: 3.125rem;
+  flex-direction: column;
+}
+
+#Delete-Jobs h1 {
+  margin-bottom: 3.125rem;
+}
+
 .delete-btn {
-  margin-bottom: 4rem;
+  margin-block-start: 3.125rem;
+}
+
+.job-cards {
+  flex-basis: 100%;
+  margin-inline: 1.5rem;
+  flex-wrap: wrap;
+  background-color: transparent;
+  /* margin-block-start: 6.125rem; */
+  height: min-content;
+}
+
+.local-data-msg {
+  padding-block-end: 2rem;
+}
+
+.local-data-msg h4 {
+  text-align: center;
+}
+
+/********
+  TABLET
+ ********/
+@media (min-width: 680px) {
+  #Delete-Jobs {
+    padding-block-start: 3.5rem;
+  }
+  #Delete-Jobs h1 {
+    align-self: flex-start;
+    margin-inline-start: 4rem;
+    margin-bottom: 3.5rem;
+  }
+  #Delete-Jobs .job-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 0.75rem;
+    row-gap: 3rem;
+    margin-inline: 2.5rem;
+    /* margin-block-start: 6.875rem; */
+  }
+  .delete-btn {
+    margin-block-start: 3.5rem;
+  }
+}
+
+/*********
+  DESKTOP
+ *********/
+@media (min-width: 992px) {
+  #Delete-Jobs {
+    padding-block-start: 4rem;
+  }
+  #Delete-Jobs h1 {
+    align-self: flex-start;
+    margin-inline-start: 6rem;
+    margin-bottom: 4rem;
+  }
+
+  #Delete-Jobs .job-cards {
+    column-gap: 1.875rem;
+    grid-template-columns: 1fr 1fr 1fr;
+
+    width: max(900px, 78vw);
+    /* margin-block-start: 9rem; */
+  }
+
+  .delete-btn {
+    margin-block-start: 4rem;
+  }
 }

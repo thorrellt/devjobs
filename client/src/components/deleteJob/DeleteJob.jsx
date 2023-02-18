@@ -85,7 +85,7 @@ const DeleteJob = () => {
   }
 
   return (
-    <main id="Home" className="flex-container">
+    <main id="Delete-Jobs" className="flex-container">
       {isLocal && (
         <div className="local-data-msg flex-container">
           <div
@@ -98,11 +98,14 @@ const DeleteJob = () => {
         </div>
       )}
 
+      <h1 className={`${darkMode ? 'font-white' : 'font-blue-700'}`}>
+        Delete a Job
+      </h1>
+
+      <div className="job-cards flex-container">{jobCards}</div>
       <button onClick={onSubmitClick} className={`delete-btn prim-btn`}>
         Delete Selected Items
       </button>
-
-      <div className="job-cards flex-container">{jobCards}</div>
     </main>
   )
 }
