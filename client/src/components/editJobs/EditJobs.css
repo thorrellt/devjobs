@@ -1,12 +1,16 @@
-#Home {
+#Edit-Jobs {
   background-color: transparent;
   min-height: 100vh;
   width: 100vw;
   align-items: center;
   flex-wrap: nowrap;
   position: relative;
-  padding-block-start: 6.125rem;
+  padding-block-start: 3.125rem;
   flex-direction: column;
+}
+
+#Edit-Jobs h1 {
+  margin-bottom: 3.125rem;
 }
 
 .job-cards {
@@ -30,10 +34,15 @@
     TABLET
    ********/
 @media (min-width: 680px) {
-  #Home {
-    padding-block-start: 6.875rem;
+  #Edit-Jobs {
+    padding-block-start: 3.5rem;
   }
-  #Home .job-cards {
+  #Edit-Jobs h1 {
+    align-self: flex-start;
+    margin-inline-start: 4rem;
+    margin-bottom: 3.5rem;
+  }
+  #Edit-Jobs .job-cards {
     display: grid;
     grid-template-columns: 1fr 1fr;
     column-gap: 0.75rem;
@@ -47,10 +56,16 @@
   DESKTOP
  *********/
 @media (min-width: 992px) {
-  #Home {
-    padding-block-start: 9rem;
+  #Edit-Jobs {
+    padding-block-start: 4rem;
   }
-  #Home .job-cards {
+  #Edit-Jobs h1 {
+    align-self: flex-start;
+    margin-inline-start: 6rem;
+    margin-bottom: 4rem;
+  }
+
+  #Edit-Jobs .job-cards {
     column-gap: 1.875rem;
     grid-template-columns: 1fr 1fr 1fr;
 

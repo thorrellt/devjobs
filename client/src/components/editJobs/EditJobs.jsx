@@ -64,7 +64,10 @@ const EditJobs = (props) => {
   }
 
   return (
-    <main id="Home" className="flex-container">
+    <main id="Edit-Jobs" className="flex-container">
+      <h1 className={`${darkMode ? 'font-white' : 'font-blue-700'}`}>
+        Edit a Job
+      </h1>
       {isLocal && (
         <div className="local-data-msg flex-container">
           <div
