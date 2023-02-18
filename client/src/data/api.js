@@ -190,3 +190,28 @@ export const deleteFavorite = async (jobId) => {
     return error
   }
 }
+
+/***********
+  IMG CALLS 
+ ***********/
+export const getImage = async (imgName) => {
+  try {
+    try {
+      const response = await axios.get(currURL + '/images/' + imgName)
+      console.log(response)
+      return response.data
+    } catch (error) {
+      const job = getLocalJob(id)
+      if (job.length === 0) {
+        throw new Error('no record found matching this ID')
+      }
+      return job
+    }
+  } catch (error) {
+    return error.message
+  }
+}
+
+export const getImgPath = (logo) => {
+  return currURL + '/images/' + logo
+}

@@ -1,4 +1,5 @@
 import AsyncImage from './AsyncImage'
+import { getImage, getImgPath } from '../../data/api'
 
 function imageExist(url) {
   var img = new Image()
@@ -12,17 +13,18 @@ function getImg(imgName) {
   return imageExist(livePath) ? livePath : devPath
 }
 
+const imgAddr = getImgPath() + ''
 const CompanyLogo = (props) => {
   const { logo, logoBackground } = props
   const logoPath = getImg(logo)
   // console.log(logoPath)
-
+  const imgAddr = getImgPath(logo)
   return (
     <div
       className="company-logo flex-container"
       style={{ backgroundColor: logoBackground }}
     >
-      <AsyncImage src={logoPath} alt="" />
+      <img crossorigin="anonymous" src={imgAddr}></img>
     </div>
   )
 }
