@@ -1,7 +1,7 @@
 import { useState, useContext, useEffect } from 'react'
 import { DisplayContext } from '../../../context/DisplayContext'
 import CompanyLogo from '../../companyLogo/CompanyLogo'
-import { NavLink, useLocation } from 'react-router-dom'
+import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 import './JobCard.css'
 import { addFavorite, deleteFavorite } from '../../../data/api'
 
@@ -19,14 +19,14 @@ const JobCard = (props) => {
     location,
   } = props.jobData
 
-  const { removeFromDeleteList, addToDeleteList } = props
+  const { removeFromDeleteList, addToDeleteList, edit } = props
 
   const [isFav, setIsFav] = useState(false)
   const [isSelected, setIsSeleted] = useState(false)
   const [favLoaded, setFavLoaded] = useState(true)
 
   const star = isFav ? `bi bi-star-fill` : `bi bi-star`
-
+  const navigate = useNavigate()
   useEffect(() => {
     if (user.favorites) {
       setIsFav(user.favorites.includes(_id))
@@ -58,17 +58,24 @@ const JobCard = (props) => {
       setFavLoaded(true)
     }
   }
+  const onEditClick = () => {
+    if (edit) {
+      navigate(`/devjobs/editjob/${_id}`)
+    }
+  }
 
   return (
     <div
       className={`jobcard flex-container
-    ${darkMode ? 'bg-blue-700' : 'bg-white'}`}
+    ${darkMode ? 'bg-blue-700' : 'bg-white'}
+    ${edit ? 'editable' : ''}`}
+      onClick={onEditClick}
       key={_id}
     >
       <CompanyLogo logo={logo} logoBackground={logoBackground} />
 
       {/* render Favorite star Icon */}
-      {user.loggedIn && (
+      {user.loggedIn && !edit && (
         <i
           className={`${star} star 
           ${darkMode ? 'font-white' : 'font-blue-700'}
@@ -93,7 +100,10 @@ const JobCard = (props) => {
         className={`position 
       ${darkMode ? 'font-white' : 'font-blue-700'}`}
       >
-        <NavLink to={`/devjobs/job/${_id}`} className="">
+        <NavLink
+          to={`${edit ? '/devjobs/editjob/${_id}' : '/devjobs/job/${_id}'}`}
+          className=""
+        >
           <h3>{position}</h3>
         </NavLink>
       </div>
@@ -107,6 +117,10 @@ const JobCard = (props) => {
       </div>
     </div>
   )
+}
+
+JobCard.defaultProps = {
+  edit: false,
 }
 
 export default JobCard

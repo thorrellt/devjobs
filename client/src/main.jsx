@@ -6,6 +6,8 @@ import Job from './components/job/Job'
 import Login from './components/login/Login'
 import Signup from './components/signup/Signup'
 import PostJob from './components/postJob/PostJob'
+import EditJob from './components/editJob/EditJob'
+import EditJobs from './components/editJobs/EditJobs'
 import DeleteJob from './components/deleteJob/DeleteJob'
 import Project from './components/project/Project'
 import './index.css'
@@ -40,6 +42,14 @@ const router = createBrowserRouter([
       {
         path: '/devjobs/postjob',
         element: <PostJob />,
+      },
+      {
+        path: '/devjobs/editjobs',
+        element: <EditJobs />,
+      },
+      {
+        path: '/devjobs/editjob/:id',
+        element: <EditJob />,
       },
       {
         path: '/devjobs/deletejob',

@@ -1,10 +1,10 @@
 import { useState, useContext, useEffect } from 'react'
 import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { DisplayContext } from '../../context/DisplayContext'
-import './PostJob.css'
+import './EditJob.css'
 import { postJob } from '../../data/api'
 
-const AddJob = () => {
+const EditJob = () => {
   /*******
     HOOKS
    *******/
@@ -160,13 +160,13 @@ const AddJob = () => {
   }
 
   return (
-    <main id="Addjob" className="flex-container">
+    <main id="Editjob" className="flex-container">
       <div
         className={`form-container flex-container
-        ${darkMode ? 'bg-blue-700' : 'bg-violet-500'}`}
+          ${darkMode ? 'bg-blue-700' : 'bg-violet-500'}`}
       >
         {/* error message for invalid form */}
-        <h1 className="font-white">Create a Job</h1>
+        <h1 className="font-white">Edit a Job</h1>
         {formState.valid == false && (
           <p className="font-white error-text">
             Please verify all fields are correct
@@ -268,7 +268,7 @@ const AddJob = () => {
           <button
             onClick={onSubmitClick}
             className={`sec-btn-light submit-btn
-            ${darkMode ? 'sec-btn-dark' : 'sec-btn-light bg-white'}`}
+              ${darkMode ? 'sec-btn-dark' : 'sec-btn-light bg-white'}`}
           >
             Post Job
           </button>
@@ -278,4 +278,4 @@ const AddJob = () => {
   )
 }
 
-export default AddJob
+export default EditJob

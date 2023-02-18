@@ -64,19 +64,25 @@ const Menu = (props) => {
                 to={`/devjobs/postjob`}
                 className={`link ${darkMode ? 'font-white' : 'font-blue-700'}`}
               >
-                Post Job
+                Create a Job
+              </NavLink>
+              <NavLink
+                to={`/devjobs/editjobs`}
+                className={`link ${darkMode ? 'font-white' : 'font-blue-700'}`}
+              >
+                Edit a Job
               </NavLink>
               <NavLink
                 to={`/devjobs/deletejob`}
                 className={`link ${darkMode ? 'font-white' : 'font-blue-700'}`}
               >
-                Delete Job
+                Delete a Job
               </NavLink>
               <NavLink
                 to={`/devjobs/project`}
                 className={`link ${darkMode ? 'font-white' : 'font-blue-700'}`}
               >
-                Meet the Dav
+                Meet the Dev
               </NavLink>
               <NavLink
                 to={`/devjobs/`}

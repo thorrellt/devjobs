@@ -8,6 +8,9 @@
   border-radius: 6px;
   margin-block-end: 3rem;
 }
+.editable {
+  cursor: pointer;
+}
 .jobcard > * {
   height: min-content;
 }
@@ -16,6 +19,14 @@
   gap: 0.75rem;
 }
 
+.link-screen {
+  position: fixed;
+  width: inherit;
+  max-width: inherit;
+  height: 228px;
+  max-height: 228px;
+  z-index: 3;
+}
 .jobcard .star {
   position: absolute;
   right: 10%;
