@@ -1,13 +1,15 @@
 import { useState, useContext, useEffect } from 'react'
 import { NavLink, useLocation, useNavigate } from 'react-router-dom'
+import { Routes, Route, useParams } from 'react-router-dom'
 import { DisplayContext } from '../../context/DisplayContext'
 import './EditJob.css'
-import { postJob } from '../../data/api'
+import { postJob, getJob } from '../../data/api'
 
 const EditJob = () => {
   /*******
     HOOKS
    *******/
+  const { id } = useParams()
   const { darkMode, screenSize, loggedIn } = useContext(DisplayContext)
 
   const [formState, setFormState] = useState({
@@ -29,6 +31,7 @@ const EditJob = () => {
     },
     valid: true,
   })
+  const [hasLoaded, setHasLoaded] = useState()
 
   const navigate = useNavigate()
   /***************************
@@ -91,6 +94,48 @@ const EditJob = () => {
       )
     })
 
+  const fetchJob = async (filter) => {
+    let response = {}
+    await getJob(id)
+      .then((res) => (response = res))
+      .then((response) => {
+        if (typeof response === 'string') {
+          throw response
+        }
+      })
+      .then(() => {
+        const companyObj = dropdownSelections.companies.find(
+          (element) => element.name === response.company
+        )
+        setFormState({
+          company: {
+            value: companyObj.value,
+            valid: true,
+          },
+          jobType: {
+            value: response.contract,
+            valid: true,
+          },
+          position: {
+            value: response.position,
+            valid: true,
+          },
+          location: {
+            value: response.location,
+            valid: true,
+          },
+          valid: true,
+        })
+        setHasLoaded(true)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+  }
+
+  useEffect(() => {
+    fetchJob()
+  }, [])
   /********************
     ON CLICK FUNCTIONS
    ********************/
