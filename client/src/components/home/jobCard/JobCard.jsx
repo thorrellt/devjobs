@@ -78,7 +78,11 @@ const JobCard = (props) => {
       onClick={onEditClick}
       key={_id}
     >
-      <CompanyLogo logo={logo} logoBackground={logoBackground} />
+      <CompanyLogo
+        logo={logo}
+        company={company}
+        logoBackground={logoBackground}
+      />
 
       {/* render Favorite star Icon */}
       {user.loggedIn && !edit && (

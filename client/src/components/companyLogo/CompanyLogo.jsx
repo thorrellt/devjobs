@@ -14,7 +14,7 @@ function getImg(imgName) {
 
 const imgAddr = getImgPath() + ''
 const CompanyLogo = (props) => {
-  const { logo, logoBackground } = props
+  const { logo, logoBackground, company } = props
   const logoPath = getImg(logo)
   const imgAddr = getImgPath(logo)
   return (
@@ -22,7 +22,7 @@ const CompanyLogo = (props) => {
       className="company-logo flex-container"
       style={{ backgroundColor: logoBackground }}
     >
-      <img crossOrigin="anonymous" src={imgAddr}></img>
+      <img crossOrigin="anonymous" src={imgAddr} alt={`${company} logo`}></img>
     </div>
   )
 }

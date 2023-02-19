@@ -38,7 +38,11 @@ const JobCard = (props) => {
     ${darkMode ? 'bg-blue-700' : 'bg-white'}`}
       key={_id}
     >
-      <CompanyLogo logo={logo} logoBackground={logoBackground} />
+      <CompanyLogo
+        logo={logo}
+        company={company}
+        logoBackground={logoBackground}
+      />
 
       {/* render Favorite checkbox Icon */}
       {user.loggedIn && (
