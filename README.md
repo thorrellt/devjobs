@@ -68,6 +68,14 @@ I wanted to enable users' ability to create, update, and delete jobs while ensur
 **Client Server Interactions via HTTP:** Strengthened knowledge of client-server interactions as a result of building an end-to-end product. 
 
 
+
+## In the Future, I plan to ...
+- add pagination to manage how a large number of jobs will be displayed.
+- add options to choose what order jobs are displayed (ie, alphabetical, by date posted, etc.)
+- add unit testing to server, then automate it.
+
+
+
 ## Installation
 
 ### Client
