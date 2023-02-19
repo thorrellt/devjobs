@@ -42,10 +42,14 @@ const SearchModal = (props) => {
         </div>
         {/* CHECKBOX */}
         <div
-          className={`input-container checkbox-container flex-container 
+          className={`p input-container checkbox-container flex-container 
           ${darkMode ? 'bg-blue-700' : 'bg-white'}`}
         >
-          <label className="checkbox-wrapper flex-container">
+          <label
+            className={`checkbox-wrapper flex-container ${
+              darkMode ? 'font-white' : 'font-blue-700'
+            }`}
+          >
             <input
               type="checkbox"
               checked={filters.favorites}
@@ -53,7 +57,7 @@ const SearchModal = (props) => {
               onChange={onFormChange}
             />
             <span className="checkmark" />
-            <p>Favorites Only</p>
+            Favorites Only
           </label>
         </div>
         <button className="prim-btn" onClick={onSearchClick}>

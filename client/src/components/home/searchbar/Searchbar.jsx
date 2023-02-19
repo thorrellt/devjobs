@@ -95,7 +95,11 @@ const Searchbar = (props) => {
               className={`input-container checkbox-container flex-container 
           ${darkMode ? 'bg-blue-700' : 'bg-white'}`}
             >
-              <label className="checkbox-wrapper flex-container">
+              <label
+                className={`p checkbox-wrapper flex-container ${
+                  darkMode ? 'font-white' : 'font-blue-700'
+                }`}
+              >
                 <input
                   type="checkbox"
                   checked={filters.favorite}
@@ -103,7 +107,7 @@ const Searchbar = (props) => {
                   onChange={onFormChange}
                 />
                 <span className="checkmark" />
-                <p>Favorites {`${screenSize === 'desktop' ? ' Only' : ''}`}</p>
+                Favorites {`${screenSize === 'desktop' ? ' Only' : ''}`}
               </label>
             </div>
             <button className="prim-btn" onClick={onSearchClick}>
