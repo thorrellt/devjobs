@@ -20,11 +20,19 @@ The **devjobs** website is a fictional job board based on a design from [fronten
 
 The home page has search options using both name and location.
 
-A new **account creation** occurs by clicking "***Log in***" and then "***Sign up***." However, signing up is not required, as leaving the input fields blank, and clicking the "***Guest Button***" will populate guest credentials. Certain features need a user account. These include creating, deleting, and storing your favorite jobs.
+A new **account creation** occurs by clicking "***Log in***" and then "***Sign up***." However, signing up is not required, as leaving the input fields blank, and clicking the "***Guest***" Button will log in with guest credentials. Certain features need a user account. These include creating, deleting, and storing your favorite jobs.
+
+<div align="center"> 
+	<img src="https://user-images.githubusercontent.com/64343445/219966100-03f88f65-e2ab-4347-bc6e-217a45c27441.jpg" width= "400">
+</div> 
 
 Once logged in, jobs become ***favorites*** by clicking the star on the posting. The "Favorites" checkbox in the search bar will filter out any non-favorite job postings.
 
-After logging in, clicking the user icon on the top right corner will display the ***menu***.
+<div align="center"> 
+	<img src="https://user-images.githubusercontent.com/64343445/219965983-3527d5ae-5c26-4bfd-a148-b76b01eb378a.gif" width= "1000">
+</div> 
+
+After logging in, clicking the user icon on the top right corner will display the ***menu***. ![user_icon](https://user-images.githubusercontent.com/64343445/219966409-3541f4f7-6081-484f-ba6a-1a18dc3e81b1.png) 
 
 Users can ***Create a Job*** from the menu. A user only has to fill out the four fields on this screen to post a job. The rest of the job fields will be randomly generated for simplicity, as this is demo.
 
