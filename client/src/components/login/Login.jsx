@@ -71,6 +71,9 @@ const Login = () => {
 
   const areInputFieldsValid = () => {
     let valid = true
+    if (formState.user.value === '' && formState.password.value === '') {
+      return true
+    }
     for (const inputField in formState) {
       if (formState[inputField].value === '') {
         makeFieldInvalid(inputField)
@@ -87,42 +90,27 @@ const Login = () => {
     }))
   }
 
-  const fillGuestLogin = () => {
-    setFormState({
-      user: {
-        value: 'guest',
-        valid: true,
-      },
-      password: {
-        value: 'guest',
-        valid: true,
-      },
-      valid: true,
-      errorMsg: '',
-    })
-  }
-
   const onSubmitClick = async (event) => {
     event.preventDefault()
-    let credentialsAreValid = false
-    if (formState.user.value === '' && formState.password.value === '') {
-      fillGuestLogin()
-      return
-    }
 
     const formIsValid = areInputFieldsValid()
 
     if (formIsValid) {
-      await loginUser({
-        name: formState.user.value,
-        password: formState.password.value,
-      }).then((res) => {
+      let userCredentials =
+        formState.user.value === '' && formState.password.value === ''
+          ? { name: 'guest', password: 'guest' }
+          : {
+              name: formState.user.value,
+              password: formState.password.value,
+            }
+
+      await loginUser(userCredentials).then((res) => {
         const status = res.request.status
         console.log('status:  ' + status)
         if (status === 200) {
           console.log(res.data)
           logIn({
-            name: formState.user.value,
+            name: res.data.name,
             favorites: res.data.favorites,
             token: res.data.token,
             _id: res.data._id,
